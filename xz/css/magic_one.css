@@ -1,0 +1,42 @@
+@charset "utf-8";
+html,body,h3,p,h4,h5{margin:0;padding:0;font-size:0.14rem;}
+.header{height:0.4rem;line-height: 1;font-size:0.15rem;display: flex;justify-content: center;align-items: center;box-shadow: 0 1px 1px #ededed;}
+.header .left{width:0.5rem;justify-content: center;display: flex;}
+.header .center{flex:1;justify-content: center;display: flex;}
+.header .iconfont{font-size:0.18rem;}
+.header .right{width:0.5rem;justify-content: center;display: flex;}
+.banners{width:100%;}
+.banners img{width:100%;display: inherit;}
+.k12_title{font-size:0.2rem;text-align: center;padding:0.25rem 0;border-top:0.1rem solid #ededed;}
+.k12_content{width:100%;height:auto;padding:0.15rem;box-sizing: border-box;}
+.top4{border-top:0.04rem solid #ededed;}
+.k12_content h4{font-size: 0.15rem;color:#333;position: relative;text-indent: 0.8em;}
+.k12_content h4:before{
+	content:"";
+	position: absolute;
+	top:0.01rem;
+	left:0;
+	width:0.03rem;
+	bottom:0.01rem;
+	background: #333;
+}
+.split{display: flex;flex-direction: row;margin:0.15rem 0;}
+.split div{flex:1;display: flex;flex-direction: column;align-items: center;}
+.split div p{font-size:0.12rem;color:#333;}
+.split div img{width:0.6rem;height:auto;margin-bottom:0.1rem;}
+.k12_img{padding:0.1rem 0;}
+.k12_img img{width:100%;}
+.k12_imgs{padding:0 0.15rem;box-sizing: border-box;}
+.k12_imgs img{width:100%;margin-bottom:0.1rem;}
+.k12_header{text-align: center;margin:0.25rem 0;}
+.k12_header span{display: inline-block;padding:0.07rem 0.19rem;color:#fff;background: #9b755c;}
+.k12banner{padding:0 0.35rem 0;}
+.k12banner img{width:100%;}
+.k12_steps .k12_step{width:100%;display: flex;flex-direction: row;justify-content: center;align-items: center;margin-bottom:0.15rem;}
+.k12_step img{width:0.55rem;}
+.k12_step div{flex:1;padding-left:0.15rem;box-sizing: border-box;display: flex;justify-content: center;flex-direction: column;}
+.k12_step h5{font-size: 0.15rem;margin-bottom:0.05rem;}
+.k12_step p{font-size: 0.12rem}
+.k12_go{width:100%;padding:0 0.5rem 0.6rem;box-sizing: border-box;margin-top:0.3rem;}
+.k12_go img{width:100%;}
+.dec{text-align: center;font-size: 0.14rem;color:#999;margin-top:-0.2rem;}

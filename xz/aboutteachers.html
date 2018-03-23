@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>关于我们</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body >
+<!-- aboutus header -->
+<div class="aboutus_head">
+	<ul>
+		<a href="aboutUs.html?id=0"><li>公司简介</li></a>
+		<a href="aboutUs.html?id=1"><li>企业文化</li></a>
+		<a href="aboutUs.html?id=2"><li>办公环境</li></a>
+		<a href="aboutteachers.html"><li class="ac">教师风采</li></a>
+	</ul>
+</div>
+<!-- news-content -->
+<div class="aboutus_contents">
+	<div class="aboutus_box">
+		
+	</div>
+</div>
+<input type="hidden" value="" class="addvlue">
+<!-- footer -->
+<div class="footer">
+	<div class="left">
+		<p><a href="tel:123456789"/><i class="iconfont icon-bohao"></i></a></p>
+		<p>一键拨号</p>
+	</div>
+	<div class="center">
+		<p><a href="index.html"><i class="iconfont icon-cloud-home"></i></a></p>
+		<p>主页</p>
+	</div>
+	<div class="right">
+		<p><i class="iconfont icon-duanxin"></i></p>
+		<p>售后服务</p>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script>
+$(function(){
+    	var teacherjson=[{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"},{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"},{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"},{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"},{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"},{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"},{'img':'images/xxp.png','name':"李白",'grade':"高一语文",'schoolage':12,'url':"teacher_detail.html"}];
+
+			var str='<div class="aboutus_teachers"><div class="aboutus_active">家庭教育指导</div><div>语数外课程</div></div><div class="aboutus_teachers_content"><div id="pullrefresh" class="mui-content mui-scroll-wrapper"><div class="mui-scroll"><ul class="mui-table-view mui-table-view-chevron"></ul></div></div></div>';
+			// 语数外课程
+			// 家庭教育指导
+			$('.aboutus_box').html(str);
+			$('.aboutus_teachers div').on('click',function(){
+				 $(this).addClass('aboutus_active').siblings().removeClass('aboutus_active');
+				 console.log($(this).html());
+			});
+			  go(teacherjson);
+				function go(teacherjson){
+				// $('.addvlue').val(JSON.stringify(teacherjson));
+				$('.mui-table-view').html("");
+				 mui.init({
+			      pullRefresh: {
+			         container: '#pullrefresh',
+			         down: {
+			            callback: pulldownRefresh
+			         },
+			         up: {
+			            contentrefresh: '正在加载...',
+			            callback: pullupRefresh
+			         }
+			      }
+			   });
+			   if (mui.os.plus) {
+			      mui.plusReady(function() {
+			         setTimeout(function() {
+			            mui('#pullrefresh').pullRefresh().pullupLoading();
+			         }, 1000);
+
+			      });
+			   } else {
+			      mui.ready(function() {
+			         mui('#pullrefresh').pullRefresh().pullupLoading();
+			      });
+			   }
+			   mui(".mui-table-view").on('tap','.mui-table-view-cell a',function(){
+			   	var u=this.getAttribute("href");
+				   mui.openWindow({
+				    url: u, 
+				    id:'info'
+				  });	
+
+			   });
+			}
+			function pulldownRefresh() {
+			   	// var teacherjson=JSON.parse($('.addvlue').val());
+			      setTimeout(function() { 
+			         mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); 
+			      }, 1000);
+			   }
+			   var count = 0;
+			   function pullupRefresh() {
+			   		// var teacherjson=JSON.parse($('.addvlue').val());
+			      setTimeout(function() {   
+			      	var max = teacherjson.length;	   
+			         mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+			         var table = document.body.querySelector('.mui-table-view');
+			         var cells = document.body.querySelectorAll('.mui-table-view-cell');
+			         for(var i = cells.length, len =max; i < len; i++){
+			         	var li = document.createElement('li');
+			            li.className = 'mui-table-view-cell aboutus_teachers_box';	
+					    li.innerHTML='<div class="">\
+										<div class="aboutus_teachers_box_txt">\
+											<a href="'+teacherjson[i].url+'"><div class="aboutus_teachers_img"><img src="'+teacherjson[i].img+'"/></div>\
+											<h3>'+teacherjson[i].name+'</h3>\
+											<p><span>'+teacherjson[i].grade+'</span></p>\
+											<p><span>'+teacherjson[i].schoolage+'年教龄</span></p>\
+											<div class="aboutus_teachers_more">查看更多</div>\
+										</div></a>\
+									</div>';
+			            table.appendChild(li);
+						}
+			      }, 1000);
+			   }
+   });
+
+</script>
+</html>

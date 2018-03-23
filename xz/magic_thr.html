@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/magic_two.css">
+<style >
+.imgs img{width:100%;float:left;}
+.guidanceonline{clear:both;}
+.guidanceonline img{width:2rem;margin: 0.3rem auto}
+</style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        魔法记忆
+    </div>
+    <div class="right">
+       <a href=""><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="imgs">
+<img src="images/031501.png" alt="">
+<img src="images/031502.png" alt="">
+<img src="images/031503.png" alt="">
+<img src="images/031504.png" alt="">
+<img src="images/031505.png" alt="">
+</div>
+<!-- 0元试听 -->
+<div class="guidanceonline">
+ 	<img src="images/031506.png" alt="">
+</div>
+<div class="guidancetop">
+	<div class="guidanceform">
+		<span class="close">x</span>
+		<h6>试听课报名</h6>
+		<div class="guidanceinput">
+			<span>姓名</span>
+			<input type="text" name="user" class="user">
+		</div>
+		<div class="guidanceinput">
+			<span>电话</span>
+			<input type="number" name="tel" class="tel">
+		</div>
+		<div class="guidancessub"><span>提交</span></div>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/newBase.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	setTimeout(function(){
+		$('.class3_height1').addClass('animated flipInY')
+	},10);
+	setTimeout(function(){
+		$('.class3_height2').addClass('animated flipInY')
+	},100);
+	setTimeout(function(){
+		$('.class3_height3').addClass('animated flipInY')
+	},200);
+	setTimeout(function(){
+		$('.class3_height4').addClass('animated flipInY')
+	},300);
+	$('.back').on('click',function(){
+	    window.history.go(-1);
+	});
+})
+// 表单验证
+$('.guidancessub').on('click',function(){
+	var user = $('.user').val();
+	var tel = $('.tel').val();
+	if(!trim(user)){
+		mui.alert('姓名不能为空','温馨提示！')
+		return false;
+	}
+	if(!(/^1[34578]\d{9}$/.test(tel))){
+		mui.alert('手机号码有误，请重填', '友情提示', function() {
+            });
+        return false;
+	}
+	console.log(user);
+	console.log(tel);
+	mui.alert('助教老师将在一个工作日与您电话联系','提交成功')
+});
+$('.close').on('click',function(){
+	$('.guidancetop').hide()
+});
+$('.guidanceonline').on('click',function(){
+	$('.guidancetop').show()
+});
+function trim(str){
+	return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

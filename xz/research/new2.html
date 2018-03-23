@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" href="./css/mui.min.css">
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{height:100%;}
+		#form{width:100%;height:100%;display:block;}	
+		.swiper-container{width:100%;height:100%;background:#fff;}
+		.swiper-slide{
+			width:100%;
+			height:100%;
+		}
+		img{
+			display:block;
+		}
+		.swiper-pagination-bullet{
+			width:6px;
+			height:6px;
+			background:#fff;
+			opacity:.4;
+		}
+		.swiper-pagination-bullet-active{
+			opacity:1;
+		}
+		@-webkit-keyframes tipmove{
+			0%{bottom:10px;opacity:0;}
+			50%{bottom:15px;opacity:1;} 
+			100%{bottom:20px;opacity:0;}
+		}
+		.ani{position:absolute;}
+		.txt{position:absolute;}
+		#array{
+			position:absolute;z-index:999;
+			-webkit-animation:tipmove 1.5s infinite ease-in-out;
+		}
+		.first{background:url(image/bbbb.png) no-repeat left top;
+			background-size:100% 100%;position: relative;}
+		.two{background:url(image/year3.png) no-repeat left top;
+			background-size:100% 100%;position: relative;}
+.swiper-container-list .swiper-slide {
+      text-align: center;
+      font-size: 16px;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+
+.two_right{position: absolute;right:20px;top:15%;display: flex;flex-direction:column;justify-content: center;}
+.two_right div{margin-top:20px;}
+.two_right div img{width:50px;}
+.two_bottom{position: absolute;right:20px;bottom:40px;display: flex;flex-direction:column;justify-content: center;}
+.two_bottom img{width:80px;}
+.pogress{position: absolute;left:30px;top:20%;background:url(image/year9.png) no-repeat left top;
+			background-size:100% 100%;width:22px;height:200px;text-align: center;padding:2px;}
+.pogress .progress_tips{display: inline-block;width:19px;height:100px;background: #fe4a48;border-radius: 28px;position: absolute;bottom:0px;left:1px;margin-left:0;}
+.charm{position: absolute;top:15%;left:17px;color:#fff;width:50px;text-align: center;}
+.charm_down{position: absolute;top:50%;left:14px;color:#000;font-size: 16px;}
+.charm .count{color:#fd4744;font-size:18px;text-align: center;}
+.couten {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: hidden;
+    position: fixed;
+}
+.couten li {
+	list-style: none;
+    position: absolute;
+    animation: all 3s linear;
+    top:-100px;
+    -webkit-tap-highlight-color:  rgba(0, 0, 0, 0);
+}
+.couten li a{
+    display: block;
+}
+.goover{position: absolute;top:0;bottom: 0;left:0;right:0;background-color: rgba(0,0,0,0.6);padding:0 25px;display: none;}
+.good{margin-top:10%;width:100%;height:500px;background:url(image/res.png);background-repeat: no-repeat;background-size: 100% auto;position: relative;padding:0 10%;box-sizing: border-box;}
+.come{margin-top:20%;padding:0 25px;box-sizing: border-box;}
+.come img{width: 100%;}
+.good_txt{width: 200px;height:auto;position: absolute;top:45%;margin-left:-100px;left:50%;}
+.good_txt p{font-size: 16px;text-align: center;color:red;}
+.good_txt strong{font-size: 18px;}
+.button{height:40px;width:100%;margin-top:15px;}
+.button span{display: inline-block;padding:4px 8px;border-radius: 3px;background-color:red;margin:0;color:#fff;}
+.button .copy{float: left;margin-left:5px;}
+.button .goback{float: right;margin-right:5px;}
+.backward{
+    width: 100%;
+    background:#ccc;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    
+}
+.backward span{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    color: #000;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    line-height: 100px;
+    font-size: 1000%;
+}
+.wx{display: flex;justify-content: center;align-items: center;}
+.wx img{width:120px;}
+</style>
+</head>
+<body>
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<!-- slide0 -->
+		<section class="swiper-slide first"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+			
+		<!-- 红包雨 -->
+			<ul class="couten">
+            <li>
+                <a href="#"><img src="image/hb_1.png"></a>
+            </li>
+	        </ul>
+	       <div class="goover">
+            </div>
+	        <div class="backward">
+	            <span></span>
+	        </div>
+	        <!-- 红包雨 --> 
+		</section>
+
+				
+	</div>
+</div>
+</body>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/swiper-3.4.0.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/clipboard.min.js"></script>
+<script type="text/javascript">
+var clipboard = new Clipboard('.copy');
+    clipboard.on('success', function(e) {
+        mui.alert('复制成功，请到兴智教育服务号对话框即可兑奖','温馨提示');
+    });
+    clipboard.on('error', function(e) {
+        mui.alert(e);
+    });
+	scaleW=window.innerWidth/320;
+	scaleH=window.innerHeight/480;
+	var resizes=document.querySelectorAll('.resize');
+	for (var i=0; i<resizes.length; i++){
+		resizes[i].style.width=parseInt(resizes[i].style.width)*scaleW+'px';
+		resizes[i].style.height=parseInt(resizes[i].style.height)*scaleH+'px';
+		resizes[i].style.top=parseInt(resizes[i].style.top)*scaleH+'px';
+		resizes[i].style.left=parseInt(resizes[i].style.left)*scaleW+'px';
+	}
+	var scales = document.querySelectorAll('.txt');
+	for(var i=0;i<scales.length;i++){
+		ss=scales[i].style;
+		ss.webkitTransform = ss.msTransform = ss.MsTransform = ss.MozTransform = ss.OTransform = ss.transform = 'translateX('+scales[i].offsetWidth*(scaleW-1)/2+'px)  translateY('+scales[i].offsetHeight*(scaleH-1)/2+'px) scaleX('+scaleW+') scaleY('+scaleH+')';
+	}
+	var myswiper = new Swiper ('.swiper-container',{
+		direction:'vertical',
+		pagination:'.swiper-pagination',
+		mousewheelControl:true,
+		onInit: function(swiper){
+			swiperAnimateCache(swiper);
+			swiperAnimate(swiper);
+		},
+		onSlideChangeEnd: function(swiper){
+			swiperAnimate(swiper);
+			//myswiper.slideTo((key+1), 1000, false);
+		},
+	});
+    myswiper.lockSwipes();
+</script>
+ <script>
+ 	$(function(){
+ 		$(document).ready(function() {
+                var win = (parseInt($(".couten").css("width"))) - 60;
+                $(".mo").css("height", $(document).height());
+                $(".couten").css("height", $(document).height());
+                $(".backward").css("height", $(document).height());
+                $("li").css({});
+                // 点击确认的时候关闭模态层
+                $(".sen a").click(function(){
+                  $(".mo").css("display", "none")
+                });
+                
+                var del = function(){
+                    nums++;
+//                  console.info(nums);
+//                  console.log($(".li" + nums).css("left"));
+                    $(".li" + nums).remove();
+                    setTimeout(del,200)
+                }
+                
+                var add = function() {
+                    var hb = parseInt(Math.random() * (3 - 1) + 1);
+                    var Wh = parseInt(Math.random() * (70 - 30) + 20);
+                    var Left = parseInt(Math.random() * (win - 0) + 10);
+                    var rot = (parseInt(Math.random() * (45 - (-45)) - 45)) + "deg";
+                    //              console.log(rot)
+                    num++;
+                    $(".couten").append("<li class='li" + num + "' ><a href='javascript:;'><img src='image/hb_" + hb + ".png'></a></li>");
+                    $(".li" + num).css({
+                        "left": Left,
+                    });
+                    $(".li" + num + " a img").css({
+                        "width": Wh,
+                        "transform": "rotate(" + rot + ")",
+                        "-webkit-transform": "rotate(" + rot + ")",
+                        "-ms-transform": "rotate(" + rot + ")", /* Internet Explorer */
+                        "-moz-transform": "rotate(" + rot + ")", /* Firefox */
+                        "-webkit-transform": "rotate(" + rot + ")",/* Safari 和 Chrome */
+                        "-o-transform": "rotate(" + rot + ")" /* Opera */
+                    }); 
+                    $(".li" + num).animate({'top':$(window).height()+20},5000,function(){
+                        //删掉已经显示的红包
+                        this.remove()
+                    });
+
+
+          /*  点击红包的时候弹出模态层*/
+                    $(".li" + num).click(function(){
+                        good();
+                    });
+
+                   setTimeout(add,150)
+                }   
+                
+                //增加红包
+                var num = 0;
+                setTimeout(add,3000);
+                
+                //倒数计时
+                var backward = function(){
+                    numz--;
+                    if(numz>0){
+                        $(".backward span").html(numz);
+                    }else{
+                        $(".backward").remove();
+                    }
+                    setTimeout(backward,1000)
+                            
+                }
+                
+                var numz = 4;
+                backward();
+            })
+ 	});
+    var goodCode='ysh';
+    function num(){
+        return Math.floor(Math.random()*12)+1;
+    }
+    function good(){
+        $('.goover').show();
+            $('.goover').html('<div class="good"><div class="good_txt"><p>红包码：<strong>'+goodCode+'</strong></p><p>复制到兴智教育服务号对话框即可兑奖</p><div class="button"><span class="copy" data-clipboard-text="'+goodCode+'">复制</span><span class="goback">继续</span></div><div class="wx"><img src="image/wx.jpg" alt="" ></div></div></div>');
+        $('.goback').on('click',function(){
+            check(function(data){
+                if(data.data.sts==1){
+                    $('.goover').empty();
+                    $('.goover').hide();
+                }else{
+                    mui.alert(data.data.smg,'温馨提示');
+                    setTimeout(function(){
+                        window.location.href='new.html';
+                    },2000);
+                }
+            });
+        });
+    }
+    function soso(){
+        $('.goover').show();
+            $('.goover').html('<div class="come"><img src="image/m'+num()+'.png" alt=""></div>');
+        $('.come').on('click',function(){
+            check(function(data){
+                if(data.data.sts==1){
+                    $('.goover').empty();
+                    $('.goover').hide();
+                }else{
+                    mui.alert(data.data.smg,'温馨提示');
+                    setTimeout(function(){
+                        window.location.href='new.html';
+                    },2000);
+                }
+            });
+        });
+    }
+    /*再次红包雨 请求*/
+    var flag=1;
+    function check(suc){
+        if(flag==1){
+            suc({'data':{'sts':1}});
+            flag=2;
+        }else{
+            suc({'data':{'smg':'体力值不足'}});
+        }
+        
+    }
+    // function check(suc){
+    //     mui.post('',{   
+    //         },function (data) {
+    //         if (data.sts==1){
+    //             suc(data)
+    //         } else {
+    //             mui.alert(data.msg,'温馨提示');
+    //         }
+    //     },'json');
+    // }
+ </script>
+</html>

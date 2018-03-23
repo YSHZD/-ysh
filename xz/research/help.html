@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" href="./css/mui.min.css">
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{height:100%;}
+		#form{width:100%;height:100%;display:block;}	
+		.swiper-container{width:100%;height:100%;background:#fff;}
+		.swiper-slide{
+			width:100%;
+			height:100%;
+		}
+		img{
+			display:block;
+		}
+		.swiper-pagination-bullet{
+			width:6px;
+			height:6px;
+			background:#fff;
+			opacity:.4;
+		}
+		.swiper-pagination-bullet-active{
+			opacity:1;
+		}
+		@-webkit-keyframes tipmove{
+			0%{bottom:10px;opacity:0;}
+			50%{bottom:15px;opacity:1;} 
+			100%{bottom:20px;opacity:0;}
+		}
+		.ani{position:absolute;}
+		.txt{position:absolute;}
+		#array{
+			position:absolute;z-index:999;
+			-webkit-animation:tipmove 1.5s infinite ease-in-out;
+		}
+		.first{background:url(image/s5.jpg) no-repeat left top;
+			background-size:100% 100%;}
+		.sec{background:url(image/s7.jpg) no-repeat left top;
+			background-size:100% 100%;position: relative;}
+		.thr,.thr1,.thr2,.thr3,.thr4,.thr5,.thr6,.thr7,.thr8,.thr9{background:url(image/02.jpg) no-repeat left top;
+			background-size:100% 100%;}
+		.thr9{position: relative;}
+		.thr9 div img{width:100%;}
+		#btnSubmit{position: absolute;bottom:20%;left:50%;display: inline-block;width:250px;height:30px;margin-left:-125px;border-radius:10px;background:#f14234;outline: none;color:#fff;}
+		label{text-align: initial;}
+		.swiper-slide .title{width:280px;height:auto;font-size:20px;font-weight:bolder;margin-left:-140px;left:50%;top:20%;line-height: 1.5}
+		.blue{color:#333;}
+		.red{color:#333;/*color:#FB5374;*/}
+		.mui-checkbox.mui-left input[type=checkbox], .mui-radio.mui-left input[type=radio] {
+    left: 30px;
+}
+.mui-checkbox.mui-left label, .mui-radio.mui-left label {
+    padding-right: 30px;
+    padding-left: 70px;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #f14234;
+}
+.top{position: fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:999;}
+.top img{width:100%;height:100%;}
+.avatara{position: absolute;top:40%;left:50%;width:80px;height:80px;margin-left:-40px;border-radius:50%;overflow: hidden;background: #fff;}
+.avatara img{width:100%;}
+.go{animation-iteration-count:infinite;animation-duration:4s;width:80%;position: absolute;bottom:30px;left:50%;margin-left:-40%;}
+.on{animation-iteration-count:infinite;animation-duration:4s;}
+.sec_contaner{width:320px;height:400px;background:url(image/s4.png) no-repeat left top;
+			background-size:100% auto;position: absolute;top:35%;z-index:99;left:50%;margin-left:-160px;padding-top:50px;}
+.sec_contaner div{width:33.3%;float:left;padding:0 20px;box-sizing: border-box;margin-bottom:10px;}
+.sec_contaner div img{width:100%;}
+.info{position: absolute;top:55%;left:0;text-align: center;width:100%;color:#fff;}
+.info p{color:#fff;font-size:16px;margin-top:5px;}
+.rule{position: absolute;top:20px;right:20px;width:40px;z-index: 99;}
+.rule img{width:100%;}
+.pogress{position: absolute;left:30px;top:20%;background:url(image/s9.png) no-repeat left top;
+			background-size:100% 100%;width:28px;height:223px;text-align: center;padding:2px;}
+.pogress span{display: inline-block;width:20px;height:100px;background: #fe4a48;border-radius: 28px;position: absolute;bottom:35px;left:4px;}
+.charm{position: absolute;top:12%;left:20px;color:#fff;}
+.charm h3{color:#fd4744;font-size:18px;text-indent: 15px}
+.egg{position: absolute;bottom:18%;width:100px;left:50%;margin-left:-50px;}
+.egg img{width:100%;}
+.egg_info{position: absolute;bottom:20px;color:#fd4744;text-align: center;width:100%;}
+.egg_info p{color:#fd4744;}
+.egg_info_go{width:80%;position: absolute;bottom:10px;left:50%;margin-left:-40%;}
+.egg_info_go img{width:100%;}
+.help_top{position: absolute;top:0;left:0;bottom:0;right:0;background-color:rgba(0,0,0,0.8);z-index:99;padding:30% 20px 0;box-sizing: border-box;display: none;}
+.help_top img{width:100%;margin-top:80px;}
+.going{background: #855AB4;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 66px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: 400;}
+    .rule_top{position: absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.8);padding:20px;box-sizing: border-box;z-index:99;display: none;}
+.rule_top img{width:100%;}
+.rule_close{width:100%;position: absolute;bottom: 8%;left:0;padding:0 100px;box-sizing: border-box;}
+.rule_close img{width:100%;}
+.help_info{position: absolute;top:20px;width:100%;height:50px;padding:0 60px;box-sizing: border-box;overflow: hidden;}
+.swiper-container-list{
+	width:100%;height:100%;
+}
+.swiper-container-list .swiper-slide {
+      text-align: center;
+      font-size: 16px;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+.swiper-slide .avatar{width:40px;height:40px;border-radius: 50%;margin-top:5px;margin-left:5px;position: absolute;left:5px;top:0;}
+.swiper-wrapper span{margin-left:60px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:14px;color:#fff;text-align: left;}
+.pogress{position: absolute;left:30px;top:20%;background:url(image/s9.png) no-repeat left top;
+			background-size:100% 100%;width:28px;height:223px;text-align: center;padding:2px;}
+.pogress .progress_tips{display: inline-block;width:20px;height:100px;background: #fe4a48;border-radius: 28px;position: absolute;bottom:35px;left:4px;margin-left:0;}
+.rule_bg{position: relative;}
+.wx{position: absolute;
+    bottom: 17%;
+    height: 100px;
+    width: 100px!important;
+    left: 50%;
+    margin-left: -50px;}
+</style>
+</head>
+<body>
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<!-- slide0 -->
+		<section class="swiper-slide first"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+			<div class="avatara"><img src="image/s8.png" alt=""></div>
+			<div class="info">
+				xxx
+				<p>邀请您参加活动</p>
+			</div>
+			<img src="image/s6.png" alt="" class="animated pulse go" >
+		</section>
+
+		<!-- slide1 -->
+		<section class="swiper-slide sec" style="position: relative;">
+				<div class="rule"><img src="image/s8.png" alt="" class="animated flash on"></div>
+				<div class="rule_top">
+					<div class="rule_bg"><img src="image/rule.png" alt=""><img src="image/wx.jpg" alt="" class="wx"></div>
+					<div class="rule_close"><img src="image/rule_done.png" alt="" ></div>
+				</div>
+				<div class="charm">疼爱值<h3 class="count">10</h3></div>
+				<div class="pogress">
+					<span class="progress_tips"></span>
+				</div>
+				<div class="egg"><img src="image/s10.png" alt="" class="animated wobble on"></div>
+				<div class="egg_info">
+					<h4>触摸彩蛋为好友助力...</h4>
+					<a href="Christmas.html"><strong class="going animated pulse on">我也要参与</strong></a>
+				</div>
+				<div class="help_top">
+					<img src="image/s13.png" alt="">
+				</div>
+				<div class="help_info">
+			        <div class="swiper-container-list">
+			            <div class="swiper-wrapper">
+			                <div class="swiper-slide">
+			                    <img src="image/1.jpg" alt="" class="avatar">
+			                    <span>xxx为你添加了88魅力值三打哈解放后的手机卡恢复健康的撒谎房间看电视</span>
+			                </div>
+			                <div class="swiper-slide">
+			                     <img src="image/1.jpg" alt="" class="avatar">
+			                    <span>xxx为你添加了88魅力值三打哈解放视</span>
+			                </div>
+			            </div>
+			        </div>
+				</div>
+		</section>	
+	</div>
+</div>
+
+<!-- <audio id="audio" src="mp3test.mp3" loop="loop" preload=""> -->
+</body>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/swiper-3.4.0.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="./js/mui.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+$('.count').html(20);
+var num = parseInt($('.count').html());
+$('.pogress span').css('height',185*num/100);
+	scaleW=window.innerWidth/320;
+	scaleH=window.innerHeight/480;
+	var resizes=document.querySelectorAll('.resize');
+	for (var i=0; i<resizes.length; i++){
+		resizes[i].style.width=parseInt(resizes[i].style.width)*scaleW+'px';
+		resizes[i].style.height=parseInt(resizes[i].style.height)*scaleH+'px';
+		resizes[i].style.top=parseInt(resizes[i].style.top)*scaleH+'px';
+		resizes[i].style.left=parseInt(resizes[i].style.left)*scaleW+'px';
+	}
+	var scales = document.querySelectorAll('.txt');
+	for(var i=0;i<scales.length;i++){
+		ss=scales[i].style;
+		ss.webkitTransform = ss.msTransform = ss.MsTransform = ss.MozTransform = ss.OTransform = ss.transform = 'translateX('+scales[i].offsetWidth*(scaleW-1)/2+'px)  translateY('+scales[i].offsetHeight*(scaleH-1)/2+'px) scaleX('+scaleW+') scaleY('+scaleH+')';
+	}
+	var myswiper = new Swiper ('.swiper-container',{
+		direction:'vertical',
+		pagination:'.swiper-pagination',
+		mousewheelControl:true,
+		onInit: function(swiper){
+			swiperAnimateCache(swiper);
+			swiperAnimate(swiper);
+		},
+		onSlideChangeEnd: function(swiper){
+			swiperAnimate(swiper);
+			//myswiper.slideTo((key+1), 1000, false);
+		},
+	});
+var myswiper2 = new Swiper ('.swiper-container-list',{
+		direction:'vertical',
+		loop: true,
+		autoplay:1000
+	});
+	 myswiper.lockSwipes();
+	 // myswiper.unlockSwipes()
+		// myswiper.slideTo(2, 1000, false);
+		// myswiper.lockSwipes();
+	$('.go').on('click',function(){
+		myswiper.unlockSwipes()
+		myswiper.slideTo(2, 1000, false);
+		myswiper.lockSwipes();
+	});
+	$('.egg').on('click',function(){
+		var num = parseInt($('.count').html());
+		if(num==100){
+			mui.alert('疼爱值已满，谢谢你的参与！');
+			return false;
+		}
+		$('.help_top').slideDown(300);
+		num+=10;
+		if(num>=100){num=100;}
+		$('.count').html(num);
+		$('.pogress span').css('height',185*num/100);
+		setTimeout(function(){
+			$('.help_top').hide();
+		},1000);
+	});
+	$('.rule').on('click',function(){
+		$('.rule_top').slideDown(300);
+	});
+	$('.rule_close').on('click',function(){
+		$('.rule_top').fadeOut(200);
+	});
+</script>
+ 
+</html>

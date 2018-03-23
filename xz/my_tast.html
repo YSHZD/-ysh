@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="dist/mescroll.min.css">
+<style >
+*{margin:0;padding:0;}
+.header{
+    height:44px;
+    text-align: center;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9;
+    line-height: 44px;
+    background: #fff;
+    box-shadow: 0 1px 1px #ededed;
+}
+.header .iconfont {
+    font-size: 25px;
+    color: #14a4ed;
+}
+a{text-decoration: none;}
+.header .left{width:88px;height:100%;position:absolute;top:0;left:0;}
+.header .center{height:100%;margin:0 88px;}
+.header .center p{width:100%;height:44px;line-height:44px;display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;color:#333;font-size:15px;}
+.header .right{width:88px;height:100%;position:absolute;top:0;right:0;}
+.on_banner img{width:100%;float: left;}
+#navWarp{height:40px;clear:both;}
+.on_header{height:40px;clear: both;font-size:18px;background: #fff;border-bottom:1px solid #ededed;}
+.on_header span{display: inline-block;width:50%;height:30px;line-height:30px;box-sizing: border-box;float: left;margin-top:5px;text-align: center;}
+.on_header span:nth-of-type(1){
+    border-right:2px solid #ededed;
+}
+.on_content{margin-top:1px;clear:both;height:auto;padding:0 15px;background: #fff;}
+li{height:auto;display: flex;align-items: center;justify-content: center;}
+li a{display: flex;width:100%;height:auto;border-bottom:1px solid #ededed;padding:15px 0;flex-direction: column;}
+li .on_left{width:90px;display: flex;align-items: center;justify-content: center;}
+li .on_left img{max-height: 100%;max-width: 100%}
+li .on_center{flex:1;padding:0 10px;text-align: left;}
+li .on_center h4{margin:0;font-size:15px;color:#333;font-weight: 400;}
+li .on_center span{font-size: 12px;color:#808080;}
+li .on_right{width:65px;display: flex;align-items: flex-end;justify-content: flex-end;height:auto;}
+li .on_right span{display: inline-block;font-size: 15px;color:#fff;border-radius: 3px;padding:2px 5px;text-align: center;}
+.on_over{background: #999;}
+.on_living{background: #05c394;}
+.on_ac{color:#13abfa;}
+.data-list li{margin:0;padding: 0;}
+/*ios使用sticky样式实现*/
+.nav-sticky{
+    z-index: 9999;/*需设置zIndex,避免在悬停时,可能会被列表数据遮住*/
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;/*相对mescroll的div悬停的位置*/
+}
+/*android和pc端悬停*/
+.nav-fixed{
+    z-index: 9999;
+    position: fixed;
+    top: 44px;
+    left: 0;
+    width: 100%;
+}
+.mescroll{
+    position: fixed;
+    top: 44px;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+.work_box{flex:1;}
+.work_box .publish {
+    font-size: 12px;
+    color: #808080;
+}
+.work_box .publish span {
+    float: right;
+}
+.work_box p {
+    color: #8f8f94;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+.work_box p .icon {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+    float: right;
+    color: #808080;
+}
+.work_box .publish span{float:right;}
+.work_box .work_tips{margin:0;}
+.work_box .work_tips span{color:#fff;border-radius:8px;display: inline-block;padding:2px 8px;font-size:12px;height:16px;line-height: 12px;margin-right:10px;}
+.work_box .work_tips .work_going{background: #1eac5e;}
+.work_box .work_tips .work_doing{background: #fb760b;}
+.work_box .work_tips .work_checking{background: #14a4ed;}
+.work_box .work_tips .work_done{background: #808080;}
+</style>
+</head>
+<body>
+<div class="header">
+	<div class="left">
+		<a href="personcenter.html"><i class="iconfont icon-gerenzhongxin"></i></a>
+	</div>
+	<div class="center">
+		我的作业
+	</div>
+	<div class="right">
+		<i class="iconfont icon-sousuo"></i>
+	</div>
+</div>
+<div id="mescroll" class="mescroll">
+    <div id="upscrollWarp" class="on_content">
+        <!--展示上拉加载的数据列表-->
+        <ul id="dataList" class="data-list">
+        </ul>
+    </div>
+</div>
+</body>
+<script src="./dist/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script>
+var URL ='http://test.aimeichuang.com/Mobile';
+$(function(){
+            //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,刷新列表数据;
+            var mescroll = new MeScroll("mescroll", {
+                up: {
+                    callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page, mescroll) { getListData(page); }
+                    isBounce: false, //此处禁止ios回弹,解析(务必认真阅读,特别是最后一点): http://www.mescroll.com/qa.html#q10
+                    clearEmptyId: "dataList", //相当于同时设置了clearId和empty.warpId; 简化写法;
+                    warpId: "upscrollWarp", //让上拉进度装到upscrollWarp里面
+                    empty: {
+                        icon: "./dist/mescroll-empty.png", //图标,默认null
+                        tip: "暂无相关数据~", //提示
+                        btntext: "去逛逛 >", //按钮,默认""
+                        btnClick: function(){//点击按钮的回调,默认null
+                            alert("点击了按钮,具体逻辑自行实现");
+                        } 
+                    },
+                    noMoreSize:5,
+                    page:{
+                      num : 0 , 
+                      size : 5 , 
+                      time : null 
+                    },
+                    toTop:{ //配置回到顶部按钮
+                        src : "./dist/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+                        //html: null, //html标签内容,默认null; 如果同时设置了src,则优先取src
+                        offset : 300
+                    }
+                }
+            });
+            
+            
+            /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+            function getListData(page){
+                //联网加载数据
+                getListDataFromNet(page.num, page.size, function(curPageData){
+                    //联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+                    //mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+                    console.log("page.num="+page.num+", page.size="+page.size+", curPageData.length="+curPageData.length);
+                    
+                    //方法一(推荐): 后台接口有返回列表的总页数 totalPage
+                    //mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+                    
+                    //方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+                    //mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+                    
+                    //方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+                    //mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+                    
+                    //方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.
+                    mescroll.endSuccess(curPageData.length);
+                    
+                    //设置列表数据
+                    setListData(curPageData);
+                }, function(){
+                    //联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+                    mescroll.endErr();
+                });
+            }
+            
+            /*设置列表数据*/
+            function setListData(data){
+                var data_list = data;
+
+                var listDom=document.getElementById("dataList");
+
+              $.each(data_list, function (i, item) {
+                    //是否需要跳转链接
+                    var a_link = URL+'/Member/do_work_anther?id='+ item.id ;
+                    if (item.status == '1'){
+                        css = 'work_going';
+                        sts_name = '做作业';
+                    } else if(item.status == '2'){
+                        css = 'work_checking';
+                        sts_name = '待批改';
+                    } else {
+                        css = 'work_done';
+                        sts_name = '已完成';
+                    }
+                    var li = document.createElement('li');
+                    li.innerHTML='<div class="work_box"><a href="'+ a_link + '">\
+                <p>'+data_list[i].title+'<i class="iconfont icon-fanhui icon"></i></p>\
+                <p class="publish">\
+                    发布人：'+ data_list[i].name +'\
+                    <span>'+ data_list[i].add_time +'</span>\
+                </p>\
+                <p class="work_tips">\
+                    <span class="'+ css +'"> '+ sts_name + '</span>\
+                </p>\
+            </a></div>';
+                    listDom.appendChild(li);
+                });
+            }
+            
+            /*联网加载列表数据
+             在您的实际项目中,请参考官方写法: http://www.mescroll.com/api.html#tagUpCallback
+             请忽略getListDataFromNet的逻辑,这里仅仅是在本地模拟分页数据,本地演示用
+             实际项目以您服务器接口返回的数据为准,无需本地处理分页.
+             * */
+            function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+                //延时一秒,模拟联网
+                    $.ajax({
+                        type: 'POST',
+                        url: URL+'/Member/my_task?p='+pageNum+'&size='+pageSize,
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            successCallback(data.list);
+                        },
+                        error: errorCallback
+                    });
+            }         
+        });
+</script>
+</html>

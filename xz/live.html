@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>小学一年级语文课程全指导</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/mui.min.css">
+<link href="//at.alicdn.com/t/font_408343_c070gwu3gawwb3xr.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body class="bgf">
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        <p>小学一年级语文课程全指导</p>
+    </div>
+    <div class="right head_color">
+        <a href="personcenter.html"><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="live_move">
+    <img src="images/move.jpg">
+</div>
+<div class="live_head">
+    <div class="live_head_top">小学一年级语文课程全指导<span> <i class="iconfont icon-xing"></i></span></div>
+    <p>84人已预约</p>
+    <p class="live_price">价格￥9999.00</p>
+    <p>上课时间：2017.11.05 20:00</p>
+    <span class="live_go1">添加评论</span>
+</div>
+<div class="live_content">
+    <div class="live_content_head">
+        <div class="live_content_ac">课程详情</div>
+        <div id="to_top">相关评论</div>
+    </div>
+    <div class="live_content_main">
+        <div class="live_content_introduce">
+            <div class="live_introduce_box">
+                <h3><span>课程简介</span></h3>
+                <div class="live_introduce_txt">
+                    <p>学习对象</p>
+                    <p>阿萨德或付多军扩撒付或扩军多撒付或军所多卡或军扩扩扩扩扩扩扩扩扩扩扩</p>
+                    <p>学习对象</p>
+                    <p>阿萨德或付多军扩撒付或扩军多撒付或军所多卡或军扩扩扩扩扩扩扩扩扩扩扩</p>
+                </div>
+            </div>
+            <div class="live_introduce_box">
+                <h3><span>老师简介</span></h3>
+                <div class="live_introduce_txt">
+                    <p>学习对象</p>
+                    <p>阿萨德或付多军扩撒付或扩军多撒付或军所多卡或军扩扩扩扩扩扩扩扩扩扩扩</p>
+                    <p>学习对象</p>
+                    <p>阿萨德或付多军扩撒付或扩军多撒付或军所多卡或军扩扩扩扩扩扩扩扩扩扩扩</p>
+                </div>
+            </div>
+            <div class="live_introduce_help">课程咨询</div>
+        </div>
+        <div class="live_content_comment">
+            <!--下拉刷新容器-->
+            <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <!--数据列表-->
+                    <ul class="mui-table-view mui-table-view-chevron">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="live_content_going">
+    <div class="go_comment live_help"><span class="no_comment">x</span>
+        <div class="go_comment_star">
+            <div class="go_comment_star_left"><span>*</span>评分:</div>
+            <div class="go_comment_star_right">
+                <span> <i class="iconfont icon-xing"></i></span>
+                <span> <i class="iconfont icon-xing"></i></span>
+                <span> <i class="iconfont icon-xing"></i></span>
+                <span> <i class="iconfont icon-xing"></i></span>
+                <span> <i class="iconfont icon-xing"></i></span>
+            </div>
+        </div>
+        <p class="go_comment_head"><span>*</span>发表点评</p>
+        <div style="position: relative;">
+        <textarea name="comment" class="go_comment_detail"></textarea>
+        <span class="textCount" style="position: absolute;bottom:24px;right:10px;color:#808080">5</span>
+        </div>
+        
+        <div class="go_comment_overed"><span onclick="go_comment()">提交</span></div>
+    </div>
+</div>
+<!-- <div class="shop_add">
+  <a href="shopping.html"><div class="shop_add1"><i class="iconfont icon-shangpincaozuolan02"></i><span class="shopnum">0</span></div></a>
+  <div class="shop_add2" onclick="addshop()">加入购物车</div>
+  <a href=""><div class="shop_add3">立即预约</div></a>
+</div> -->
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+    $(".textCount").html(249);
+    $(".go_comment_detail").keydown(function(){
+        var curLength=$(".go_comment_detail").val().length;  console.log(curLength) ; 
+        if(curLength>=249){
+            var num=$(".go_comment_detail").val().substr(0,249);
+            $(".go_comment_detail").val(num);
+        }
+        else{
+            $(".textCount").html(249-curLength-1);
+        }
+    })
+})
+window.onload = function(){
+  var oTop = document.getElementById("to_top");
+  var screenw = document.documentElement.clientWidth || document.body.clientWidth;
+  var screenh = document.documentElement.clientHeight || document.body.clientHeight;
+  oTop.style.left = screenw - oTop.offsetWidth +"px";
+  oTop.style.top = screenh - oTop.offsetHeight + "px";
+  window.onscroll = function(){
+    var scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+    oTop.style.top = screenh - oTop.offsetHeight + scrolltop +"px";
+  }
+  oTop.onclick = function(){console.log(document.documentElement.scrollTop);
+    document.documentElement.scrollTop = document.body.scrollTop =330;
+    console.log(document.documentElement.scrollTop);
+    console.log($(this).scrollTop());
+    $('.live_content_comment').height($(window).height()-84);
+  }
+}  
+
+
+$('.no_comment').on('click',function(){
+$('.live_content_going').slideUp();
+});
+$('.go_comment_star_right span').on('click',function(){
+  if($(this).hasClass('ac')){
+    $('.go_comment_star_right .ac:last').removeClass('ac');
+  }else{
+    $('.go_comment_star_right span:not(.ac)').eq(0).addClass('ac');
+  }
+});
+function go_comment(){
+    var key1=$('.go_comment_star_right').find($('.ac')).length;
+    var result=0;
+    if(key1==0){
+        mui.alert('评分不能为空', '友情提示', function() {    
+                });
+        result=1;
+    }
+    if(result==0&&!trim($('.go_comment_detail')[0].value)){
+        mui.alert('点评不能为空', '友情提示', function() {    
+                });
+        result=1;
+    }
+    if(result==0){
+        mui.alert('提交成功', '友情提示', function() { 
+             console.log('评分',key1);
+            console.log($('.go_comment_detail')[0].value);
+            $('.live_content_going').slideUp();
+        }); 
+    }
+    }
+
+function trim(str){
+    return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+
+    var json=[{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物qwdhfdsaflkdsahfjkdsahjk了三大框大架安好风景看第三方的撒防守打法第三方啊第三方！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':1,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':2,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':4,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':5,'time':'2017.12.12','txt':'问世间情为何物！！！'},{"img":"images/default.jpg",'live_star':3,'time':'2017.12.12','txt':'问世间情为何物！！！'}];
+  go(json);
+    function go(new_order){
+    $('.mui-table-view').html("");
+     var max = new_order.length;    
+     mui.init({
+      pullRefresh: {
+         container: '#pullrefresh',
+         down: {
+            callback: pulldownRefresh
+         },
+         up: {
+            contentrefresh: '正在加载...',
+            callback: pullupRefresh
+         }
+      }
+   });console.log(new_order);
+   function pulldownRefresh() {
+      setTimeout(function() { 
+         mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+      }, 1000);
+
+   }
+   var count = 0;
+   function pullupRefresh() {   
+      setTimeout(function() {      
+         mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+         var table = document.body.querySelector('.mui-table-view');
+         var cells = document.body.querySelectorAll('.mui-table-view-cell');
+         for(var i = cells.length, len =max; i < len; i++){
+            var li = document.createElement('li');
+            li.className = 'mui-table-view-cell';
+                  li.innerHTML ='<div class="live_comment_box">\
+                                    <div class="live_comment_left"><img src="'+new_order[i].img+'"></div>\
+                                    <div class="live_comment_center">\
+                                        <div class="live_comment_here">\
+                                            <p class="live_comment_here_title">\
+                                            评分'+star(new_order[i].live_star)+'</p>\
+                                            <p>'+new_order[i].txt+'</p>\
+                                        </div>\
+                                        <div class="live_comment_right">'+new_order[i].time+'</div>\
+                                    </div>\
+                                </div>';
+            table.appendChild(li)
+            }
+      }, 1000);
+
+     // console.log($('#pullrefresh ul').height());
+     //        var height=$('#pullrefresh ul').height();
+     //        var height1=$('.live_content_comment').height();
+     //        var addheight=$('#pullrefresh ul li').height()
+     //        var max = Math.max(height,height1)+addheight;console.log(max);console.log(Math.max(height,height1))
+  
+     //        $('.live_content_comment').height(max);
+   }
+   function star(key){
+        var str="";
+        var len=5-key;
+        for(var j=0;j<key;j++){
+            str+='<span class="ac"> <i class="iconfont icon-xing"></i></span>';
+        }
+        for(var i=0;i<len;i++){
+            str+='<span> <i class="iconfont icon-xing"></i></span>';
+        }
+        return str;
+   }
+   if (mui.os.plus) {
+      mui.plusReady(function() {
+         setTimeout(function() {
+            mui('#pullrefresh').pullRefresh().pullupLoading();
+         }, 1000);
+
+      });
+   } else {
+      mui.ready(function() {
+         mui('#pullrefresh').pullRefresh().pullupLoading();
+      });
+   }
+    
+}
+    $(function(){
+        $('.live_go1').on('click',function(){
+            $('.live_content_going').slideDown();
+        })
+        $('.live_head_top span').on('click',function(){
+            if(!$('.live_head_top span').hasClass('live_active')){
+                    mui.alert('确定收藏？', '友情提示', function() { 
+                  $('.live_head_top span').addClass('live_active');
+                  console.log('确定收藏？')
+                }); 
+            }else{
+                mui.alert('确定取消收藏？', '友情提示', function() { 
+                      $('.live_head_top span').removeClass('live_active');
+                      console.log('确定取消收藏？')
+                });
+            }  
+        });  
+        $('.live_content_head div').on('click',function(){
+            var key=$(this).index();
+            if(key==0){
+                $('.live_content_comment').hide();
+                $('.live_content_introduce').show();
+            }else{
+                $('.live_content_comment').show();
+                $('.live_content_introduce').hide();
+            }
+            $(this).siblings().removeClass('live_content_ac').end().addClass('live_content_ac');
+        })  
+    });
+</script>
+</html>

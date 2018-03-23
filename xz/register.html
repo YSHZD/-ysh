@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>注册</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body class="log">
+<div class="header register_head">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        注册
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<div class="register">
+    <form action="" method="post" onsubmit="return CheckPost();">
+        <input type="number" name="usertel" maxlength="11"  placeholder="手机号" class="usertel">
+        <input type="number" name="usermsg" placeholder="短信验证码" class="usermsg">
+        <input type="text" name="username" placeholder="昵称，4-16位字符：中文 英文 数字" class="username">
+        <input type="password" name="userpass" placeholder="密码，6-16位字符：英文 数字" class="userpass">
+        <input type="password" name="userpass1" placeholder="确认密码" class="userpass1">
+        <input type="submit" value="登入">
+        <span class="usermsg_here" onclick="get_msg()">获取验证码</span>
+    </form>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script type="text/javascript">
+function get_msg(){
+
+    if (document.querySelectorAll('.usermsg_here')[0].innerHTML !== '获取验证码'){
+        return ;
+    }
+    times();
+
+    var usertel = trim(document.querySelectorAll('.usertel')[0].value);
+    if(!(/^1[34578]\d{9}$/.test(usertel))){ 
+        mui.alert('手机号码有误，请重填', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    if(document.querySelectorAll('.usermsg_here')[0].innerHTML== '获取验证码'){
+            times()
+    }
+
+
+}
+var t;
+var s=60;
+function times(){
+     s-=1;
+    document.querySelectorAll('.usermsg_here')[0].innerHTML= s+'s';
+    t = setTimeout(times, 1000);
+    if ( s <= 0 ){
+     s = 60;
+     clearTimeout(t);
+     document.querySelectorAll('.usermsg_here')[0].innerHTML= '获取验证码';
+    }
+}
+ 
+
+function CheckPost(){
+    var usertel = trim(document.querySelectorAll('.usertel')[0].value);
+    var usermsg = trim(document.querySelectorAll('.usermsg')[0].value);
+    var username = trim(document.querySelectorAll('.username')[0].value);
+    var userpass = trim(document.querySelectorAll('.userpass')[0].value);
+    var userpass1 = trim(document.querySelectorAll('.userpass1')[0].value);
+    if(!(/^1[34578]\d{9}$/.test(usertel))){ 
+        mui.alert('手机号码有误，请重填', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    if(!(usermsg)){ 
+        mui.alert('短信验证码不能为空', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    if(!(/^[a-zA-Z0-9\u4e00-\u9fa5]{4,6}$/.test(username))){ 
+        mui.alert('昵称，4-16位字符：中文 英文 数字，请重填', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    if(!(/^[a-zA-Z0-9]{4,16}$/.test(userpass))){ 
+        mui.alert('密码，4-16位字符：英文 数字，请重填', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    if(userpass&&!(userpass==userpass1)){console.log(1);
+        mui.alert('密码不一致', '友情提示', function() {    
+                });  
+        return false;
+    }
+    return false;
+}
+    function trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g,"");
+    }
+</script>
+</html>

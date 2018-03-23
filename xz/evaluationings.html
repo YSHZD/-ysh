@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>评估</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/swiper-3.4.0.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/mui.min.css">
+<link rel="stylesheet" type="text/css" href="./css/mui.picker.min.css" />
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+.swiper-container_test .mui-checkbox.mui-left label, .swiper-container_test .mui-radio.mui-left label {
+    font-size: 14px;
+}
+.help_answer div span {
+    display: inline-block;
+    padding: 6px 26px;
+    color: #fff;
+    border-radius: 3px;
+    height: auto;
+    background: #808080;
+}
+.help_answer {
+    width: 100%;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    margin-top: 10px;
+    position: fixed;
+    bottom:8px;
+}
+.swiper-wrapper{z-index:0;}
+.results{padding:15px 15px 0;box-sizing: border-box;text-align: left;}
+.results strong{font-size:16px;color:red;}
+.results p{text-align: left;font-size:15px;color:#333;margin-top:10px;text-indent: 2em;position: relative;z-index:0;margin-bottom:140px;}
+.help_answer .answer_submit2 {
+	display: none;
+    height: 40px;
+    width: 220px;
+    color: #fff;
+    background: #14a4ed;
+    border-radius: 5px;
+    line-height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    position: absolute;
+    bottom:60px;
+    margin:0;
+    margin-left:-110px;
+    left:50%;
+}
+</style>
+</head>
+<body class="bgf">
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        评估
+    </div>
+    <div class="right"> 
+    <a href="index.html"><i class="iconfont icon-gerenzhongxin"></i></a> 
+    </div>
+</div>
+<div class="evalutioning">
+	<form  onsubmit="return answer_submit()" id="form">
+		<strong class="evalutioning_num_bg"></strong>
+		<p class="evalutioning_num"></p>
+		<div class="swiper-container_test">
+		    <div class="swiper-wrapper">
+		       
+		    </div>
+		</div>
+		<div class="help_answer">
+			<div><span class="help_answer_back help_doing">上一题</span></div>
+			<div><span class="help_answer_here help_doing">选题</span></div>
+			<div><span class="help_answer_forword help_doing">下一题</span></div>
+			<!-- <input type="button" value="提交" class="answer_submit2"> -->
+			<div class="answer_submit2">提交</div>
+		</div>
+		<input name="examID" type="hidden" value="135" />
+		<input name="agesId" type="hidden" value="12" />
+		<input name="ExamType" type="hidden" value="5" />
+	</form>
+</div>	
+<div class="help_top">
+	<strong class="help_top_close">x</strong>
+	<div></div>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/swiper-3.4.0.min.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<!-- <script src="./js/mui.picker.min.js"></script> -->
+<script>
+var json=[
+{"title":"孩子放学回家后家里的状态是什么样的？","child":[{"option":"各做各的事，孩子回家就锁门，夫妻之间几乎没有什么交流","val":"说明家庭氛围总体比较冷淡，亲子关系疏离，长期下去很容易导致孩子性格内向自卑，不利人际交往，夫妻关系也会越来越差。"},{"option":"回到家一般都是妈妈陪伴孩子，爸爸在一旁玩手机，看电视等","val":'说明孩子和妈妈的感情较好，但是与爸爸的关系较差，母亲在家里也多半扮演着老妈子的角色，全心全意为家庭服务，牺牲了自我。长期下去母亲心里会失衡，开始爆发消极、愤懑情绪，孩子也会变得缺乏主见，遇事胆小。建议妈妈多让爱人参与到抚养过程中，培养父子感情，因为父亲在孩子成长过程中是非常重要的影响者。'},{"option":"偶尔会在一起吃饭，看电视",'val':'说明用户的家庭氛围还不错，但缺少互相之间的交流。建议父母多主动和孩子沟通，引导孩子说出自己在成绩上的想法，饭桌上尽量放松心情，谈孩子感兴趣的话题，少批评孩子学习不如别人。'},{"option":"每天都会互相陪伴，分享当天的感受",'val':'家长和孩子的关系很好，父母很开明包容，孩子也很有自己的想法，希望家长可以继续保持。'}]},
+{"title":"您和爱人/父母有教养冲突时一般是怎么解决的？","child":[{"option":"互相指责，互不退让","val":"在这种情况下，孩子会感到迷茫，不知所措，对家庭的安全感缺失，既有歉疚又有怨恨，造成心理扭曲，不利于孩子的健康成长，也会导致学习动力不足。"},{"option":"觉得就是对方导致教育无法顺利进行","val":'孩子每天在这种氛围下成长，会觉得很压抑，长期下去会激起孩子的叛逆心，没有担当，对学习有畏难情绪，导致对双方的教育方法都不听，很容易误入歧途。'},{"option":"表面不说，背地里另搞一套",'val':'父母的这种做法容易导致孩子阴奉阳违，养成“两面派”的性格，学习上说的多做的少，最终造成自我意识的膨胀，养成答应父母的事总是不执行、不负责的性格。'},{"option":"协商解决，无法调节时以孩子父母中的一方为主",'val':'很幸运孩子生活在这样的家庭，家里推行的各种教育方式都能得到很好的反馈，孩子也乐意接受，孩子也乐意接受，学习上困难也能轻易的克服，希望继续保持。'}]},
+{"title":"除了过问学习外，您跟孩子每天交流的时间大概是多长？","child":[{"option":"15分钟以下","val":"亲子相处的时间很少，孩子心里会有失落感，认为父母只关注学习不关注自己，哪怕学习很好，也无法坚持，导致孩子表达能力差，逻辑思维能力弱，不自信。"},{"option":"15分钟—30分钟","val":'大部分家长都处于这个阶段，很多家长都习惯对孩子进行唠叨批评，这样容易导致孩子变得叛逆，亲子关系差，喜欢与父母做对。在学习和生活上遇到困难时不愿向父母求助。'},{"option":"30分钟——1小时",'val':'能做到这个陪伴时间还不错，建议在这个时间段时，不要单纯地坐在一起谈话，不然很容易引起孩子的警戒心，而应该从孩子在学校的情况出发，以轻松的方式和孩子交谈。'},{"option":"1小时以上",'val':'亲子相处时间较多，建议父母好好利用这段时间，除了聊天外，还可以进行一些亲子活动，或者陪孩子玩TA爱玩的东西。'}]},
+{"title":"和孩子对话时，常用的句式是？","child":[{"option":"你不可以……","val":"这种父母在生活中很强势，喜欢用命令的口吻跟孩子说话，孩子小的时候或许会惧于权威听从父母，再过一两年（甚至半年）就会开始反抗父母，无论你是学习还是生活，到时再来管就要花费很多精力。建议父母改变与孩子的交流方式，以孩子为个体尊重他的意愿。"},{"option":"你再不……我就……","val":'擅于威胁的父母，会造成孩子内心安全感缺失，不敢主动冒险，提出自己的正当需求，也不敢拒绝别人，习惯委屈求全迎合别人，容易造成犹豫不决的性格，在人际交往中备受苦恼，很容易因为心理负担过重而变得抑郁。'},{"option":"都说了好多次了，怎么还是……",'val':'唠叨型的父母，容易让孩子厌倦、心烦，火气上来时会直接与父母顶嘴，得不偿失，建议父母学会停止唠叨，同一件事不要反复说，尤其不要旧事重提。特别是在面对孩子学习，父母越唠叨孩子就越懒散，对学习就越提不上兴趣，导致成绩下降，如此恶性循环下去，情况只会越来越糟，让孩子学会对自己负责，自主承担后果。'},{"option":"你可不可以……，这样做可能会更好",'val':'父母的这种沟通方法很讨孩子喜欢，孩子有充分表达自己想法的空间，还会更乐意接受父母的建议。'}]},
+{"title":"当你认为孩子做错事的时候，你会怎么做？","child":[{"option":"不管三七二十一，先打一顿再说","val":"说说明父母不信任孩子，出现问题时只相信自己的判断，同时这种暴力手段极易消耗孩子的安全感，导致孩子以后与父母的关系越来越疏远，情绪不稳定，在面对学习，一旦遇到困难就特别容易自暴自弃，在人际交往中，甚至有时候还会经常性的出现攻击行为。"},{"option":"立刻批评孩子，让他承认错误，并且保证不再犯","val":'利用父母权威逼迫孩子就犯是很多家长都会犯的错，但这种方法往往治标不治本，还会令孩子反感。以后遇到问题孩子为了不被批评，会养成说谎的习惯。'},{"option":"先听孩子解释，解释后再惩罚孩子",'val':'父母虽然做到了换位思考，但是并没有给孩子解决问题指明方向，下次还是会犯同样的错，而且会造成孩子不愿意跟父母交流的局面。当孩子在生活和学习上遇到困难，不及时跟父母交流，最后受害的还是孩子自己。'},{"option":"先和孩子沟通，再根据自己的判断弄清事情原委，最后和孩子一起解决问题，这样做可能会更好",'val':'父母很开明，懂得换位思考，能站在孩子的角度想问题，并且以结果为导向，帮助孩子解决问题。'}]},
+{"title":"孩子身边有几个最好的朋友？","child":[{"option":"没有","val":"孩子的同伴关系比较糟糕，不懂得如何处理人际交往关系，在学校比较胆小自卑，心里较压抑。严重会导致孩子自闭，父母应该引起重视，无论你是生活还是学习都是一个合作的过程，拒绝沟通，只会让未来的路越来越难走，父母可以多带孩子跟其他人交流，鼓励孩子放开心胸，大胆交朋友。"},{"option":"1-2个","val":'孩子有自己的知心朋友，能够在一定程度上缓解自己的学习压力，提供生活上的帮助，父母应该给予孩子更多的交友机会。'},{"option":"3-4个",'val':'孩子的人际交往关系处于正常阶段，可以多和孩子讨论一下同学的情况，拉近距离。'},{"option":"4个以上",'val':'孩子的人际交往关系很好，说明孩子有一定的主见，懂得如何与人相处，在学校也不用担心孩子会因为同伴关系不好而影响学习，父母无需过多担心。'}]},
+{"title":"孩子带同伴来家里玩，您的态度是？","child":[{"option":"不希望孩子带同学来家里，觉得很吵","val":"孩子之间也需要人情往来，父母没必要阻止孩子的正常交往，如果担心孩子们的到来会影响家庭生活，可以先和孩子约法三章，让孩子把握好度。这样既满足了父母的的需求又没有伤害到孩子的面子。"},{"option":"只希望孩子带学习好的同学来","val":'孩子有自己的择友方向，不同类型的孩子相处会不同程度上弥补孩子的缺陷，帮助到孩子，同时父母也不要单纯以学习好坏限定孩子之间的交往，要懂得多包容。'},{"option":"会同意，但是会在家里监察情况",'val':'孩子有自己的小秘密，需要自己的私人空间，父母待在家里监察会导致孩子们玩不开，同时也会一定程度上伤了孩子的面子。建议父母尊重孩子的隐私，给孩子一些自由空间，孩子长大了，要适当放手。'},{"option":"会表现热情的态度，给孩子独处的时间，准备小零食",'val':'棒棒哒，父母对孩子的朋友表现出热情，让孩子很有面子，心中也会对父母生出感谢之情，热情对待父母的同事朋友，同时更加愿意和父母沟通，信任父母，有利于拉近亲子关系。'}]},
+{"title":"孩子每天作业是怎么完成的？","child":[{"option":"经常偷懒不做或拖到最后一刻才做","val":"孩子的学习动力很糟糕，喜欢拖拉磨蹭，并且已经开始有厌学倾向，父母必须开始重视，多和孩子沟通，了解孩子在学校的状况，和老师的关系等等，及时提供学习上的帮助。"},{"option":"需要时刻监督才会做","val":'孩子出现这种情况多半是不懂得如何管理时间，喜欢拖拉磨蹭，针对孩子的这种情况，父母要帮助孩子制定学习计划，约定学习规则，提高孩子的专注力，在陪写作业的时候把握陪伴的度。'},{"option":"提醒之后会去做",'val':'孩子的学习动力不足，伴有轻微拖拉的现象，有时候可能会因为玩一件事上瘾而忘了做作业，建议父母限定好孩子玩的时间，提前做好约定。'},{"option":"放学回来主动做作业，自己主制定学习计划",'val':'孩子的学习态度和学习成绩应该都不错，父母要记得及时给予鼓励，让孩子进行一些深入研究，在孩子学习之外，可以让孩子拓宽学习面，学习更多知识。'}]},
+{"title":"孩子对现在学校的表现怎么样？","child":[{"option":"不想上学，经常出现逃学情况","val":"孩子在学校的压力比较大，已经进入了厌学区，此时不进行管教，将会造成辍学的情况。这可能是人际关系或学习关系造成的，建议父母多和孩子沟通，给孩子关爱，切忌棍棒教法，可以与老师多交流，了解情况。"},{"option":"威逼利诱才去上学","val":'说明在过往的学习状态中，父母也经常使用这套方法让孩子上学，但到了现在，明显这套方法已不适用，父母应该立马中止。并且让孩子知道学习是为自己而学，引导孩子找到学习的乐趣。'},{"option":"一般，正常上学",'val':'孩子的学习状况还算满意，父母可以多鼓励孩子探索学习的乐趣，激发学习动力。'},{"option":"挺喜欢现在的学校，还会和父母讲老师的事情",'val':'孩子是一个爱学习，愿意主动思考的孩子，与父母的关系也很亲密，父母可以在孩子遇到难题时给予支持，帮助孩子分析利弊。'}]},
+{"title":"孩子经常发脾气吗?","child":[{"option":"经常发脾气，一句话不对就吼、摔东西","val":"孩子经常发脾气，说明父母和孩子相处、父母之间相处时也经常吼叫、发脾气，烦躁的家庭氛围不仅不利于孩子培养孩子好的德行，而且还会对孩子的学习生活产生非常恶劣的影响。所以父母先要做好表率，改变自己的沟通模式，学会温柔对话。"},{"option":"家长催得急了会发脾气","val":'孩子并不是无法控制自己的情绪，而是被父母的催促唠叨导致发脾气，烦躁的家庭氛围不仅不利于孩子培养孩子好的德行，而且还会对孩子的学习生活产生非常恶劣的影响。所以父母先要做好表率，改变自己的沟通模式，学会温柔对话。'},{"option":"不怎么发脾气",'val':'说明父母在和孩子相处时大多数时候都是温和的，所以孩子的性格也较好。但也要注意，这可能是孩子当前畏于父母的权威，没有发作脾气，这种“冰雪下的火山爆发”，父母一定要注意，记得随时调解自己的情绪。'},{"option":"有情绪时会自己调节或找父母帮忙",'val':'孩子的情绪控制得比较好，也愿意跟父母分享自己的烦心事，得益于父母的榜样作用，希望继续保持。'}]},
+{"title":"孩子做一件事正入谜，没有听到你叫他，此时你的做法是？","child":[{"option":"直接冲到孩子面前发火把他游戏直接关了","val":"这种做法只会瞬间激起孩子的反叛心，不仅不利于孩子听从父母的建议，还会引发新一轮的矛盾。此时父母应该先冷静三秒，再和孩子沟通。"},{"option":"会一直喊他，多喊几次，直到他回应为止","val":'当孩子沉迷于一件事情的时候，喊一次和喊多次并无区别，反而容易让孩子心生抵触和厌烦心理，由最初的歉疚、担心变得戾气重生，破罐破摔。无论是在生活还是学习中，孩子没有应有的耐心，遇事就烦躁，无法静下来，结果导致什么事情都做不好。'},{"option":"跑到孩子旁边质问他为什么没有听到？",'val':'质问的伤害无异于直接冲到孩子面前发火，瞬间将火气引燃，爆发冲突。这样时间久了孩子的注意力会慢慢变差，面对学习和上课无法做到专注，学习效率不高，成绩自然就会下降。'},{"option":"急事直接过去和孩子沟通，不急的事等孩子玩够了再说",'val':'父母的做法很棒，既没有耽误自己的事情，也没有影响到孩子的感情，是一种值得鼓励的方法。'}]},
+{"title":"妈妈检查孩子的作业的时候，看到孩子错题比例比平时多是什么反应呢？","child":[{"option":"直接动手打孩子并骂孩子","val":"父母无法控制自己的情绪，孩子稍有做错就大发雷霆，会让孩子对父母产生恐惧心理，不愿让父母陪伴自己做作业，也不敢向父母说学习上的困扰。长期下去会导致孩子对学习产生应激反应，不敢挑战学习难度。"},{"option":"嘲讽孩子笨，问孩子是不是又没认真学习","val":'嘲讽的方式会造成孩子自卑，很容易降低学习自信心，开始怀疑自己的能力，遇到难题就习惯性地放弃，做什么事都无法坚持。'},{"option":"叹气、皱眉，不满地批评孩子，并控制孩子的娱乐时间",'val':'父母虽没有明确批评孩子，但种种表现对孩子来说都是一种高压状态，初期可能会有一定的激励作用，次数用多了反而会造成孩子的反弹。这样很容易导致孩子突然就对学习失去兴趣，且很难再找回来。'},{"option":"询问孩子错题的原因，引导孩子自己想办法解决，并监督方法的实施",'val':'父母能够很好地控制自己的情绪，方法也得当。但也要记得该严厉的时候要严厉，恩威并施，这样孩子才会意识到错误，并且有动力改进。'}]}
+];
+var json_len=json.length,str="";
+var arra=['A','B','C','D','E','F','G','H','I','J','K'];
+for(var i=0;i<json_len;i++){
+	str+='<div class="swiper-slide">\
+	<div class="subject">'+(i+1)+'、'+json[i].title+'</div>'+child(i,json[i].child)+'<div class="results"></div></div>';
+}
+$('.swiper-wrapper').html(str);
+
+function child(i,arr){
+	var len=arr.length;
+	var str1="";
+	for(var j=0;j<len;j++){
+		str1+='<div class="mui-input-row mui-radio mui-left">\
+				<label>'+arra[j]+'、'+arr[j].option+'</label>\
+				<input name="answer['+(i+1)+']" type="radio" id="'+i+'" value='+(j+1)+' class="answer'+i+'" onchange="ss()">\
+			</div>';
+	}
+	return str1;
+}
+var len=$('.swiper-slide').length;
+var str="";
+for(var i=0;i<len;i++){
+	str+='<span>'+(i+1)+'</span>';
+}
+$('.help_answer_here').on('click',function(){
+	$('.help_top').slideDown();
+});
+$('.help_top_close').on('click',function(){
+	$('.help_top').slideUp();
+})
+$('.help_top div').html(str);
+$('.help_top span').eq(0).addClass('help_done');
+progress(0,len)
+$('.help_top span').on('click',function(){
+	$(this).siblings().removeClass('help_done').end().addClass('help_done');
+	var key=$(this).index();
+	progress(key,len)
+	if(key==0){
+		$('.help_answer_back').removeClass('help_doing');
+		$('.help_answer_forword').addClass('help_doing');
+	}else if(key==(len-1)){
+			$('.help_answer_forword').removeClass('help_doing');
+			$('.help_answer_back').addClass('help_doing');
+	}else{
+			$('.help_answer_back').addClass('help_doing');
+			$('.help_answer_forword').addClass('help_doing');
+	}
+	mySwiper.slideTo(key, 1000, false);
+	$('.help_top').slideUp();
+});
+	var mySwiper = new Swiper('.swiper-container_test', {
+        speed:1000,
+        //autoplay: 1000,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        paginationClickable: true,
+        autoplayDisableOnInteraction : false,
+        onSlideChangeEnd: function(swiper){
+	      var key=swiper.activeIndex; 
+	      progress(key,len)
+	      if(key==0){
+		    	$('.help_answer_back').removeClass('help_doing');
+		    }else if(key==(len-1)){
+    	 		$('.help_answer_forword').removeClass('help_doing');
+    	  }else{
+    	  		$('.help_answer_back').addClass('help_doing');
+    	  		$('.help_answer_forword').addClass('help_doing');
+    	  }
+	    }
+    });
+    if(mySwiper.realIndex==0){
+    	$('.help_answer_back').removeClass('help_doing');
+    }
+    $('.help_answer_back').on('click',function(){
+    	$('.help_answer_forword').addClass('help_doing');
+    	var key=mySwiper.realIndex-1;
+    	progress(key,len)
+    	 if(key==0){
+    	 	$(this).removeClass('help_doing');
+    	 }
+    	 if(key<0){key=0}console.log(key);
+    	$('.help_top span').eq(key).siblings().removeClass('help_done').end().addClass('help_done');
+    	mySwiper.slideTo(key, 1000, false);
+    });
+
+function ss() {
+	var k = mySwiper.realIndex;
+	var endkey = $('.swiper-slide').length;
+	if((k+1) == endkey){
+		$('.answer_submit2').show()
+	}
+	if($(".answer"+k).is(':checked')){
+		var kk = $(".answer"+k+":checked").val();
+		$('.swiper-slide').eq(k).find('.results').html('<strong>解析：</strong><p>'+json[k].child[kk-1].val+'</p>')
+	}
+/*	$('.help_answer_back').addClass('help_doing');
+	var key=mySwiper.realIndex+1;
+	progress(key,len);console.log(key);console.log(len);
+	if(key==len){
+		$('.help_answer_forword').removeClass('help_doing');
+	}
+	$('.help_top span').eq(key).siblings().removeClass('help_done').end().addClass('help_done');
+	mySwiper.slideTo(key, 1000, false);*/
+}
+
+    $('.help_answer_forword').on('click',function(){
+    	$('.help_answer_back').addClass('help_doing');
+    	var key=mySwiper.realIndex+1;
+    	progress(key,len)
+    	 if(key==len){
+    	 	$(this).removeClass('help_doing');
+    	 }
+    	$('.help_top span').eq(key).siblings().removeClass('help_done').end().addClass('help_done');
+    	mySwiper.slideTo(key, 1000, false);
+    });
+
+
+    function progress(key,len){
+    	if(key==len){
+    		key=(len-1);
+    	}
+    	if(key==-1){
+    		key=0;
+    	}
+    	$('.evalutioning_num').html((key+1)+'\\'+len);
+    	$('.evalutioning_num_bg').css('width',(((key+1)/len)*100+'%'));
+    }
+    $('.answer_submit2').click(function () {
+		var st='';
+		var k=0;
+		for(var i=0;i<len;i++){
+			if(!($(".answer"+i).is(':checked'))){
+				k=1;
+				st+=' '+(i+1)+' ';
+			}
+		}
+		if(k==1){
+				mui.alert('有'+st+'题未选择', '友情提示', function() {
+			});
+			return false;
+		}
+		if(k==0){
+			var sumend = 0;
+			for(var i=0;i<len;i++){
+				console.log((i+1),($(".answer"+i+":checked").val()));
+				sumend += parseInt($(".answer"+i+":checked").val());
+			}
+			console.log(sumend)
+			window.location.href='evlend.html?='+ sumend;
+		}
+
+		/*var newForm = new FormData(document.getElementById('form'));
+		newForm.append('examID',$('input[name="examID"]').val());
+		newForm.append('agesId',$('input[name="agesId"]').val());
+		newForm.append('ExamType',$('input[name="ExamType"]').val());
+		for (k=1;k<=len;k++){
+			newForm.append('answer['+k+']',$('input[name="answer['+k+']:checked"').val());
+		}
+		mui.ajax({
+//            examID : $('input[name="examID"]').val(),
+//            agesId : $('input[name="examID"]').val(),
+//            ExamType : $('input[name="examID"]').val(),
+//            Answer : $('input[name="Answer"]').val(),
+			url : './post.php',
+			type: 'POST',
+//			dataType: 'json',
+			data : newForm,
+			contentType: false,
+			success:function (data) {
+				if (data.sts){
+					var btnArray = ['重新测评', '查看结果'];
+					mui.confirm('提交成功！', '友情提示', btnArray, function(e){
+						if (e.index == 1) {
+//                        window.location.href='{:U("Member/evaluation")}';
+						} else {
+//                        window.location.href='{:U("Evaluation/index")}';
+						}
+					})
+				} else {
+					mui.alert('系统繁忙，请重试！');
+				}
+			},
+			error:function () {
+				mui.alert('系统繁忙，请重试！');
+			}
+		})*/
+	})
+
+
+//    	var answer = $('input[type="radio"]:checked').val();
+
+</script>
+</html>

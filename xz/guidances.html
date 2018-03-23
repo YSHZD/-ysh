@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/guidances.css">
+<!-- <link rel="stylesheet" href="./css/mui.min.css"> -->
+<style >
+
+</style>
+</head>
+<body >
+<div class="guidancetop">
+	<div class="guidanceform">
+		<span class="close">x</span>
+		<h6>试听课报名</h6>
+		<div class="guidanceinput">
+			<span>姓名</span>
+			<input type="text" name="user" class="user">
+		</div>
+		<div class="guidanceinput">
+			<span>电话</span>
+			<input type="number" name="tel" class="tel">
+		</div>
+		<div class="guidancessub"><span>提交</span></div>
+	</div>
+</div>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        全科辅导
+    </div>
+    <div class="right">
+       <i class="iconfont icon-gerenzhongxin"></i>
+    </div>
+</div>
+<h3 class="k12_title">&minus;套餐&minus;</h3>
+<div class="guidances_content">
+	<h2>小学版</h2>
+	<p>培养良好的学习习惯，锻炼自主学习能力</p>
+	<p>稳扎稳打，夯实学习基础</p>
+</div>
+<!-- 小学套餐 -->
+<div class="guidancesbox">
+	<div><a href=""><img src="images/2018030615.png" alt=""></a></div>
+	<div><a href=""><img src="images/2018030614.png" alt=""></a></div>
+</div>
+
+<div class="guidances_content">
+	<h2>初中版</h2>
+	<p>提供高效学习方法，增强学习兴趣</p>
+	<p>查漏补缺，巩固学习效果</p>
+</div>
+<!-- 初中套餐 -->
+<div class="guidancesbox">
+	<div><a href=""><img src="images/2018030608.png" alt=""></a></div>
+	<div><a href=""><img src="images/2018030607.png" alt=""></a></div>
+</div>
+
+<div class="guidances_content">
+	<h2>高中版</h2>
+	<p>增强知识整合能力，提高学习成就</p>
+	<p>预防厌学情绪</p>
+</div>
+<!-- 高中套餐 -->
+<div class="guidancesbox">
+	<div><a href=""><img src="images/20180306010.png" alt=""></a></div>
+	<div><a href=""><img src="images/2018030609.png" alt=""></a></div>
+</div>
+<!-- 0元试听 -->
+<div class="guidanceonline">
+ 	<img src="images/2018030606.png" alt="">
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script src="./js/newBase.js" language="javascript"></script>
+<script type="text/javascript">
+// 表单验证
+$('.guidancessub').on('click',function(){
+	var user = $('.user').val();
+	var tel = $('.tel').val();
+	if(!trim(user)){
+		mui.alert('姓名不能为空','温馨提示！')
+		return false;
+	}
+	if(!(/^1[34578]\d{9}$/.test(tel))){
+		mui.alert('手机号码有误，请重填', '友情提示', function() {
+            });
+        return false;
+	}
+	console.log(user);
+	console.log(tel);
+	mui.alert('助教老师将在一个工作日与您电话联系','提交成功')
+});
+$('.close').on('click',function(){
+	$('.guidancetop').hide()
+});
+$('.guidanceonline').on('click',function(){
+	$('.guidancetop').show()
+});
+function trim(str){
+	return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

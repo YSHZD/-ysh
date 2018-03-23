@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>购物车</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/mui.min.css">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_408343_c070gwu3gawwb3xr.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        <p>购物车</p>
+    </div>
+    <div class="right head_color">
+        <a href="personcenter.html"><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="shopping_main">
+  <template v-if="data.length">
+     <div class="shopping">
+     <!--  全选 -->
+      <div class="all_check">
+          <div class="mui-input-row mui-checkbox mui-left">
+            <label>全选</label>
+            <input name="checkbox"  type="checkbox" v-model="allcheck" v-on:click='checkedAll'>
+          </div>
+      </div>
+      <div class="check_box" v-for="item in data">
+         <div class="mui-checkbox mui-left check_box_left">
+            <input name="checkbox" type="checkbox"  v-model='checkboxModel' value='{{item.id}}'>
+          </div> 
+          <div class="check_box_content">
+                <div class="checkbox_pt"><img :src="item.img" alt=""></div>
+                <div class="checkbox_txt">
+                    <h3>{{item.name}}</h3>
+                    <div class="checkbox_bottom">
+                        ￥{{item.price}}<button v-on:click="add($index)">+</button><span>{{item.count}}</span><button v-on:click="reduce($index)" :class="{off:item.count==1}">-</button>
+                    </div>
+                </div>
+          </div>
+      </div> 
+  </div>
+  <div class="shop_add">
+    <div class="shop_add1" @click="del()">{{delete?'编辑':'完成'}}</div>
+    <template v-if="delete">
+          <div class="shop_add2">合计:￥{{allprice| Currency}}</div>
+          <div class="shop_add3" @click="balance()">结算</div>
+    </template>
+    <template v-else>
+          <div class="shop_add2" @click="del_all()">清空购物车</div>
+          <div class="shop_add3" @click="del_check()">删除</div>
+    </template>
+  </div>
+  </template>
+  <template v-else>
+    <div class="shopping_none">暂无数据</div>
+  </template>   
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script src="./js/vue.min.js"></script>
+<script type="text/javascript">
+ Array.prototype.in_array = function (element) { 
+    for (var i = 0; i < this.length; i++) {        
+      if (this[i] == element) {        
+        return true;       
+        }   
+          } return false;     
+        } 
+new Vue({
+  el:'.shopping_main',
+  data:{
+    data:[{img:'./images/default.jpg',name:'IPhone 6',price:5466,id:1,count:12},{img:'./images/default.jpg',name:'IMac',price:7466,id:2,count:4},{img:'./images/default.jpg',name:'iPad',price:5400,id:3,count:35}],
+    allcheck:false,
+    checkboxModel:[],
+    allprice:10000,
+    delete:true,
+    deleteresult:[]
+  },
+  methods:{
+    del_check:function(){
+      var del_arr=[];
+      var _this=this;
+      var flag=0;
+      this.data.forEach(function(item,index,_list){
+        if(_this.checkboxModel.in_array(item.id)){
+          del_arr.push(item.id);
+          flag=1;
+        }
+      });
+      if(flag==1){
+          var btnArray = ['否', '是'];
+          mui.confirm('确定删除所选择的产品？', '温馨提示', btnArray, function(e) {
+          if (e.index == 1) {
+            del_arr.forEach(function(del){
+              _this.data.forEach(function(item,index,_list){
+                if(del==item.id){
+                  _list.splice(index,1);
+                  _this.deleteresult.push(item);
+                }
+              });
+            });
+          } 
+        })
+      }
+      if(flag==0&&this.data.length){
+        mui.alert('请至少选择一件商品!');
+      }
+    },
+    del_all:function(){
+      var _this=this;
+       var btnArray = ['否', '是'];
+        mui.confirm('确定清空购物车嘛？？？', '温馨提示', btnArray, function(e) {
+          if (e.index == 1) {
+            _this.data.forEach(function(item){
+              _this.data.splice(0, _this.data.length);
+            });
+          } else {
+            
+          }
+        })
+    },
+    del:function(){
+      this.delete=!this.delete;
+    },
+    checkedAll: function() {
+    var _this = this;
+    console.log(_this.allcheck);
+    if (this.allcheck) {//实现反选
+      _this.checkboxModel = [];
+    }else{//实现全选
+      _this.checkboxModel = [];
+      _this.data.forEach(function(item) {
+        if(!(_this.checkboxModel.in_array(item.id))){
+             _this.checkboxModel.push(item.id.toString());
+        } 
+      });
+    }
+    console.log(_this.checkboxModel.length)
+  },
+    add:function($index){
+      var self = this.data[$index];
+      self.count++;
+    },
+    reduce:function($index){
+      var self=this.data[$index];
+      if(self.count<=1){
+        return false
+      }
+      self.count--;
+    },
+    balance:function(){
+      var _this=this;
+      var flag=0;
+      this.data.forEach(function(item){
+        if(_this.checkboxModel.in_array(item.id)){
+          flag=1;
+           console.log('id&count:'+item.id+'&'+item.count);
+        }
+      });
+      if(flag==0){
+        mui.alert('请至少选择一件商品！');
+      }else{
+          console.log('结算'+this.allprice);
+      }
+    }
+  },
+  computed:{
+      allprice:function(){
+        var _this=this;
+        var total=0;
+        this.data.forEach(function(item){
+          if(_this.checkboxModel.in_array(item.id)){
+            total+=item.price * item.count;
+          }
+        });
+        return total;
+      }
+  },
+  watch: {//深度 watcher
+  'checkboxModel': {
+    handler: function (val, oldVal) { 
+      var _this=this;
+      var result=[];
+      this.checkboxModel.forEach(function(item){
+        if(_this.data.indexOf(item)){
+          result.push(item);
+        }
+      });
+      // 静态数据 处理删除一条数据 全选按钮和被删除的数据关联的小问题 加了个 -this.deleteresult.length
+      if (result.length- this.deleteresult.length === this.data.length) {
+        this.allcheck=true;
+      }else{
+        this.allcheck=false;
+      }
+    },
+    deep: true
+   }
+  },
+  filters:{
+    Currency:function(val){
+      return val.toFixed(2);
+    }
+  }
+})
+</script>
+</html>

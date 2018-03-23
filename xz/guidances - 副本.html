@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="./css/mui.min.css"> -->
+<style >
+html,body,h3,p,h4,h5,h6{margin:0;padding:0;font-size:0.14rem;}
+.header{height:0.4rem;line-height: 1;font-size:0.15rem;display: flex;justify-content: center;align-items: center;box-shadow: 0 1px 1px #ededed;}
+.header .left{width:0.5rem;justify-content: center;display: flex;}
+.header .center{flex:1;justify-content: center;display: flex;}
+.header .iconfont{font-size:0.18rem;}
+.header .right{width:0.5rem;justify-content: center;display: flex;}
+.k12_title{font-size:0.2rem;text-align: center;padding:0.25rem 0;border-top:0.1rem solid #ededed;border-bottom:0.02rem solid #ededed;}
+.guidances_content{padding:0 0.15rem;box-sizing: border-box;}
+.guidances_content img{width:0.75rem;margin-top:0.15rem;margin-bottom:0.15rem;}
+.guidances_content p{font-size: 0.12rem;margin-bottom:0.1rem;}
+.guidancesbox{display: flex;padding:0 0.075rem;box-sizing: border-box;flex-direction:row;}
+.guidancesbox div{flex:1;padding:0.05rem 0.075rem;box-sizing: border-box;}
+.guidancesbox div img{width:100%;}
+.guidanceonline{border-top:0.1rem solid #ededed;display: flex;justify-content: center;align-items: center;}
+.guidanceonline a{display: inline-block;width:0.63rem;}
+.guidanceonline img{width:0.63rem;margin:0.15rem auto 0.3rem;}
+.guidancetop{position: fixed;top:0;left:0;bottom:0;right:0;background-color:rgba(0,0,0,0.7);display: none;}
+.guidanceform{position: absolute;top:50%;left:0.15rem;height:3rem;background: #fff;right:0.15rem;margin-top:-2rem;border-radius: 0.05rem;padding:0.15rem;box-sizing: border-box;}
+.guidanceform h6{color:#4790a3;font-size:0.2rem;font-weight: 800;text-align:center;position: relative;margin-bottom:0.3rem;}
+.guidanceform h6:after{content:"";position: absolute;bottom:-0.06rem;left:0;right:0;height:0.02rem;background: #372d56;}
+.guidanceinput{background: #4790a3;height:0.4rem;border-radius: 0.05rem;margin-left:0.15rem;margin-right:0.15rem;display: flex;justify-content: center;align-items: center;padding:0 0.04rem;box-sizing: border-box;margin-bottom:0.1rem;}
+.guidanceinput span{width:0.6rem;height:0.3rem;color:#fff;display: flex;justify-content: center;align-items: center;word-spacing: 0.04rem;letter-spacing: 0.04rem;font-size:0.15rem;}
+.guidanceinput input{flex:1;height:0.3rem;font-size: 0.15rem;color:#333;outline: none;border:none;-webkit-appearance:none;padding: 0 0.1rem;box-sizing: border-box;}
+.guidancessub{height:0.4rem;display: flex;justify-content: center;align-items: center;margin-top:0.3rem;}
+.guidancessub span{color:#fff;background: #ff5153;padding:0.07rem 0.8rem;border-radius: 1rem;letter-spacing: 0.08rem;word-spacing: 0.08rem}
+.close{position: absolute;right:0.05rem;top:0.05rem;display: inline-block;width:0.3rem;height:0.3rem;z-index:99;border:0.02rem solid #666;font-size:0.3rem;border-radius: 50%;line-height: 0.2rem;box-sizing: border-box;text-align: center;color:#666;}
+.suc{margin-top:0.1rem;}
+.result{display: none;}
+.suc h5{text-align: center;color:#ff5153;}
+.suc p{font-size:0.12rem;padding:0 0.3rem;box-sizing: border-box;text-align: center;margin-top:0.1rem;}
+/* s--mui 弹窗 */
+.mui-popover {
+    position: absolute;
+    z-index: 999;
+    display: none;
+    width: 280px;
+    -webkit-transition: opacity .3s;
+    transition: opacity .3s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transform: none;
+    transform: none;
+    opacity: 0;
+    border-radius: 7px;
+    background-color: #f7f7f7;
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,.1);
+    box-shadow: 0 0 15px rgba(0,0,0,.1)
+}
+
+.mui-popover .mui-popover-arrow {
+    position: absolute;
+    z-index: 1000;
+    top: -25px;
+    left: 0;
+    overflow: hidden;
+    width: 26px;
+    height: 26px
+}
+
+.mui-popover .mui-popover-arrow:after {
+    position: absolute;
+    top: 19px;
+    left: 0;
+    width: 26px;
+    height: 26px;
+    content: ' ';
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-radius: 3px;
+    background: #f7f7f7
+}
+
+.mui-popover .mui-popover-arrow.mui-bottom {
+    top: 100%;
+    left: -26px;
+    margin-top: -1px
+}
+
+.mui-popover .mui-popover-arrow.mui-bottom:after {
+    top: -19px;
+    left: 0
+}
+
+.mui-popover.mui-popover-action {
+    bottom: 0;
+    width: 100%;
+    -webkit-transition: -webkit-transform .3s,opacity .3s;
+    transition: transform .3s,opacity .3s;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+    border-radius: 0;
+    background: 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.mui-popover.mui-popover-action .mui-popover-arrow {
+    display: none
+}
+
+.mui-popover.mui-popover-action.mui-popover-bottom {
+    position: fixed
+}
+
+.mui-popover.mui-popover-action.mui-active {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0)
+}
+
+.mui-popover.mui-popover-action .mui-table-view {
+    margin: 8px;
+    text-align: center;
+    color: #007aff;
+    border-radius: 4px
+}
+
+.mui-popover.mui-popover-action .mui-table-view .mui-table-view-cell:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc
+}
+
+.mui-popover.mui-popover-action .mui-table-view small {
+    font-weight: 400;
+    line-height: 1.3;
+    display: block
+}
+
+.mui-popover.mui-active {
+    display: block;
+    opacity: 1
+}
+
+.mui-popover .mui-bar~.mui-table-view {
+    padding-top: 44px
+}
+
+.mui-backdrop {
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.3)
+}
+
+.mui-bar-backdrop.mui-backdrop {
+    bottom: 50px;
+    background: 0 0
+}
+
+.mui-backdrop-action.mui-backdrop {
+    background-color: rgba(0,0,0,.3)
+}
+
+.mui-backdrop-action.mui-backdrop,.mui-bar-backdrop.mui-backdrop {
+    opacity: 0
+}
+
+.mui-backdrop-action.mui-backdrop.mui-active,.mui-bar-backdrop.mui-backdrop.mui-active {
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+    opacity: 1
+}
+
+.mui-popover .mui-btn-block {
+    margin-bottom: 5px
+}
+
+.mui-popover .mui-btn-block:last-child {
+    margin-bottom: 0
+}
+
+.mui-popover .mui-bar {
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.mui-popover .mui-bar-nav {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.mui-popover .mui-scroll-wrapper {
+    margin: 7px 0;
+    border-radius: 7px;
+    background-clip: padding-box
+}
+
+.mui-popover .mui-scroll .mui-table-view {
+    max-height: none
+}
+
+.mui-popover .mui-table-view {
+    overflow: auto;
+    max-height: 300px;
+    margin-bottom: 0;
+    border-radius: 7px;
+    background-color: #f7f7f7;
+    background-image: none;
+    -webkit-overflow-scrolling: touch
+}
+
+.mui-popover .mui-table-view:after,.mui-popover .mui-table-view:before {
+    height: 0
+}
+
+.mui-popover .mui-table-view .mui-table-view-cell:first-child,.mui-popover .mui-table-view .mui-table-view-cell:first-child>a:not(.mui-btn) {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px
+}
+
+.mui-popover .mui-table-view .mui-table-view-cell:last-child,.mui-popover .mui-table-view .mui-table-view-cell:last-child>a:not(.mui-btn) {
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px
+}
+
+.mui-popover.mui-bar-popover .mui-table-view {
+    width: 106px
+}
+
+.mui-popover.mui-bar-popover .mui-table-view .mui-table-view-cell {
+    padding: 11px 15px;
+    background-position: 0 100%
+}
+
+.mui-popover.mui-bar-popover .mui-table-view .mui-table-view-cell>a:not(.mui-btn) {
+    margin: -11px -15px -11px -15px
+}
+
+.mui-popup-backdrop {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    opacity: 0;
+    background: rgba(0,0,0,.4)
+}
+
+.mui-popup-backdrop.mui-active {
+    opacity: 1
+}
+
+.mui-popup {
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    display: none;
+    overflow: hidden;
+    width: 270px;
+    -webkit-transition-property: -webkit-transform,opacity;
+    transition-property: transform,opacity;
+    -webkit-transform: translate3d(-50%,-50%,0) scale(1.185);
+    transform: translate3d(-50%,-50%,0) scale(1.185);
+    text-align: center;
+    opacity: 0;
+    color: #000;
+    border-radius: 13px
+}
+
+.mui-popup.mui-popup-in {
+    display: block;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+    transform: translate3d(-50%,-50%,0) scale(1);
+    opacity: 1
+}
+
+.mui-popup.mui-popup-out {
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+    transform: translate3d(-50%,-50%,0) scale(1);
+    opacity: 0
+}
+
+.mui-popup-inner {
+    position: relative;
+    padding: 15px;
+    border-radius: 13px 13px 0 0;
+    background: rgba(255,255,255,.95)
+}
+
+.mui-popup-inner:after {
+    position: absolute;
+    z-index: 15;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    background-color: rgba(0,0,0,.2)
+}
+
+.mui-popup-title {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center
+}
+
+.mui-popup-title+.mui-popup-text {
+    font-family: inherit;
+    font-size: 14px;
+    margin: 5px 0 0
+}
+
+.mui-popup-buttons {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    height: 44px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center
+}
+
+.mui-popup-button {
+    font-size: 17px;
+    line-height: 44px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    height: 44px;
+    padding: 0 5px;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #007aff;
+    background: rgba(255,255,255,.95);
+    -webkit-box-flex: 1
+}
+
+.mui-popup-button:after {
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    display: block;
+    width: 1px;
+    height: 100%;
+    content: '';
+    -webkit-transform: scaleX(.5);
+    transform: scaleX(.5);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    background-color: rgba(0,0,0,.2)
+}
+
+.mui-popup-button:first-child {
+    border-radius: 0 0 0 13px
+}
+
+.mui-popup-button:first-child:last-child {
+    border-radius: 0 0 13px 13px
+}
+
+.mui-popup-button:last-child {
+    border-radius: 0 0 13px
+}
+
+.mui-popup-button:last-child:after {
+    display: none
+}
+
+.mui-popup-button.mui-popup-button-bold {
+    font-weight: 600
+}
+
+.mui-popup-input input {
+    font-size: 14px;
+    width: 100%;
+    height: 26px;
+    margin: 15px 0 0;
+    padding: 0 5px;
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 0;
+    background: #fff
+}
+
+.mui-plus.mui-android .mui-popup-backdrop {
+    -webkit-transition-duration: 1ms;
+    transition-duration: 1ms
+}
+
+.mui-plus.mui-android .mui-popup {
+    -webkit-transition-duration: 1ms;
+    transition-duration: 1ms;
+    -webkit-transform: translate3d(-50%,-50%,0) scale(1);
+    transform: translate3d(-50%,-50%,0) scale(1)
+}
+/* e--mui 弹窗 */
+</style>
+</head>
+<body >
+<div class="guidancetop">
+	<div class="guidanceform">
+		<span class="close">x</span>
+		<h6>试听课报名</h6>
+		<div class="guidanceinput">
+			<span>姓名</span>
+			<input type="text" name="user" class="user">
+		</div>
+		<div class="guidanceinput">
+			<span>电话</span>
+			<input type="number" name="tel" class="tel">
+		</div>
+		<div class="guidancessub"><span>提交</span></div>
+	</div>
+</div>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        全科辅导
+    </div>
+    <div class="right">
+       <i class="iconfont icon-gerenzhongxin"></i>
+    </div>
+</div>
+<h3 class="k12_title">&minus;套餐&minus;</h3>
+<div class="guidances_content">
+	<img src="images/2018030612.png" alt="">
+	<p>1.培养良好的学习习惯</p>
+	<p>2.锻炼自主学习能力</p>
+	<p>3.稳扎稳打，夯实学习基础</p>
+</div>
+<!-- 小学套餐 -->
+<div class="guidancesbox">
+	<div><a href=""><img src="images/2018030615.png" alt=""></a></div>
+	<div><a href=""><img src="images/2018030614.png" alt=""></a></div>
+</div>
+
+<div class="guidances_content">
+	<img src="images/2018030613.png" alt="">
+	<p>1.提供高效学习方法</p>
+	<p>2.增强学习兴趣</p>
+	<p>3.查漏补缺，巩固学习效果</p>
+</div>
+<!-- 初中套餐 -->
+<div class="guidancesbox">
+	<div><a href=""><img src="images/2018030608.png" alt=""></a></div>
+	<div><a href=""><img src="images/2018030607.png" alt=""></a></div>
+</div>
+
+<div class="guidances_content">
+	<img src="images/2018030611.png" alt="">
+	<p>1.增强知识整合能力</p>
+	<p>2.提高学习成就</p>
+	<p>3.预防厌学情绪</p>
+</div>
+<!-- 高中套餐 -->
+<div class="guidancesbox">
+	<div><a href=""><img src="images/20180306010.png" alt=""></a></div>
+	<div><a href=""><img src="images/2018030609.png" alt=""></a></div>
+</div>
+<!-- 0元试听 -->
+<div class="guidanceonline">
+ 	<img src="images/2018030606.png" alt="">
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script src="./js/newBase.js" language="javascript"></script>
+<script type="text/javascript">
+// 表单验证
+$('.guidancessub').on('click',function(){
+	var user = $('.user').val();
+	var tel = $('.tel').val();
+	if(!trim(user)){
+		mui.alert('姓名不能为空','温馨提示！')
+		return false;
+	}
+	if(!(/^1[34578]\d{9}$/.test(tel))){
+		mui.alert('手机号码有误，请重填', '友情提示', function() {
+            });
+        return false;
+	}
+	console.log(user);
+	console.log(tel);
+	mui.alert('助教老师将在一个工作日与您电话联系','提交成功')
+});
+$('.close').on('click',function(){
+	$('.guidancetop').hide()
+});
+$('.guidanceonline').on('click',function(){
+	$('.guidancetop').show()
+});
+function trim(str){
+	return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

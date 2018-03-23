@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>管理地址</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body class="address_bg">
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        地址管理
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<!-- shopaddress-->
+<div class="shopaddress">
+	<div class="address_box">
+		<div class="address_left">
+			<p class="address_name">其沃尔夫<span>123456789</span></p>
+			<p class="address_main">江西省阿萨德立刻发货的撒克劳福德索拉卡弗兰克的撒九分裤都是垃圾菲利克斯打飞机考虑到萨芬就看到了萨芬就打开拉萨</p>
+		</div>
+		<div class="address_right">
+			<div class="address_default">
+				<span class="ac"><!-- &radic; --></span>设为常用地址
+			</div>
+			<div>
+				<a href="editor_address.html"><span class="address_editor">编辑</span></a>
+				<span class="address_split">删除</span>
+			</div>
+			<input type="hidden" class="id" value="0">
+		</div>	
+	</div>
+	<div class="address_box">
+		<div class="address_left">
+			<p class="address_name">其沃尔夫<span>123456789</span></p>
+			<p class="address_main">江西省阿萨德立刻发货的撒克劳福德索拉卡弗兰克的撒九分裤都是垃圾菲利克斯打飞机考虑到萨芬就看到了萨芬就打开拉萨</p>
+		</div>
+		<div class="address_right">
+			<div class="address_default">
+				<span></span>设为常用地址
+			</div>
+			<div>
+				<a href="editor_address.html"><span class="address_editor">编辑</span></a>
+				<span class="address_split">删除</span>
+			</div>
+			<input type="hidden" class="id" value="1">
+		</div>
+	</div>
+	<div class="add_address">
+		<a href="add_address.html"><span>添加新地址</span></a>
+	</div>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script>
+	$(function(){
+		$('.address_default').on('click',function(){
+			$('.address_box .address_default span').removeClass('ac');
+			$(this).find($('span')).addClass('ac');
+			console.log($(this).parent().find('.id').val());
+		});
+		$('.address_split').on('click',function(){
+			var btnArray = ['否', '是'];
+	   		mui.confirm('确定删除？', '友情提示', btnArray, function(e) {
+	            if (e.index == 1) {
+	                
+	            } else {
+	                
+	            }
+	        });
+		});
+	})
+</script>
+</html>

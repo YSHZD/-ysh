@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<script src="./js/newBase.js" language="javascript"></script>
+<link rel="stylesheet" href="./css/classhome2.css">
+
+<style >
+
+</style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        家庭教育
+    </div>
+    <div class="right">
+       <a href=""><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="banners">
+	<img src="images/20180301.png" alt="">
+</div>
+<div class="subitems">
+  <div class="subitem">
+  	<h3>&minus;兴智教育&minus;</h3>
+  	<div class="subitem_logs">
+  		<div>
+  			<img src="images/20180306.png" alt="">
+  			<span></span>
+  		</div>
+		<div>
+  			<img src="images/20180303.png" alt="">
+  			<span></span>
+  		</div>
+  		<div>
+  			<img src="images/20180308.png" alt="">
+  			<span></span>
+  		</div>
+  	</div>
+  	<h4></h4>
+  	<p></p>
+  </div>
+</div>
+<div class="classhomeitems">
+	<h3>&minus;套餐&minus;</h3>
+	<div class="classhomeitem">
+		<div class="class_left"><img src="images/20180307.png" alt=""></div>
+		<div class="class_right">
+			<p>痴迷动画片、没有规则感、多动、内向胆小、挨罚脾气、过度依赖家人、生活作息紊乱</p>
+			<div><a href=""><img src="images/20180302.png" alt=""></a></div>
+		</div>
+	</div>
+	<div class="classhomeitem">
+		<div class="class_left"><img src="images/20180309.png" alt=""></div>
+		<div class="class_right">
+			<p>不爱学习、成绩差、撒谎、拖拉磨蹭、自控力差沉迷电子产品、脾气急躁早恋</p>
+			<div><a href=""><img src="images/20180302.png" alt=""></a></div>
+		</div>
+	</div>
+	<div class="classhomeitem">
+		<div class="class_left"><img src="images/20180311.png" alt=""></div>
+		<div class="class_right">
+			<p>辍学、早恋同伴关系 亲子关系差、沉迷游戏、学习动力不足、脾气暴躁</p>
+			<div><a href=""><img src="images/20180302.png" alt=""></a></div>
+		</div>
+	</div>
+	<p class="classend">到底了~</p>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/base.js" language="javascript"></script>
+
+<script type="text/javascript">
+var json = [{'title':'私人定制 因材施教','dec':'从教养环境，孩子性格，学习能力等多维度对不同家庭进行综合评估，定制专属方案。'},{'title':'“2+1”学情跟踪指导','dec':'服务周期内，依托“2+1”指导模式对家长进行服务，随时解决问题，调整方案。'},{'title':'私在线服务','dec':'节省时间成本，减轻孩子的抵触心理'}];
+$('.subitem h4').html(json[0]['title']);
+	$('.subitem p').html(json[0]['dec']);
+$('.subitem_logs span').eq(0).css({'display':'block'})
+$('.subitem_logs div').on('click',function(){
+	var key = $(this).index();
+	if(parseInt(key)==0){
+		$('.subitem_logs img').eq(0).attr('src','images/20180306.png');
+		$('.subitem_logs img').eq(2).attr('src','images/20180308.png');
+		$('.subitem_logs img').eq(1).attr('src','images/20180303.png')	
+	}
+	if(parseInt(key)==1){
+		$('.subitem_logs img').eq(1).attr('src','images/20180304.png');
+		$('.subitem_logs img').eq(0).attr('src','images/20180305.png');
+		$('.subitem_logs img').eq(2).attr('src','images/20180308.png');
+	}
+	if(parseInt(key)==2){
+		$('.subitem_logs img').eq(1).attr('src','images/20180303.png');
+		$('.subitem_logs img').eq(2).attr('src','images/20180310.png');
+		$('.subitem_logs img').eq(0).attr('src','images/20180305.png');	
+	}
+	$('.subitem_logs span').hide();
+	$('.subitem_logs span').eq(key).show();
+	$('.subitem h4').html(json[key]['title']);
+	$('.subitem p').html(json[key]['dec']);
+})
+</script>
+</html>

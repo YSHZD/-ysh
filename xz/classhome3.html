@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<script src="./js/newBase.js" language="javascript"></script>
+<link rel="stylesheet" href="./css/classhome3.css">
+<style >
+
+</style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        套餐详情
+    </div>
+    <div class="right">
+       <a href=""><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="class3Header">
+	<div class="class3left">&minus;</div>
+	<div class="class3center"><p>简单4步</p><p>轻松解决家长困扰</p></div>
+	<div class="class3right">&minus;</div>
+</div>
+<div class="class3Content">
+	<div class="class3box">
+		<div class="class3subbox">
+			<div class="class3_height1">
+				<img src="images/2018030602.png" alt="">
+				<h5>多维度评估</h5>
+				<p>教育顾问从亲子关系、同伴关系、情绪管理、学习动力、教养环境五个维度进行评估后提供最佳指导方向</p>
+			</div>
+		</div>
+		<div class="class3subbox">
+			<div class="class3_height2">
+				<img src="images/2018030601.png" alt="">
+				<h5>定制专属方案</h5>
+				<p>父母教练针对不同家庭，制定不同方案，精准解决教育难题</p>
+			</div>
+		</div>
+	</div>
+	<div class="class3box">
+		<div class="class3subbox">
+			<div class="class3_height3">
+				<img src="images/2018030605.png" alt="">
+				<h5>学情报告</h5>
+				<p>守护天使跟进课后实践，把握学情反馈，保障学习质量</p>
+			</div>
+		</div>
+		<div class="class3subbox">
+			<div class="class3_height4">
+				<img src="images/2018030604.png" alt="">
+				<h5>效果保障</h5>
+				<p>前后对比，检测学习效果</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="class3Header">
+	<div class="class3left">&minus;</div>
+	<div class="class3center class3small"><p>承诺保证</p></div>
+	<div class="class3right">&minus;</div>
+</div>
+<div class="banners"><img src="images/2018030603.png" alt=""></div>
+<a href="">
+	<div class="class3go">
+		<span>￥3980.00 (2个月)&nbsp;&nbsp;加入守护计划</span>
+	</div>
+</a>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script type="text/javascript">
+$(function(){
+	setTimeout(function(){
+		var height1 =$('.class3_height1').height()>=$('.class3_height2').height()?$('.class3_height1').height():$('.class3_height2').height();
+		$('.class3_height1').css('height',height1);
+		$('.class3_height2').css('height',height1);
+		var height2 =$('.class3_height3').height()>=$('.class3_height3').height()?$('.class3_height3').height():$('.class3_height4').height();
+		$('.class3_height3').css('height',height2);
+		$('.class3_height4').css('height',height2);
+	},20);
+	
+	$('.back').on('click',function(){
+	    window.history.go(-1);
+	});
+})
+
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智年会普天同庆</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./dist/mescroll.min.css">
+<style >
+body,html{position: fixed;height:100%;width:100%;background: url(images/2018-1-26-0.png);background-size: 100% 100%;-webkit-user-select:text;-moz-user-select:text;-o-user-select:text;user-select:text;}
+.contants{
+    width:3.59rem;height:4.03rem;
+    margin:40% auto;
+    background: url(images/2018-1-26-1.png);background-size:100% auto;
+    padding-top:0.38rem;
+    border-radius:5px;
+    box-sizing: border-box;
+}
+.box{display: flex;flex-direction: row;align-items: center;justify-content: center;width:100%;height:auto;}
+.content_txt .box div{flex:1;text-align: center;border-right:0.01rem solid #E11B00;box-sizing: border-box;font-size:0.12rem;}
+.content_txt  .box div:nth-of-type(2){flex:1.2;}}
+.content_txt .box div:nth-of-type(3){border:none;}
+.content_txt{overflow:auto;height:3.65rem;width:3.59rem;position: relative;}
+::-webkit-scrollbar
+{
+    width: 0px;
+    height: 0px;
+}
+#pullrefresh{
+border-radius:5px;
+}
+</style>
+</head>
+<body>
+   <div class="contants">
+        <div class="content_txt">
+        <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <!--数据列表-->
+                <ul class="mui-table-view mui-table-view-chevron">
+                    <li class="box">
+                       <!--  <div>YSH</div>
+                        <div>100元通用课优惠卷</div>
+                        <div>2018.01.23</div> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+   </div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/Roulette.js"></script>
+<script>
+   var ajax_url = '{:U("Index/news")}';
+    var  news_p = 1;
+    function get_data(p,option){
+        mui.ajax(ajax_url, {
+            data: {
+                p: p,
+                type : 1,
+            },
+            dataType: 'json',//服务器返回json格式数据
+            type: 'post',//HTTP请求类型
+            timeout: 4000,//超时时间设置为10秒；
+            success: function (data) {
+                var new_order = data.list;
+                if (new_order == '') {
+                    if (option == 'down')
+                        mui('#pullrefresh').pullRefresh().endPulldownToRefresh(true);
+                    else
+                        mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
+                } else {
+                    if (p == '1') $('.mui-table-view').html("");
+                    var table = document.body.querySelector('.mui-table-view');
+                    var cells = document.body.querySelectorAll('.mui-table-view-cell');
+                    $.each(new_order, function (i, item) {
+                        var li = document.createElement('li');
+                        li.className = 'mui-table-view-cell box';
+                        li.innerHTML = '<div>'+'YSH'+'</div>'+
+                        '<div>'+'100元通用课优惠卷'+'</div>'+
+                        '<div>'+'2018.01.23'+'</div>';
+                        table.appendChild(li);
+                    });
+                    if (option == 'down')
+                        mui('#pullrefresh').pullRefresh().endPulldownToRefresh(false);
+                    else
+                        mui('#pullrefresh').pullRefresh().endPullupToRefresh(false);
+
+                }
+            },
+            error: function (xhr, type, errorThrown) {
+                //异常处理；
+                list = '';
+//                console.log(type);
+//                mui.alert('服务异常，请稍后再试');
+            }
+        })
+    }
+
+    mui.init({
+        pullRefresh: {
+            container: '#pullrefresh',
+            down: {
+                auto:true,
+                callback: pulldownRefresh
+            },
+            up: {
+                contentrefresh: '正在加载...',
+                callback: pullupRefresh
+            }
+        }
+    });
+    function pulldownRefresh() {
+        get_data('1','down');
+        news_p = 1;
+        mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+        mui('#pullrefresh').pullRefresh().refresh(true);
+    }
+    function pullupRefresh() {
+        news_p += 1;
+        get_data(news_p,'up');
+    }
+</script>
+</html>

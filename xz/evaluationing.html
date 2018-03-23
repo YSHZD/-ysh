@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>答题中</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/swiper-3.4.0.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/mui.min.css">
+<link rel="stylesheet" type="text/css" href="./css/mui.picker.min.css" />
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+</style>
+</head>
+<body class="bgf">
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        答题中
+    </div>
+    <div class="right"> 
+    <a href="index.html"><i class="iconfont icon-gerenzhongxin"></i></a> 
+    </div>
+</div>
+<div class="evalutioning">
+	<form  onsubmit="return answer_submit()" id="form">
+		<strong class="evalutioning_num_bg"></strong>
+		<p class="evalutioning_num"></p>
+		<div class="swiper-container_test">
+		    <div class="swiper-wrapper">
+		       
+		    </div>
+		</div>
+		<div class="help_answer">
+			<div><span class="help_answer_back help_doing">上一题</span></div>
+			<div><span class="help_answer_here help_doing">选题</span></div>
+			<div><span class="help_answer_forword help_doing">下一题</span></div>
+		</div>
+		<input name="examID" type="hidden" value="135" />
+		<input name="agesId" type="hidden" value="12" />
+		<input name="ExamType" type="hidden" value="5" />
+
+		<input type="button" value="提交" class="answer_button answer_submit ">
+	</form>
+</div>	
+<div class="help_top">
+	<strong class="help_top_close">x</strong>
+	<div></div>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/swiper-3.4.0.min.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/mui.picker.min.js"></script>
+<script>
+var json=[{"title":"家庭教育指标安全测评","child":[{"option":"0无所谓"},{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"}]},
+	{"title":"家庭教育指标安全测评","child":[{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"}]},
+	{"title":"家庭教育指标安全测评","child":[{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"}]},
+	{"title":"家庭教育指标安全测评","child":[{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"},{"option":"无所谓"}]}];
+var json_len=json.length,str="";
+var arra=['A','B','C','D','E','F','G','H','I','J','K'];
+for(var i=0;i<json_len;i++){
+	str+='<div class="swiper-slide">\
+	            <div class="subject">'+(i+1)+'、'+json[i].title+'</div>'+child(i,json[i].child)+'</div>';
+}
+$('.swiper-wrapper').html(str);
+
+function child(i,arr){
+	var len=arr.length;
+	var str1="";
+	for(var j=0;j<len;j++){
+		str1+='<div class="mui-input-row mui-radio mui-left">\
+				<label>'+arra[j]+'、'+arr[j].option+'</label>\
+				<input name="answer['+(i+1)+']" type="radio" id="'+i+'" value='+j+' class="answer'+i+'" onchange="ss()">\
+			</div>';
+	}
+	return str1;
+}
+var len=$('.swiper-slide').length;
+var str="";
+for(var i=0;i<len;i++){
+	str+='<span>'+(i+1)+'</span>';
+}
+$('.help_answer_here').on('click',function(){
+	$('.help_top').slideDown();
+});
+$('.help_top_close').on('click',function(){
+	$('.help_top').slideUp();
+})
+$('.help_top div').html(str);
+$('.help_top span').eq(0).addClass('help_done');
+progress(0,len)
+$('.help_top span').on('click',function(){
+	$(this).siblings().removeClass('help_done').end().addClass('help_done');
+	var key=$(this).index();
+	progress(key,len)
+	if(key==0){
+		$('.help_answer_back').removeClass('help_doing');
+		$('.help_answer_forword').addClass('help_doing');
+	}else if(key==(len-1)){
+			$('.help_answer_forword').removeClass('help_doing');
+			$('.help_answer_back').addClass('help_doing');
+	}else{
+			$('.help_answer_back').addClass('help_doing');
+			$('.help_answer_forword').addClass('help_doing');
+	}
+	mySwiper.slideTo(key, 1000, false);
+	$('.help_top').slideUp();
+});
+	var mySwiper = new Swiper('.swiper-container_test', {
+        speed:1000,
+        //autoplay: 1000,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        paginationClickable: true,
+        autoplayDisableOnInteraction : false,
+        onSlideChangeEnd: function(swiper){
+	      var key=swiper.activeIndex; 
+	      progress(key,len)
+	      if(key==0){
+		    	$('.help_answer_back').removeClass('help_doing');
+		    }else if(key==(len-1)){
+    	 		$('.help_answer_forword').removeClass('help_doing');
+    	  }else{
+    	  		$('.help_answer_back').addClass('help_doing');
+    	  		$('.help_answer_forword').addClass('help_doing');
+    	  }
+	    }
+    });
+    if(mySwiper.realIndex==0){
+    	$('.help_answer_back').removeClass('help_doing');
+    }
+
+    $('.help_answer_back').on('click',function(){
+    	$('.help_answer_forword').addClass('help_doing');
+    	var key=mySwiper.realIndex-1;
+    	progress(key,len)
+    	 if(key==0){
+    	 	$(this).removeClass('help_doing');
+    	 }
+    	 if(key<0){key=0}console.log(key);
+    	$('.help_top span').eq(key).siblings().removeClass('help_done').end().addClass('help_done');
+    	mySwiper.slideTo(key, 1000, false);
+    });
+
+function ss() {
+	$('.help_answer_back').addClass('help_doing');
+	var key=mySwiper.realIndex+1;
+	progress(key,len);console.log(key);console.log(len);
+	if(key==len){
+		$('.help_answer_forword').removeClass('help_doing');
+	}
+	$('.help_top span').eq(key).siblings().removeClass('help_done').end().addClass('help_done');
+	mySwiper.slideTo(key, 1000, false);
+}
+
+    $('.help_answer_forword').on('click',function(){
+    	$('.help_answer_back').addClass('help_doing');
+    	var key=mySwiper.realIndex+1;
+    	progress(key,len)
+    	 if(key==len){
+    	 	$(this).removeClass('help_doing');
+    	 }
+    	$('.help_top span').eq(key).siblings().removeClass('help_done').end().addClass('help_done');
+    	mySwiper.slideTo(key, 1000, false);
+    });
+
+
+    function progress(key,len){
+    	if(key==len){
+    		key=(len-1);
+    	}
+    	if(key==-1){
+    		key=0;
+    	}
+    	$('.evalutioning_num').html((key+1)+'\\'+len);
+    	$('.evalutioning_num_bg').css('width',(((key+1)/len)*100+'%'));
+    }
+    $('.answer_submit').click(function () {
+		var st='';
+		var k=0;
+		for(var i=0;i<len;i++){
+			if(!($(".answer"+i).is(':checked'))){
+				k=1;
+				st+=' '+(i+1)+' ';
+			}else{
+				console.log((i+1),($(".answer"+i+":checked").val()));
+			}
+		}
+		mui.alert('有'+st+'题未选择', '友情提示', function() {
+		});
+		if(k==1){
+			return false;
+		}
+
+		var newForm = new FormData(document.getElementById('form'));
+		newForm.append('examID',$('input[name="examID"]').val());
+		newForm.append('agesId',$('input[name="agesId"]').val());
+		newForm.append('ExamType',$('input[name="ExamType"]').val());
+		for (k=1;k<=len;k++){
+			newForm.append('answer['+k+']',$('input[name="answer['+k+']:checked"').val());
+		}
+		mui.ajax({
+//            examID : $('input[name="examID"]').val(),
+//            agesId : $('input[name="examID"]').val(),
+//            ExamType : $('input[name="examID"]').val(),
+//            Answer : $('input[name="Answer"]').val(),
+			url : './post.php',
+			type: 'POST',
+//			dataType: 'json',
+			data : newForm,
+			contentType: false,
+			success:function (data) {
+				if (data.sts){
+					var btnArray = ['重新测评', '查看结果'];
+					mui.confirm('提交成功！', '友情提示', btnArray, function(e){
+						if (e.index == 1) {
+//                        window.location.href='{:U("Member/evaluation")}';
+						} else {
+//                        window.location.href='{:U("Evaluation/index")}';
+						}
+					})
+				} else {
+					mui.alert('系统繁忙，请重试！');
+				}
+			},
+			error:function () {
+				mui.alert('系统繁忙，请重试！');
+			}
+		})
+	})
+
+
+//    	var answer = $('input[type="radio"]:checked').val();
+
+</script>
+</html>

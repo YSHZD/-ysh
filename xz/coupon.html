@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智年会普天同庆</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet"> 
+<link href="./css/coupon.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+	<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        我的优惠卷
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+	<ul id="coupon" class="mui-table-view">
+		<li class="mui-table-view-cell">
+			<div class="mui-slider-right mui-disabled">
+				<a class="mui-btn mui-btn-red" id="99">删除</a>
+			</div>
+			<div class="mui-slider-handle">
+				左滑显示删除按钮JHKLH
+				dfsafdsa
+				dsafsdaf
+				dfsa
+				fds
+				afdsa
+				fd
+				fds
+				afdsaf
+				ds
+				fdsa
+				fdafds
+				fd
+				afd
+				fdafds
+				sfda
+			</div>
+		</li>
+	</ul>
+</body>
+<script src="./js/mui.min.js"></script>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/coupon.js"></script>
+
+<script>
+    mui.init();
+			(function($) {
+				$('#coupon').on('tap', '.mui-btn', function(event) {
+					var btnArray = ['确认', '取消'];
+					var elem = this;
+					var li = elem.parentNode.parentNode;console.log(this.getAttribute("id"));
+					mui.confirm('确认删除该条记录？', '温馨提示', btnArray, function(e) {
+						if (e.index == 0) {
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+			})(mui);
+		</script>
+</script>
+</html>

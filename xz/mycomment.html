@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>我的评论</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        我的评论
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<div class="mycomment_head">
+	<div class="comment_ac">老师课堂</div>
+	<div>商品评价</div>
+</div>
+<!-- mycomment-->
+<div class="mycomment">
+	<!--下拉刷新容器-->
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+        <div class="mui-scroll">
+            <!--数据列表-->
+            <ul class="mui-table-view mui-table-view-chevron">
+                
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- footer -->
+<div class="footer">
+	<div class="left">
+		<p><a href="tel:123456789"/><i class="iconfont icon-bohao"></i></a></p>
+		<p>一键拨号</p>
+	</div>
+	<div class="center">
+		<p><a href="index.html"><i class="iconfont icon-cloud-home"></i></a></p>
+		<p>主页</p>
+	</div>
+	<div class="right">
+		<p><i class="iconfont icon-duanxin"></i></p>
+		<p>售后服务</p>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script type="text/javascript">
+var json=[{"img":"images/default.jpg",'title':'行知教育','time':'2017.12.12','box_img':'images/order.png','box_title':'梦中的婚礼','price':3980,'num':2,'content':'萨的痕迹发货单撒尽快发货李克强危害人类科维奇节日快乐完全进入路口'},{"img":"images/default.jpg",'title':'行知教育','time':'2017.12.12','box_img':'images/order.png','box_title':'梦中的婚礼','price':3980,'num':2,'content':'萨的痕迹发货单撒尽快发货李克强危害人类科维奇节日快乐完全进入路口'},{"img":"images/default.jpg",'title':'行知教育','time':'2017.12.12','box_img':'images/order.png','box_title':'梦中的婚礼','price':3980,'num':2,'content':'萨的痕迹发货单撒尽快发货李克强危害人类科维奇节日快乐完全进入路口'},{"img":"images/default.jpg",'title':'行知教育','time':'2017.12.12','box_img':'images/order.png','box_title':'梦中的婚礼','price':3980,'num':2,'content':'萨的痕迹发货单撒尽快发货李克强危害人类科维奇节日快乐完全进入路口'}];
+  go(json);
+	function go(new_order){
+	$('.mui-table-view').html("");
+	 var max = new_order.length;	
+	 mui.init({
+      pullRefresh: {
+         container: '#pullrefresh',
+         down: {
+            callback: pulldownRefresh
+         },
+         up: {
+            contentrefresh: '正在加载...',
+            callback: pullupRefresh
+         }
+      }
+   });console.log(new_order);
+   mui(".mui-table-view").on('tap','.mui-table-view-cell .comment_dots',function(){
+   	 $(this).siblings().find($('.comment_del')).toggle();
+    });
+   mui(".mui-table-view").on('tap','.mui-table-view-cell .comment_del',function(){
+   	 mui.alert('您确定删除这条评论吗', '友情提示', function() { 
+	 	console.log('going')
+     });
+    });
+   function pulldownRefresh() {
+      setTimeout(function() { 
+         mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+      }, 1000);
+   }
+   var count = 0;
+   function pullupRefresh() {	
+      setTimeout(function() {      
+         mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+         var table = document.body.querySelector('.mui-table-view');
+         var cells = document.body.querySelectorAll('.mui-table-view-cell');
+         for(var i = cells.length, len =Math.min((i + 2),max); i < len; i++){
+         	var li = document.createElement('li');
+            li.className = 'mui-table-view-cell';
+			      li.innerHTML ='<div class="comment_box">\
+									<div class="comment_title">\
+										<div class="comment_left">\
+											<div class="comment_infos">\
+												<div class="comment_head"><img src="'+new_order[i].img+'"></div>\
+												<div class="comment_name">'+new_order[i].title+'</div>\
+											</div>\
+											<p>'+new_order[i].time+'</p>\
+										</div>\
+										<div class="comment_right">\
+											<strong class="comment_dots"><span></span><span></span><span></span></strong>\
+											<p><strong class="comment_del">删除</strong></p>\
+										</div>\
+									</div>\
+									<div class="comment_from">\
+										<div class="from_pc"><img src="'+new_order[i].box_img+'"/></div>\
+										<div class="from_txt">\
+											<p>'+new_order[i].box_title+'</p>\
+											<p class="from_small">￥'+new_order[i].price+'x'+new_order[i].num+'</p>\
+										</div>\
+									</div>\
+									<div class="comment_done">\
+										<p>'+new_order[i].content+'</p>\
+									</div>\
+								</div>';
+            table.appendChild(li)
+			}
+      }, 1000);
+   }
+   if (mui.os.plus) {
+      mui.plusReady(function() {
+         setTimeout(function() {
+            mui('#pullrefresh').pullRefresh().pullupLoading();
+         }, 1000);
+
+      });
+   } else {
+      mui.ready(function() {
+         mui('#pullrefresh').pullRefresh().pullupLoading();
+      });
+   }
+   	
+}
+$('.mycomment_head div').on('click',function(){
+	$(this).siblings().removeClass('comment_ac').end().addClass('comment_ac');
+	console.log($(this).html());
+})
+
+
+</script>
+</html>

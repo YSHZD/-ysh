@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>全部订单</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="left back header_left">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center header_center">
+        <input type="text" placeholder="请输入要搜索的订单" class="search_value">
+    </div>
+    <div class="right header_right">
+       <i class="iconfont icon-sousuo"></i>
+    </div>
+</div>
+<div class="search">
+    <p class="search_header">搜索记录</p>
+    <div class="search_content">
+    </div>
+    <p class="search_clear">清空搜索记录</p>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script>
+var json=[{"url":"search_result.html","title":"守护计划1"},{"url":"search_result.html","title":"守护计划2"},{"url":"search_result.html","title":"守护计划3"},{"url":"search_result.html","title":"守护计划4"}];
+var str="";
+$.each(json,function(index,item){
+    str+=' <a href="'+item.url+'"><p class="box">'+item.title+'</p></a>';
+});
+$('.search_content').html(str);
+$('.search_clear').on('click',function(){
+    var btnArray = ['否','是'];
+    mui.confirm('确定清空搜索记录？','友善提示',btnArray,function(e){
+        if(e.index==1){
+            $('.search_content').html("");
+            $('.search_header').html('暂无数据！');
+            $('.search .search_clear').hide();
+        }
+    });
+});
+$('.header_right').on('click',function(){
+   var result=trim($('.search_value').val());
+   if(!result){
+    mui.alert('搜索不能为空');
+   }else{
+    console.log(result);
+   }
+});
+function trim(str){
+    return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

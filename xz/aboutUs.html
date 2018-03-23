@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>关于我们</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body >
+<!-- aboutus header -->
+<div class="aboutus_head">
+	<ul>
+		<a href="aboutUs.html?id=0"><li>公司简介</li></a>
+		<a href="aboutUs.html?id=1"><li>企业文化</li></a>
+		<a href="aboutUs.html?id=2"><li>办公环境</li></a>
+		<a href="aboutteachers.html"><li>教师风采</li></a>
+	</ul>
+</div>
+<!-- news-content -->
+<div class="aboutus_contents">
+	<div class="aboutus_box">
+		
+	</div>
+</div>
+<input type="hidden" value="" class="addvlue">
+<!-- footer -->
+<div class="footer">
+	<div class="left">
+		<p><a href="tel:123456789"/><i class="iconfont icon-bohao"></i></a></p>
+		<p>一键拨号</p>
+	</div>
+	<div class="center">
+		<p><a href="index.html"><i class="iconfont icon-cloud-home"></i></a></p>
+		<p>主页</p>
+	</div>
+	<div class="right">
+		<p><i class="iconfont icon-duanxin"></i></p>
+		<p>售后服务</p>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script>
+$(function(){
+	var key=location.search.split('=')[1];console.log(key);
+    $('.aboutus_head li').eq(key).addClass('ac');
+
+    var index = $(this).index(); console.log(index);
+	$('.aboutus_box').html('<p>1222222222222222222222222222222222222222222岁的库计划于房价肯定撒化肥进口的撒谎空间的撒胡椒开发活动即可恢复健康</p>');
+	$('.aboutus_box').addClass('textleft');
+});
+
+</script>
+</html>

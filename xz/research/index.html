@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>测一测，你是孩子喜欢的父母吗？  </title>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" href="./css/mui.min.css">
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{height:100%;}
+		#form{width:100%;height:100%;display:block;}	
+		.swiper-container{width:100%;height:100%;background:#fff;}
+		.swiper-slide{
+			width:100%;
+			height:100%;
+			background:yellow;
+		}
+		img{
+			display:block;
+		}
+		.swiper-pagination-bullet{
+			width:6px;
+			height:6px;
+			background:#fff;
+			opacity:.4;
+		}
+		.swiper-pagination-bullet-active{
+			opacity:1;
+		}
+		@-webkit-keyframes tipmove{
+			0%{bottom:10px;opacity:0;}
+			50%{bottom:15px;opacity:1;} 
+			100%{bottom:20px;opacity:0;}
+		}
+		.ani{position:absolute;}
+		.txt{position:absolute;}
+		#array{
+			position:absolute;z-index:999;
+			-webkit-animation:tipmove 1.5s infinite ease-in-out;
+		}
+		.first{background:url(image/01.jpg) no-repeat left top;
+			background-size:100% 100%;}
+		.sec{background:url(image/02.jpg) no-repeat left top;
+			background-size:100% 100%;}
+		.thr,.thr1,.thr2,.thr3,.thr4,.thr5,.thr6,.thr7,.thr8,.thr9{background:url(image/02.jpg) no-repeat left top;
+			background-size:100% 100%;}
+		.thr9{position: relative;}
+		.thr9 div img{width:100%;}
+		#btnSubmit{position: absolute;bottom:20%;left:50%;display: inline-block;width:250px;height:30px;margin-left:-125px;border-radius:10px;background:#f14234;outline: none;color:#fff;}
+		label{text-align: initial;}
+		.swiper-slide .title{width:280px;height:auto;font-size:20px;font-weight:bolder;margin-left:-140px;left:50%;top:20%;line-height: 1.5}
+		.blue{color:#333;}
+		.red{color:#333;/*color:#FB5374;*/}
+		.mui-checkbox.mui-left input[type=checkbox], .mui-radio.mui-left input[type=radio] {
+    left: 30px;
+}
+.mui-checkbox.mui-left label, .mui-radio.mui-left label {
+    padding-right: 30px;
+    padding-left: 70px;
+}
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #f14234;
+}
+.swiper-pagination-bullet-active{
+background: #f14234;	
+}
+.top{position: fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:999;}
+.top img{width:100%;height:100%;}
+.avatar{position: absolute;top:25%;left:50%;width:80px;height:80px;margin-left:-40px;border-radius:50%;overflow: hidden;}
+.avatar img{width:100%;}
+</style>
+</head>
+<body>
+<div class="top">
+<div  class="avatar"><img src="image/1.jpg" alt=""></div>
+<img src="image/t1.png" alt="">
+</div>
+<form  id="form" method="post" action="ysh.php">
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<!-- slide0 -->
+			<section class="swiper-slide first"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+			</section>
+
+			<!-- slide1 -->
+			<section class="swiper-slide sec" >
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					1.你会在孩子面前抱怨另一半或是祖辈吗？
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t1">A.一般不会</label>
+					<input name="jf0" type="radio" value="3" id="t1"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t2">B.偶尔 </label> <input name="jf0" type="radio" value="2" id="t2"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:255px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t3">C.经常 </label> <input name="jf0" type="radio" value="1" id="t3"/>
+			    </div>
+			</section>
+
+			<!-- slide2 -->
+			<section class="swiper-slide thr">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					2.你答应孩子的事总是能够履行吗？
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t10">A.大部分时间会履行</label>
+					<input name="jf1" type="radio" value="3" id="t10"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t20">B.偶尔履行 </label> 
+					<input name="jf1" type="radio" value="2" id="t20"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:255px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t30">C.几乎不会履行 </label> 
+					<input name="jf1" type="radio" value="1" id="t30"/>
+			    </div>
+			</section>
+
+			<!-- slide3 -->
+			<section class="swiper-slide thr1">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					3.当孩子不听你的话时，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t11">A.一起商量折中办法</label>
+					<input name="jf2" type="radio" value="3" id="t11"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t21">B.打得他听为止！ </label> 
+					<input name="jf2" type="radio" value="2" id="t21"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:255px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t31">C.听孩子的 </label> 
+					<input name="jf2" type="radio" value="1" id="t31"/>
+			    </div>
+			</section>
+			<!-- slide4 -->
+			<section class="swiper-slide thr2">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					4.孩子总是因为拖拉没赶上车，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t12">A.送他的路上教育他</label>
+					<input name="jf3" type="radio" value="3" id="t12"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t22">B.边骂他，边送他去学校 </label> 
+					<input name="jf3" type="radio" value="2" id="t22"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:255px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t32">C.不管他，让他迟到 </label> 
+					<input name="jf3" type="radio" value="1" id="t32"/>
+			    </div>
+			</section>
+			<!-- slide5 -->
+			<section class="swiper-slide thr3">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					5.孩子带朋友来家里搞得非常吵，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t13">A.先一起玩，后告诉他们不要太吵</label>
+					<input name="jf4" type="radio" value="3" id="t13"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t23">B.当场不说，等聚会结束后再批评孩子 </label> 
+					<input name="jf4" type="radio" value="2" id="t23"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:265px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t33">C.这次忍着，下次不让孩子带朋友来 </label> 
+					<input name="jf4" type="radio" value="1" id="t33"/>
+			    </div>
+			</section>
+			<!-- slide6 -->
+			<section class="swiper-slide thr4">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					6.孩子做完作业后想玩一会儿电脑，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t14">A.可以玩，但只能玩两个小时</label>
+					<input name="jf5" type="radio" value="3" id="t14"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t24">B.玩什么玩，一天到晚就知道玩！ </label> 
+					<input name="jf5" type="radio" value="2" id="t24"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:255px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t34">C.随便玩，做完作业怎么玩都可以 </label> 
+					<input name="jf5" type="radio" value="1" id="t34"/>
+			    </div>
+			</section>
+			<!-- slide7 -->
+			<section class="swiper-slide thr5">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					7.当孩子考砸时，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t15">A.先问问孩子原因，再帮助孩子找到解决办法</label>
+					<input name="jf6" type="radio" value="3" id="t15"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:230px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t25">B.不由分说，骂了再说或者冷暴力 </label> 
+					<input name="jf6" type="radio" value="2" id="t25"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:265px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t35">C.不在乎孩子的成绩，考好考坏没关系 </label> 
+					<input name="jf6" type="radio" value="1" id="t35"/>
+			    </div>
+			</section>
+			<!-- slide8 -->
+			<section class="swiper-slide thr7">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					8.自己的孩子和别人的孩子有争执，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t16">A.很少管，小孩子有争执很正常</label>
+					<input name="jf7" type="radio" value="3" id="t16"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t26">B.先问问孩子原因，再鼓励他自己解决 </label> 
+					<input name="jf7" type="radio" value="2" id="t26"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:265px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t36">C.非常气愤，找别人算账 </label> 
+					<input name="jf7" type="radio" value="1" id="t36"/>
+			    </div>
+			</section>
+			<section class="swiper-slide thr8">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					9.带孩子和朋友聚会时，谈到孩子的话题，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t17">A.说孩子做得好的，给足孩子面子</label>
+					<input name="jf8" type="radio" value="3" id="t17"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:220px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t27">B.说自己孩子的缺点 </label> 
+					<input name="jf8" type="radio" value="2" id="t27"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:255px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t37">C.中肯的说孩子的优点和缺点 </label> 
+					<input name="jf8" type="radio" value="1" id="t37"/>
+			    </div>
+			</section>
+			<!-- slide9 -->
+			<section class="swiper-slide thr9">
+				<div class="ani resize title blue" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					10.和孩子来到一个陌生的地方，你会
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:184px;z-index:2;text-align:center" swiper-animate-effect="rotateInDownRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s">				
+					<label for="t18">A.紧紧地拉着孩子的手，带他一起找目标</label>
+					<input name="jf9" type="radio" value="3" id="t18"/>
+				</div>
+				<div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:230px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
+					<label for="t28">B.让孩子牵自己的手，看他会将自己带向何方 </label> 
+					<input name="jf9" type="radio" value="2" id="t28"/>
+			    </div>
+
+			    <div class="mui-input-row mui-radio mui-left ani resize" style="width:320px;left:0px;top:275px;z-index:3;text-align:center" swiper-animate-effect="lightSpeedIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+					<label for="t38">C.放开孩子的手，自己寻找目标 </label> 
+					<input name="jf9" type="radio" value="1" id="t38"/>
+			    </div>
+				<button id="btnSubmit">提交</button>
+				
+			</section>
+		</div>
+			<img src="image/web-swipe-tip.png" style="width:20px;height:15px;top:450px;left:150px;" id="array" class="resize">
+			<div class="swiper-pagination"></div>
+	</div>
+</form>
+<audio id="audio" src="mp3test.mp3" loop="loop" preload="">
+</body>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/swiper-3.4.0.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="./js/mui.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+function autoPlayAudio() {
+        wx.config({
+            // 配置信息, 即使不正确也能使用 wx.ready
+            debug: false,
+            appId: '',
+            timestamp: 1,
+            nonceStr: '',
+            signature: '',
+            jsApiList: []
+        });
+        wx.ready(function() {
+            var globalAudio=document.getElementById("audio");
+            globalAudio.play();
+        });
+};
+// 解决ios音乐不自动播放的问题
+autoPlayAudio();
+// window.onload = function() {
+//   var audioPlayer = document.getElementById("audio");
+
+//   audioPlayer.src = "mp3test.mp3"; 
+
+//   audioPlayer.load();
+//   audioPlayer.play();
+//   alert(audioPlayer.networkState);
+//  };
+	scaleW=window.innerWidth/320;
+	scaleH=window.innerHeight/480;
+	var resizes=document.querySelectorAll('.resize');
+	for (var i=0; i<resizes.length; i++){
+		resizes[i].style.width=parseInt(resizes[i].style.width)*scaleW+'px';
+		resizes[i].style.height=parseInt(resizes[i].style.height)*scaleH+'px';
+		resizes[i].style.top=parseInt(resizes[i].style.top)*scaleH+'px';
+		resizes[i].style.left=parseInt(resizes[i].style.left)*scaleW+'px';
+	}
+	var scales = document.querySelectorAll('.txt');
+	for(var i=0;i<scales.length;i++){
+		ss=scales[i].style;
+		ss.webkitTransform = ss.msTransform = ss.MsTransform = ss.MozTransform = ss.OTransform = ss.transform = 'translateX('+scales[i].offsetWidth*(scaleW-1)/2+'px)  translateY('+scales[i].offsetHeight*(scaleH-1)/2+'px) scaleX('+scaleW+') scaleY('+scaleH+')';
+	}
+	var myswiper = new Swiper ('.swiper-container',{
+		direction:'vertical',
+		pagination:'.swiper-pagination',
+		mousewheelControl:true,
+		onInit: function(swiper){
+			swiperAnimateCache(swiper);
+			swiperAnimate(swiper);
+		},
+		onSlideChangeEnd: function(swiper){
+			swiperAnimate(swiper);
+			var key=swiper.realIndex;
+			var arr_k=[];
+			arr_k.push(parseInt(key)); 
+			var timer="";
+			console.log(myswiper.clickedIndex);
+				$('.mui-input-row').on('click',function(){ 
+				
+					var key = arr_k[arr_k.length-1];
+						
+						if(key<=9){console.log(arr_k[arr_k.length-1]);
+							timer = setTimeout(function(){
+							myswiper.slideTo((key+1), 1000, true);
+							arr_k.push(parseInt(key));
+							swiperAnimate(swiper);
+							},500);	
+						}else{console.log('here');
+							clearTimeout(timer);				
+						}
+			   	});
+
+			
+			　　
+			
+			//myswiper.slideTo((key+1), 1000, false);
+		},
+	});
+
+
+	$('#btnSubmit').click(function(){
+	    	var arr=[];
+	    	for(var i=0;i<10;i++){
+	    		if(!$('input:radio[name="jf'+i+'"]:checked').val()){
+	    			arr.push(i);	
+	    		}
+	    	}
+	    	if(arr.length>=1){
+	    		var str='';
+	    		for(var j=0;j<arr.length;j++){
+	    			str+=' '+(parseInt(arr[j])+1);	
+	    		}
+	    		mui.alert('还有'+str+'题未选', '友情提示', function() { 
+	    			myswiper.slideTo((parseInt(arr[0])+1), 1000, true);   
+                }); 
+                return false;
+	    	}else{
+	    		$(this).submit();
+	    	}
+	    });
+</script>
+ 
+</html>

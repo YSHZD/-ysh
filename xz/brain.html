@@ -1,0 +1,639 @@
+﻿<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>全脑开发</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<style >
+*{margin:0;padding:0;}
+.header{
+    height:44px;
+    text-align: center;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9;
+    line-height: 44px;
+    background: #fff;
+    box-shadow: 0 1px 1px #ededed;
+}
+.header .iconfont {
+    font-size: 25px;
+    color: #14a4ed;
+}
+a{text-decoration: none;}
+.header .left{width:88px;height:100%;position:absolute;top:0;left:0;}
+.header .center{height:100%;margin:0 88px;}
+.header .center p{width:100%;height:44px;line-height:44px;display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;color:#333;font-size:15px;}
+.header .right{width:88px;height:100%;position:absolute;top:0;right:0;}
+.brain_content{width:100%;margin-top:45px;}
+.brain_header img{width:100%;}
+.brain_one h3{color:#35a8af;text-align: center;height:30px;line-height: 30px;}
+.brain_one p{font-size:12px;color:#999;text-align: center;}
+.brain_one_content{width:100%;padding:15px;box-sizing: border-box;}
+.brain_one_content p{width: 100%;clear:both;margin-bottom:5px;}
+.brain_one_content p span{width:20%;display: inline-block;text-align: center;}
+.brain_one_content p span input{width:80%;height:30px;background: #baedf1;border:none;outline: none;border-radius:3px;color:#026665;text-align: center;}
+.brain_one_content p span strong{width:80%;height:30px;background: #baedf1;border:none;outline: none;border-radius:3px;color:#026665;text-align: center;display: inline-block;line-height: 30px;font-size:16px;}
+.one_result{height:60px;display: flex;flex-direction: row;padding:0 15px;}
+.result_right{width:auto;display: flex;justify-content: center;align-items: center;}
+.result_right span{background: #31a6ad;color:#fff;display: inline-block;width:80px;padding:5px 0;font-size: 16px;border-radius: 5px;text-align: center;margin-left:5px;}
+.result_right .end{display: none;} 
+.result_left{flex:1;}
+.result_left h5{font-size: 18px;}
+.result_left h5 span{margin-left:10px;color:#31a6ad;}
+.result_left p{font-size: 12px;}
+
+.brain_two h3{color:#578ac3;text-align: center;height:30px;line-height: 30px;margin-top: 30px}
+.brain_two p{font-size:12px;color:#999;text-align: center;}
+.brain_two_content{width:100%;padding:15px;box-sizing: border-box;}
+.brain_two_content p{width: 100%;clear:both;margin-bottom:10px;}
+.brain_two_content p span{width:50%;display: inline-block;text-align: center;}
+.brain_two_content p span input{width:80%;height:30px;background: #baedf1;border:none;outline: none;border-radius:3px;color:#026665;text-align: center;margin-bottom:10px;}
+.brain_two_content p span strong{width:80%;height:30px;background: #baedf1;border:none;outline: none;border-radius:3px;color:#026665;text-align: center;display: inline-block;line-height: 30px;font-size:16px;}
+.two_result{height:60px;display: flex;flex-direction: row;padding:0 15px;}
+.brain_thr_content{width:100%;padding:15px;box-sizing: border-box;}
+.brain_thr_content p{width: 100%;clear:both;margin-bottom:10px;}
+.brain_thr_content p span{width:10%;display: inline-block;text-align: center;}
+.brain_thr_content p span input{width:80%;height:30px;background: #baedf1;border:none;outline: none;border-radius:3px;color:#026665;text-align: center;}
+.brain_thr_content p span strong{width:80%;height:30px;background: #baedf1;border:none;outline: none;border-radius:3px;color:#026665;text-align: center;display: inline-block;line-height: 30px;font-size:16px;}
+.thr_result{height:60px;display: flex;flex-direction: row;padding:0 15px;}
+.brain_for h3{color:#d56344;text-align: center;height:30px;line-height: 30px;margin-top: 30px}
+.brain_for p{font-size:12px;color:#999;text-align: center;}
+.brain_for_content{width:100%;padding:15px;box-sizing: border-box;}
+.brain_for_content p{width: 100%;clear:both;margin-bottom:10px;}
+.brain_for_content p span{width:14%;display: inline-block;text-align: center;word-break: break-all;}
+.brain_for_content p span input{width:80%;height:30px;background: #d56344;border:none;outline: none;border-radius:3px;color:#fff;text-align: center;margin-bottom:10px;}
+.brain_for_content p span strong{width:80%;background: #d56344;border:none;outline: none;border-radius:3px;color:#fff;text-align: center;display: inline-block;line-height: 30px;font-size:16px;}
+.for_result{height:60px;display: flex;flex-direction: row;padding:0 15px;}
+.over{height:40px;margin:20px 0;text-align: center;}
+.over span{display: inline-block;width:80%;height:40px;margin:0 auto;background: #31a6ad;color:#fff;line-height: 40px;border-radius: 5px;font-size: 18px;}
+.reslutss{min-height: 150px;padding:0 15px;}
+.show{width: 100%;height:auto;padding-bottom: 50px;display: none;}
+.show h3{text-align: center;margin-top:25px;}
+.show h5{color:#e83404;margin-top:20px;}
+.show p{color:#282828;font-size: 15px;text-indent: 2em;margin-top:20px;}
+.tips{text-align: center;color:#e83404;display: none;}
+.brain_header{position: relative;}
+.top{position: absolute;top:10px;right:15px;display: inline-block;width:40px;height:40px;background: #026665;color:#fff;font-size:16px;line-height: 40px;text-align: center;border-radius: 50%;
+animation-iteration-count:infinite;animation-duration:4s;-webkit-animation-name: shake;
+    animation-name: shake}
+@-webkit-keyframes shake {
+    0%,100% {
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+
+    10%,30%,50%,70%,90% {
+        -webkit-transform: translate3d(-10px,0,0);
+        transform: translate3d(-10px,0,0)
+    }
+
+    20%,40%,60%,80% {
+        -webkit-transform: translate3d(10px,0,0);
+        transform: translate3d(10px,0,0)
+    }
+}
+
+@keyframes shake {
+    0%,100% {
+        -webkit-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0)
+    }
+
+    10%,30%,50%,70%,90% {
+        -webkit-transform: translate3d(-10px,0,0);
+        -ms-transform: translate3d(-10px,0,0);
+        transform: translate3d(-10px,0,0)
+    }
+
+    20%,40%,60%,80% {
+        -webkit-transform: translate3d(10px,0,0);
+        -ms-transform: translate3d(10px,0,0);
+        transform: translate3d(10px,0,0)
+    }
+}
+
+.rules{position: fixed;top:0;bottom: 0;right:0;left:0;background-color: rgba(0,0,0,0.8);z-index:8;padding:30% 25px;color:#fff;display: none;}
+.rules h3{text-align: center;}
+.rules p{margin-top:15px;font-size: 16px;}
+.close{position: absolute;top:10%;right:15px;font-size: 30px;border-radius: 50%;width:30px;height:30px;line-height: 25px;text-align: center;border:1px solid #fff;}
+</style>
+</head>
+<body>
+<div class="header">
+	<div class="left">
+		<a href="personcenter.html"><i class="iconfont icon-gerenzhongxin"></i></a>
+	</div>
+	<div class="center">
+		全脑开发
+	</div>
+	<div class="right">
+		<i class="iconfont icon-sousuo"></i>
+	</div>
+</div>
+<div class="rules"><span class="close">x</span>
+    <h3>记忆力测试规则</h3>
+<p>第一步：先概览界面上的文字内容</p>
+<p>第二步：点击“开始记时”进行记忆</p>
+<p>第三步：时间停止后文字内容会消失，此时把文字填在相对应的空格中</p>
+<p>第四步：所有题目完成后，点提交得出记忆力分数</p>
+</div>
+<div class="brain_content">
+    <div class="brain_header">
+        <div class="top">规则</div>
+        <img src="images/xx.jpg" alt="">
+    </div>
+    <div class="brain_one">
+        <h3>词语组测试</h3>
+        <p>(请你用150秒钟记忆下面二十五个词语)</p>
+    </div>
+    <div class="brain_one_content">
+    </div>
+    <div class="one_result">
+        <div class="result_left">
+            <h5>得分:<span></span></h5>
+            <p>说明】：每个词语1分，150秒内记忆多少个词语就得多少分</p>
+        </div>
+        <div class="result_right">
+            <span class="start">开始记时</span>
+            <span class="end">立即回答</span>
+        </div>
+    </div>
+    
+    <div class="brain_two">
+        <h3>数字组组测试(1)</h3>
+        <p>(请你用20秒钟记忆如下数字)</p>
+    </div>
+    <div class="brain_two_content">
+    </div>
+    <div class="two_result">
+        <div class="result_left">
+            <h5>得分:<span></span></h5>
+            <p>说明】：每个词语1分，20秒内记忆多少个词语就得多少分</p>
+        </div>
+        <div class="result_right">
+            <span class="start">开始记时</span>
+            <span class="end">立即回答</span>
+        </div>
+    </div>
+    
+    <div class="brain_two">
+        <h3>数字组组测试(2)</h3>
+        <p>(请你用150秒钟记忆如下数字)</p>
+    </div>
+    <div class="brain_thr_content">
+    </div>
+    <div class="thr_result">
+        <div class="result_left">
+            <h5>得分:<span></span></h5>
+            <p>说明】：每个词语1分，150秒内记忆多少个词语就得多少分</p>
+        </div>
+        <div class="result_right">
+            <span class="start">开始记时</span>
+            <span class="end">立即回答</span>
+        </div>
+    </div>
+
+    <div class="brain_for">
+        <h3>扑克牌记忆</h3>
+        <p>(请您用３分钟记忆如下扑克牌)</p>
+    </div>
+    <div class="brain_for_content">
+    </div>
+    <div class="for_result">
+        <div class="result_left">
+            <h5>得分:<span></span></h5>
+            <p>说明】：每张牌1分，3分钟内记忆多少个数字就得多少分</p>
+        </div>
+        <div class="result_right">
+            <span class="start">开始记时</span>
+            <span class="end">立即回答</span>
+        </div>
+    </div>
+</div>
+<div class="over">
+    <span>显示结果</span>
+</div> 
+<div class="reslutss">
+    <p class="tips">未完成全部测试，请先完成！</p>
+    <div class="show">
+        <h3></h3>
+        <h5></h5>
+        <p></p>
+    </div>     
+</div>    
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script>
+$('.top').on('click',function(){
+    $('.rules').show();
+});
+$('.close').on('click',function(){
+    $('.rules').hide();
+});
+$('.over span').on('click',function(){
+    if($('.one_result .result_right span').html()!='完成'||$('.two_result .result_right span').html()!='完成'||$('.thr_result .result_right span').html()!='完成'||$('.for_result .result_right span').html()!='完成'){
+        $('.tips').show();
+        setTimeout(function(){
+           $('.tips').hide(); 
+        },3000);
+        return;
+    }
+    var one=$('.thr_result h5 span').html();
+    var two=$('.thr_result h5 span').html();
+    var thr=$('.thr_result h5 span').html();
+    var fo=$('.thr_result h5 span').html();
+    if(!one){
+        one=0;
+    }
+    if(!two){
+        two=0;
+    }
+    if(!thr){
+        thr=0;
+    }
+    if(!fo){
+        fo=0;
+    }
+    var sum = parseInt(one)+parseInt(two)+parseInt(thr)+parseInt(fo);
+    go(sum);
+});
+var result_json=[{'title':'80分以上——优秀记忆区：','dec':'经过您的测评，你的记忆力已经处在一个优秀的状态，这个时候一定要多去训练你右脑的发散逻辑思维，并且提高自己的专注力以及注意力，学员应该多跟导师进行一个“最强大脑”里经常用到的宫殿记忆法的左右脑训练，注意一个balanced,并且基于这个基础提升其他方面的能力哦,平时要注意不要熬夜，要保持充实的精力。你离天才仅仅一步之遥哦！加油！'},
+{'title':'70分-79分——记忆力安全区:','dec':'经过您的测评，你的记忆力已经处在安全的状态。您的记忆力空间能力一般，联想能力和创造能力都还不错，但是在反应能力和注意力方面还不够。平时可以多进行一些速度与反应的训练，可以通过扑克牌或者图片的方式。另外可以通过练字或者画画来提高自己的注意力。基于这个基础上提升其他方面的能力！'},
+{'title':'60分—69分——记忆报警区：','dec':'经过您的测评，你的记忆力已经处在一个逐步下降的一个阶段了，这个时候应该要多注意一个全脑的训练，在短时间内记忆一定数量的信息，但是因为在联想、想象和注意力方面的问题，导致您的记忆数量和范围有限。您可以在平时通过一些图像、音乐等相对感观的内容记忆来锻炼大脑的记忆力。 '},{'title':'59分以下——记忆力危机区：','dec':'经过您的测评，你的记忆力已经处在非常危险的阶段，需要注意科学用脑，平时可以看一些自己未看过的电视剧电影，听一些自己未曾听过的歌曲，做一些自己曾经并不是很习惯做的事情，适当的锻炼大脑，做专业的训练，来提高自己的大脑思考能力，并且要科学饮食，多吃一些卷心菜、大豆、牛奶、鲜鱼、蛋黄、杏子、核桃等食品，另外通过科学的方法来学习知识，保持充足的睡眠是非常必要的，大脑只有得到更好的休息才能更好的工作。要记住没有天赋，只有方法。'}];
+
+function go(num){
+    if(num>=80){
+        $('.show h5').html(result_json[0].title);
+        $('.show p').html(result_json[0].dec);
+    }else if(80>num&&num>=70){
+        $('.show h5').html(result_json[1].title);
+        $('.show p').html(result_json[1].dec);
+    }else if(70>num&&num>=60){
+        $('.show h5').html(result_json[2].title);
+        $('.show p').html(result_json[2].dec);
+    }else if(num<60){
+        $('.show h5').html(result_json[3].title);
+        $('.show p').html(result_json[3].dec);
+    }
+    $('.show').show();
+}
+
+var json1=['树','鹅','耳朵','凳子','手套','手枪','镰刀','麻花','球拍','蛋糕','电脑','纸巾','手表','筷子','婴儿','医生','钥匙','月饼','衣扣','拐杖','衣架','药酒','按铃','杯子','眼镜'];
+var json2 =[816372,544536,271899,531246];
+var json3 = [7,9,8,4,6,5,2,3,1,3,4,9,6,7,5,5,1,3,8,7,2,7,9,4,8,2,6,1,3,6];
+var json4 = ['红桃Q','方块８','梅花５','红桃A','黑桃K','方块９','梅花４','黑桃２','红桃K','黑桃６','方块２','梅花７','红桃４','方块K','梅花６','黑桃７','红桃５','黑桃７','梅花Q','方块９','红桃６'];
+var str = '';
+var str1='';
+var str2='';
+var str3='';
+var flag=1;
+var flag_1=1;
+var flag_11=1;
+var flag_2=1;
+var flag_22=1;
+var flag_3=1;
+var flag_33=1;
+for (var i=0;i<json4.length;i++) {
+    if(i%7==0&&flag_3==1){
+        str3+='<p>';
+    }else if(i%7==0&&flag_3==1&&i!=(json3.length-1)){
+         str3+='</p>';
+    }
+    str3+='<span><strong>'+json4[i]+'</strong></span>';
+}
+str3+='</p>';
+$('.brain_for_content').html(str3);
+
+for (var i=0;i<json3.length;i++) {
+    if(i%10==0&&flag_2==1){
+        str2+='<p>';
+    }else if(i%10==0&&flag_2==1&&i!=(json3.length-1)){
+         str2+='</p>';
+    }
+    str2+='<span><strong>'+json3[i]+'</strong></span>';
+}
+str2+='</p>';
+$('.brain_thr_content').html(str2);
+
+for (var i=0;i<json2.length;i++) {
+    if(i%2==0&&flag_1==1){
+        str1+='<p>';
+    }else if(i%2==0&&flag_1==1&&i!=(json2.length-1)){
+         str1+='</p>';
+    }
+    str1+='<span><strong>'+json2[i]+'</strong></span>';
+}
+str1+='</p>';
+$('.brain_two_content').html(str1);
+
+for (var i=0;i<json1.length;i++) {
+    if(i%5==0&&flag==1){
+        str+='<p>';
+    }else if(i%5==0&&flag==1&&i!=(json1.length-1)){
+         str+='</p>';
+    }
+    str+='<span><strong>'+json1[i]+'</strong></span>';
+}
+str+='</p>';
+$('.brain_one_content').html(str);
+var flag1=1;
+$('.one_result .result_right .start').on('click',function(){
+    var s=10;
+    var timer;
+    if(flag1==1){
+        $('.one_result .result_right .end').show()
+        timer=setInterval(function(){
+            s--;
+            if(s>=0){
+                $('.one_result .result_right .start').html(s+'s');
+            }else{
+                clearInterval(timer);
+                $('.one_result .result_right .end').remove();
+                $('.one_result .result_right .start').html('提交');
+                var str='';
+                for (var i=0;i<json1.length;i++) {
+                    if(i%5==0){
+                        str+='<p>';
+                    }else if(i%5==0&&i!=(json1.length-1)){
+                         str+='</p>';
+                    }
+                    str+='<span><input type="text" class="ones one'+i+'"></span>';
+                }
+                str+='</p>';
+                $('.brain_one_content').html(str);
+            } 
+        },1000);
+        flag1=2; 
+        $('.one_result .result_right .end').on('click',function(){
+            $(this).remove();
+            clearInterval(timer);
+            $('.one_result .result_right .start').html('提交');
+            var str='';
+            for (var i=0;i<json1.length;i++) {
+                if(i%5==0){
+                    str+='<p>';
+                }else if(i%5==0&&i!=(json1.length-1)){
+                     str+='</p>';
+                }
+                str+='<span><input type="text" class="ones one'+i+'"></span>';
+            }
+            str+='</p>';
+            $('.brain_one_content').html(str);
+        });
+    }else if(flag1==2&&$('.one_result .result_right .start').html()=='提交'){
+        var new_arr = [];
+        for(var i=0;i<json1.length;i++){
+            new_arr.push($('.one'+i).val());
+        }
+        console.log(new_arr);
+        var num=0;
+        for(var i=0;i<json1.length;i++){
+            if(json1[i]==new_arr[i]){
+                num+=1;
+            }
+        }
+        $('.one_result h5 span').html(num+'分');
+        $('.one_result .result_right .start').html('完成');
+        flag1=3; 
+         var str='';
+        for (var i=0;i<json1.length;i++) {
+            if(i%5==0&&flag==1){
+                str+='<p>';
+            }else if(i%5==0&&flag==1&&i!=(json1.length-1)){
+                 str+='</p>';
+            }
+            str+='<span><strong>'+json1[i]+'</strong></span>';
+        }
+        str+='</p>';
+        $('.brain_one_content').html(str);
+    }
+   
+    
+});
+
+$('.two_result .result_right .start').on('click',function(){
+    var s=10;
+    var timer;
+    if(flag_11==1){
+        $('.two_result .result_right .end').show()
+        timer=setInterval(function(){
+            s--;
+            if(s>=0){
+                $('.two_result .result_right .start').html(s+'s');
+            }else{
+                clearInterval(timer);
+                $('.two_result .result_right .end').remove();
+                $('.two_result .result_right .start').html('提交');
+                var str='';
+                for (var i=0;i<json2.length;i++) {
+                    if(i%2==0){
+                        str+='<p>';
+                    }else if(i%2==0&&i!=(json2.length-1)){
+                         str+='</p>';
+                    }
+                    str+='<span><input type="text" class="ones two'+i+'"></span>';
+                }
+                str+='</p>';
+                $('.brain_two_content').html(str);
+            } 
+        },1000);
+        flag_11=2; 
+         $('.two_result .result_right .end').on('click',function(){
+            $(this).remove();
+            clearInterval(timer);
+            $('.two_result .result_right .start').html('提交');
+            var str='';
+            for (var i=0;i<json2.length;i++) {
+                if(i%2==0){
+                    str+='<p>';
+                }else if(i%2==0&&i!=(json2.length-1)){
+                     str+='</p>';
+                }
+                str+='<span><input type="text" class="ones two'+i+'"></span>';
+            }
+            str+='</p>';
+            $('.brain_two_content').html(str);
+        });
+    }else if(flag_11==2&&$('.two_result .result_right .start').html()=='提交'){
+        var new_arr = [];
+        for(var i=0;i<json2.length;i++){
+            new_arr.push($('.two'+i).val());
+        }
+        console.log(new_arr);
+        var num=0;
+        for(var i=0;i<json2.length;i++){
+            if(json2[i]==new_arr[i]){
+                num+=1;
+            }
+        }
+        $('.two_result h5 span').html(num+'分');
+        $('.two_result .result_right .start').html('完成');
+        flag_11=3;
+         var str1='';
+        
+        for (var i=0;i<json2.length;i++) {
+            if(i%2==0&&flag_1==1){
+                str1+='<p>';
+            }else if(i%2==0&&flag_1==1&&i!=(json2.length-1)){
+                 str1+='</p>';
+            }
+            str1+='<span><strong>'+json2[i]+'</strong></span>';
+        }
+        str1+='</p>';
+        $('.brain_two_content').html(str1);
+    }    
+});
+$('.thr_result .result_right .start').on('click',function(){
+    var s=15;
+    var timer;
+    if(flag_22==1){
+        $('.thr_result .result_right .end').show()
+        timer=setInterval(function(){
+            s--;
+            if(s>=0){
+                $('.thr_result .result_right .start').html(s+'s');
+            }else{
+                clearInterval(timer);
+                $('.thr_result .result_right .end').remove();
+                $('.thr_result .result_right .start').html('提交');
+                var str='';
+                for (var i=0;i<json3.length;i++) {
+                    if(i%10==0){
+                        str+='<p>';
+                    }else if(i%10==0&&i!=(json3.length-1)){
+                         str+='</p>';
+                    }
+                    str+='<span><input type="text" class="ones thr'+i+'"></span>';
+                }
+                str+='</p>';
+                $('.brain_thr_content').html(str);
+            } 
+        },1000);
+        flag_22=2; 
+        $('.thr_result .result_right .end').on('click',function(){
+            $(this).remove();
+            clearInterval(timer);
+            $('.thr_result .result_right .start').html('提交');
+            var str='';
+            for (var i=0;i<json3.length;i++) {
+                if(i%10==0){
+                    str+='<p>';
+                }else if(i%10==0&&i!=(json3.length-1)){
+                     str+='</p>';
+                }
+                str+='<span><input type="text" class="ones thr'+i+'"></span>';
+            }
+            str+='</p>';
+            $('.brain_thr_content').html(str);
+        });
+    }else if(flag_22==2&&$('.thr_result .result_right .start').html()=='提交'){
+        var new_arr = [];
+        for(var i=0;i<json3.length;i++){
+            new_arr.push($('.thr'+i).val());
+        }
+        console.log(new_arr);
+        var num=0;
+        for(var i=0;i<json3.length;i++){
+            if(json3[i]==new_arr[i]){
+                num+=1;
+            }
+        }
+        $('.thr_result h5 span').html(num+'分');
+        $('.thr_result .result_right .start').html('完成');
+        flag_22=3; 
+        var str3='';
+        for (var i=0;i<json3.length;i++) {
+            if(i%10==0&&flag_2==1){
+                str3+='<p>';
+            }else if(i%10==0&&flag_2==1&&i!=(json3.length-1)){
+                 str3+='</p>';
+            }
+            str3+='<span><strong>'+json3[i]+'</strong></span>';
+        }
+        str3+='</p>';
+        $('.brain_thr_content').html(str3);
+    }    
+});
+$('.for_result .result_right .start').on('click',function(){
+    var s=18;
+    var timer;
+    if(flag_33==1){
+        $('.for_result .result_right .end').show()
+        timer=setInterval(function(){
+            s--;
+            if(s>=0){
+                $('.for_result .result_right .start').html(s+'s');
+            }else{
+                clearInterval(timer);
+                $('.for_result .result_right .end').remove();
+                $('.for_result .result_right .start').html('提交');
+                var str='';
+                for (var i=0;i<json4.length;i++) {
+                    if(i%7==0){
+                        str+='<p>';
+                    }else if(i%7==0&&i!=(json4.length-1)){
+                         str+='</p>';
+                    }
+                    str+='<span><input type="text" class="ones for'+i+'"></span>';
+                }
+                str+='</p>';
+                $('.brain_for_content').html(str);
+            } 
+        },1000);
+        flag_33=2;
+         $('.for_result .result_right .end').on('click',function(){
+            $(this).remove();
+            clearInterval(timer);
+            $('.for_result .result_right .start').html('提交');
+            var str='';
+            for (var i=0;i<json4.length;i++) {
+                if(i%7==0){
+                    str+='<p>';
+                }else if(i%7==0&&i!=(json4.length-1)){
+                     str+='</p>';
+                }
+                str+='<span><input type="text" class="ones for'+i+'"></span>';
+            }
+            str+='</p>';
+            $('.brain_for_content').html(str);
+        }); 
+    }else if(flag_33==2&&$('.for_result .result_right .start').html()=='提交'){
+        var new_arr = [];
+        for(var i=0;i<json4.length;i++){
+            new_arr.push($('.for'+i).val());
+        }
+        console.log(new_arr);
+        var num=0;
+        for(var i=0;i<json4.length;i++){
+            if(json4[i]==new_arr[i]){
+                num+=1;
+            }
+        }
+        $('.for_result h5 .start').html(num+'分');
+        $('.for_result .result_right .start').html('完成');
+        flag_33=3;
+         var str3='';
+       for (var i=0;i<json4.length;i++) {
+            if(i%7==0&&flag_3==1){
+                str3+='<p>';
+            }else if(i%7==0&&flag_3==1&&i!=(json3.length-1)){
+                 str3+='</p>';
+            }
+            str3+='<span><strong>'+json4[i]+'</strong></span>';
+        }
+        $('.brain_for_content').html(str3); 
+    }    
+});
+</script>
+</html>

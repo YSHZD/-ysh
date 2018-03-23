@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>全部订单</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        全部订单
+    </div>
+    <div class="right">
+       <a href="search.html"><i class="iconfont icon-sousuo"></i></a>
+    </div>
+</div>
+<div class="orders-title">
+    <div class="order-course ac">课程订单</div>
+    <div class="order-shop">商品订单</div>
+</div>
+<div class="orders-titles">
+    <ul>
+    <li><span class="ac">全部</span></li>
+        <li><span>待付款</span></li>
+        <li><span>待上课</span></li>
+        <li><span>已完成</span></li>
+        <li><span>待评论</span></li>
+    </ul>
+</div>
+<div class="here">
+<!--下拉刷新容器-->
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+        <div class="mui-scroll">
+            <!--数据列表-->
+            <ul class="mui-table-view mui-table-view-chevron">
+                
+            </ul>
+        </div>
+    </div>
+</div>
+<input type="hidden" name="" id="orderList">
+<div class="kong"></div>
+<!-- footer -->
+<div class="footer">
+	<div class="left">
+		<p><a href="tel:{:C('service_phone')}"/><i class="iconfont icon-bohao"></i></a></p>
+		<p>一键拨号</p>
+	</div>
+	<div class="center">
+		<p><a href="index.html"><i class="iconfont icon-cloud-home"></i></a></p>
+		<p>主页</p>
+	</div>
+	<div class="right">
+		<p><i class="iconfont icon-duanxin"></i></p>
+		<p>售后服务</p>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script src="./js/orders.js" language="javascript"></script>
+</html>

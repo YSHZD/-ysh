@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>密码修改</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        密码修改
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<div class="updatepass">
+    <form action="" method="post" onsubmit="return CheckPost();"> 
+        <input type="password" name="old_password" placeholder="原始密码" class="old_password">
+        <input type="password" name="new_password" placeholder="新密码" class="new_password">
+        <input type="password" name="ok_password" placeholder="确认密码" class="ok_password">
+        <input type="submit" value="保存"> 
+    </form>
+    
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script>
+function CheckPost(){
+    var old_password = trim(document.querySelectorAll('.old_password')[0].value);
+    var new_password = trim(document.querySelectorAll('.new_password')[0].value);
+    var ok_password = trim(document.querySelectorAll('.ok_password')[0].value);
+    if(!(old_password)){ 
+        mui.alert('原始密码不能为空', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    if(!(new_password)){ 
+        mui.alert('新密码不能为空', '友情提示', function() {    
+                });  
+        return false; 
+    }
+    // if(!(/^[a-zA-Z0-9\u4e00-\u9fa5]{4,6}$/.test(username))){ 
+    //     mui.alert('昵称，4-16位字符：中文 英文 数字，请重填', '友情提示', function() {    
+    //             });  
+    //     return false; 
+    // }
+    // if(!(/^[a-zA-Z0-9]{4,16}$/.test(userpass))){ 
+    //     mui.alert('密码，4-16位字符：英文 数字，请重填', '友情提示', function() {    
+    //             });  
+    //     return false; 
+    // }
+    if(new_password&&!(ok_password==new_password)){console.log(1);
+        mui.alert('密码不一致', '友情提示', function() {    
+                });  
+        return false;
+    }
+    return false;
+}
+    function trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g,"");
+    }
+</script>
+</html>

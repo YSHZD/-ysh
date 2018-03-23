@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="./css/mui.min.css" rel="stylesheet" />
+		<link href="./css/mui.indexedlist.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+			.float_right{float: right}
+			.mui-indexed-list-bar{background: #ededed;}
+			.mui-indexed-list-bar a{overflow: hidden;}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">手机号归属地</h1>
+		</header>
+		<div class="mui-content">
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索">
+				</div>
+				<div class="mui-indexed-list-bar">
+					<a>常</a>
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul class="mui-table-view">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/jquery-1.8.2.js"></script>
+		<script src="./js/mui.indexedlist.js"></script>
+		<script src="./js/area.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		var arr = str.split('');
+		arr.unshift('常');
+		var s = '';
+		$('.mui-action-back').on('click',function(){
+			window.history.go(-1)
+		})
+		for ( var i = 0; i < arr.length; i++ ){
+			(function(){
+				var nowItem = arr[i];
+				var nextItem = area[nowItem];
+				if( typeof nextItem == 'object'){
+					//console.log(nextItem)
+					s +='<li data-group="'+nowItem+'" class="mui-table-view-divider mui-indexed-list-group">'+nowItem+'</li>';
+					for ( var j = 0; j < nextItem.length; j++ ){
+						s += '<li data-value="'+nextItem[j].area_code+'" data-tags="'+nowItem+'" class="mui-table-view-cell mui-indexed-list-item">'+nextItem[j].area+'<span class="float_right">'+nextItem[j].area_code+'</span></li>'
+					}
+				}
+				nowItem = null;
+				nextItem = null;
+			})()
+		}
+		$('.mui-table-view').html(s);
+			mui.init();
+			mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				//calc hieght
+				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+				//create
+				window.indexedList = new mui.IndexedList(list);
+				mui('.mui-table-view').on("tap","li",function(e){
+					/*返回归属地*/
+				    /*var num = e.target.dataset.value.split("+")[1];*/
+					var val = e.target.dataset.value;
+					//console.log(val)
+					var reg = new RegExp("^[+][0-9]*$") ;
+
+					if (reg.test(val)){
+						console.log(val)
+					} else {
+						alert('请重新点击选择！')
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>活动</title>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" href="./css/mui.min.css">
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{height:100%;}
+		#form{width:100%;height:100%;display:block;}	
+		.swiper-container{width:100%;height:100%;background:#fff;}
+		.swiper-slide{
+			width:100%;
+			height:100%;
+		}
+		img{
+			display:block;
+		}
+		.swiper-pagination-bullet{
+			width:6px;
+			height:6px;
+			background:#fff;
+			opacity:.4;
+		}
+		.swiper-pagination-bullet-active{
+			opacity:1;
+		}
+		@-webkit-keyframes tipmove{
+			0%{bottom:10px;opacity:0;}
+			50%{bottom:15px;opacity:1;} 
+			100%{bottom:20px;opacity:0;}
+		}
+		.ani{position:absolute;}
+		.txt{position:absolute;}
+		#array{
+			position:absolute;z-index:999;
+			-webkit-animation:tipmove 1.5s infinite ease-in-out;
+		}
+		.end{background:url(image/ac.jpg) no-repeat left top;
+			background-size:100% 100%;}
+
+.swiper-pagination-bullet-active{
+background: #f14234;	
+}
+video::-internal-media-controls-download-button {
+    display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); 
+}
+.one{padding-top:45%;}
+.title img{width: 100%;margin-top:30%;}
+.nan_btn span{display: inline-block;width:50%;float: left;padding:5px;}
+.nan_btn span img{width:100%;}
+.nan_pt span{display: inline-block;width: 50%;float: left;}
+.nan_pt span img{width:100%;}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea{
+	width:70%;margin-top:20px;
+	color:#333;
+}
+.top{position: absolute;top:0;left: 0;right:0;bottom: 0;background-color:rgba(0,0,0,0.9);text-align: center;padding-top:20%;color:#fff;font-size:18px;display: none;z-index:99999;}
+.top p{color:#fff;font-size:20px;}
+.mui-btn-blue, .mui-btn-primary, input[type=submit]{width:70%;margin-top:20px;}
+</style>
+</head>
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<!-- slide0 -->
+			<section class="swiper-slide one"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+					<video width="100%" src="nan1.mp4" controls autoplay="" style="object-fit:fill"   webkit-playsinline="true"   x-webkit-airplay="true"   playsinline="true"  x5-video-player-type="h5"  x5-video-orientation="h5" x5-playsinline=""  autobuffer class="c-h5" id="video1" preload="" poster="image/po.png"></video>
+			</section>
+			<section class="swiper-slide"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+					<div class="ani resize title" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s" >
+					<img src="image/n1 (3).png" alt="" class="title_pc">
+					</div>
+					<div style="position: absolute;top:50%">
+						<p class="nan_btn"><span><img src="image/n1 (1).png" alt=""></span><span><img src="image/n1 (2).png" alt=""></span></p>
+					</div>
+			</section>
+			<section class="swiper-slide one"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+					<video width="100%" src="nan2.mp4" controls autoplay="" style="object-fit:fill"   webkit-playsinline="true"   x-webkit-airplay="true"   playsinline="true"  x5-video-player-type="h5"  x5-video-orientation="h5" x5-playsinline=""  autobuffer class="c-h5" id="video2" preload=""></video>
+			</section>
+			<section class="swiper-slide"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s" >
+					<img src="image/good_01.jpg" alt="" width="100%">
+					<div class="tips">
+						<img src="image/good_02.jpg" alt="" width="100%">
+						<img src="image/good_03.jpg" alt="" width="100%">
+						<img src="image/good_04.jpg" alt="" width="100%">
+						<img src="image/good_05.jpg" alt="" width="100%">
+						<img src="image/good_06.jpg" alt="" width="100%">
+					</div>
+			</section>
+			
+			<section class="swiper-slide end"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s" style="position: relative;">
+			<div class="top">
+				<p>请输入你的大名</p>
+				<input type="text" placeholder="请输入的名字" class="name">
+				<input type="submit" class="submit">
+			</div>
+			</section>
+		</div>
+		<!-- 	<img src="image/web-swipe-tip.png" style="width:20px;height:15px;top:450px;left:150px;" id="array" class="resize"> -->
+			<!-- <div class="swiper-pagination"></div> -->
+	</div>
+</body>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/swiper-3.4.0.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="./js/mui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+var flag=false;
+var index='0';
+var flag1=0;
+var sex ="{$wxuser.sex}" ;
+var avatar="{$wxuser.avatar}";
+var openid ="{$wxuser.openid}";
+if(sex){
+	$('#video1').attr('src','girl1.mp4');
+	$('#video2').attr('src','girl2.mp4');
+	$('.title_pc').attr('src','image/girl1.png');
+}
+$('.submit').on('click',function(){
+	console.log(index);
+	console.log($('.name').val());
+	// $('.top').hide();
+	if(index==0){
+		 mui.alert('运动项目不能为空', '友情提示', function() {
+
+         });
+         flag1 = 1
+	}
+	if(trim($('.name').val())==''){
+		 mui.alert('用户名不能为空', '友情提示', function() {
+
+         });
+         flag1 = 1
+	}
+	if(flag1==0){
+		mui.ajax('http://test.aimeichuang.com/Mobile/Static/post_sport', {
+        data: {
+            type: index,
+            name:$('.name').val(),
+            openid:openid,
+            sex:sex,
+            avatar:avatar 
+        },
+        dataType: 'json',//服务器返回json格式数据
+        type: 'post',//HTTP请求类型
+        timeout: 4000,//超时时间设置为10秒；
+        success: function (data) {
+        	mui.alert();
+        	$('.top').hide();
+
+        },
+        error: function (xhr, type, errorThrown) {
+            //异常处理；
+            console.log(type);
+            mui.alert('服务异常，请稍后再试');
+        }}
+        )
+	}
+});
+$('.tips img').on('click',function(){
+		console.log($(this).index());
+		index = parseInt($(this).index())+1;
+		myswiper.slideTo(4, 400, true);
+	})
+});
+	scaleW=window.innerWidth/320;
+	scaleH=window.innerHeight/480;
+	var resizes=document.querySelectorAll('.resize');
+	for (var i=0; i<resizes.length; i++){
+		resizes[i].style.width=parseInt(resizes[i].style.width)*scaleW+'px';
+		resizes[i].style.height=parseInt(resizes[i].style.height)*scaleH+'px';
+		resizes[i].style.top=parseInt(resizes[i].style.top)*scaleH+'px';
+		resizes[i].style.left=parseInt(resizes[i].style.left)*scaleW+'px';
+	}
+	var scales = document.querySelectorAll('.txt');
+	for(var i=0;i<scales.length;i++){
+		ss=scales[i].style;
+		ss.webkitTransform = ss.msTransform = ss.MsTransform = ss.MozTransform = ss.OTransform = ss.transform = 'translateX('+scales[i].offsetWidth*(scaleW-1)/2+'px)  translateY('+scales[i].offsetHeight*(scaleH-1)/2+'px) scaleX('+scaleW+') scaleY('+scaleH+')';
+	}
+	var myswiper = new Swiper ('.swiper-container',{
+		direction:'vertical',
+		pagination:'.swiper-pagination',
+		mousewheelControl:true,
+		onInit: function(swiper){
+			swiperAnimateCache(swiper);
+			swiperAnimate(swiper);
+		},
+		onSlideChangeEnd: function(swiper){
+			swiperAnimate(swiper);
+			var key=swiper.realIndex;
+			console.log(key);
+			if(key==1){
+				$('#video1')[0].pause();
+			}else if(key==0){
+				$('#video1')[0].play();
+			}else if(key==2){
+				$('#video2')[0].play();
+			}
+			if(key==3){
+				$('.top').show();
+			}
+		}
+	});
+	$('.nan_btn').on('click',function(){
+		$('#video2')[0].play();
+		myswiper.slideTo(2, 400, true);
+	});
+	document.getElementById('video1').addEventListener("ended",function(){
+		myswiper.slideTo(1, 400, true);
+	});
+	document.getElementById('video2').addEventListener("ended",function(){
+		myswiper.slideTo(3, 400, true);
+	});
+	function trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g,"");
+    }
+</script>
+ 
+</html>

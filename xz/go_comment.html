@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>发表评论</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body class="bgf">
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        发表评论
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<div class="go_comment">
+	<p class="go_comment_head"><span>*</span>评分</p>
+	<div class="go_comment_star">
+		<div class="go_comment_star_left">专业描述相符度:</div>
+		<div class="go_comment_star_right comment_one">
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+		</div>
+	</div>
+	<div class="go_comment_star">
+		<div class="go_comment_star_left">课程内容质量:</div>
+		<div class="go_comment_star_right comment_two">
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+		</div>
+	</div>
+	<div class="go_comment_star">
+		<div class="go_comment_star_left">讲师专业度:</div>
+		<div class="go_comment_star_right comment_thr">
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+			<span> <i class="iconfont icon-xing"></i></span>
+		</div>
+	</div>
+	<p class="go_comment_head"><span>*</span>发表点评</p>
+	<textarea name="comment" class="go_comment_detail"></textarea>
+	<div class="go_comment_overed"><span onclick="go_comment()">提交</span></div>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script type="text/javascript">
+$('.comment_thr span').on('click',function(){
+	var index=$(this).index()+1;
+	$('.comment_thr span').removeClass('ac');
+	for(var i=0;i<index;i++){
+		$('.comment_thr span').eq(i).addClass('ac');
+	}
+});
+$('.comment_two span').on('click',function(){
+	var index=$(this).index()+1;
+	$('.comment_two span').removeClass('ac');
+	for(var i=0;i<index;i++){
+		$('.comment_two span').eq(i).addClass('ac');
+	}
+});
+$('.comment_one span').on('click',function(){
+	var index=$(this).index()+1;
+	$('.comment_one span').removeClass('ac');
+	for(var i=0;i<index;i++){
+		$('.comment_one span').eq(i).addClass('ac');
+	}
+});
+function go_comment(){
+	/*专业描述相符度*/
+	var key1=$('.go_comment_star_right').eq(0).find($('.ac')).length;
+	var result=0;
+	if(key1==0){
+		mui.alert('专业描述相符度不能为空', '友情提示', function() {    
+                });
+		result=1;
+	}
+	/*课程内容质量*/
+	var key2=$('.go_comment_star_right').eq(1).find($('.ac')).length;
+	if(result==0&&key2==0){
+		mui.alert('课程内容质量不能为空', '友情提示', function() {    
+                });
+		result=1;
+	}
+	/*讲师专业度:*/
+	var key3=$('.go_comment_star_right').eq(2).find($('.ac')).length;
+	if(result==0&&key3==0){
+		mui.alert('讲师专业度不能为空', '友情提示', function() {    
+                });
+		result=1;
+	}
+	if(result==0&&!trim($('.go_comment_detail')[0].value)){
+		mui.alert('点评不能为空', '友情提示', function() {    
+                });
+		result=1;
+	}
+	console.log('专业描述相符度',key1);
+	console.log('课程内容质量',key2);
+	console.log('讲师专业度',key3);
+		console.log($('.go_comment_detail')[0].value);
+	}
+function trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g,"");
+    }
+</script>
+</html>

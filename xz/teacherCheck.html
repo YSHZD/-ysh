@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/magic_two.css">
+<style >
+.content{position: fixed;top:0.4rem;bottom: 0;left:0;width:100%;background-image:url(images/teacherbg.png);background-size:100% 100%;background-repeat: no-repeat;padding:0 0.2rem;box-sizing: border-box;}
+.bottext{
+	position: absolute;
+	bottom:0.4rem;
+	left:0;
+	width:100%;
+}
+.bottext p{color:#fff;font-size:0.15rem;text-align: center;}
+.checkform{width:100%;background:#eee;margin-top:1.5rem;padding:0.45rem;box-sizing: border-box;}
+.checkform h4{
+	font-size:30px;
+	color:#333;
+	text-align: center;
+	font-weight: 400;
+}
+.wx{display:inline-block;width:100%;height:0.4rem;border:none;outline: none;-webkit-appearance:none;border-radius: 0.05rem;padding: 0 0.15rem;font-size:0.16rem;margin:0;margin-top:0.4rem;box-sizing: border-box;}
+.checksubmit{height:0.4rem;margin-top:0.18rem;text-align: center;line-height: 0.4rem;background:#cf292b;color:#fff;border-radius: 0.05rem;font-size:0.16rem;}
+.resulttop{position: fixed;top:0;left:0;bottom:0;right:0;background-color: rgba(0,0,0,.7);padding:0 0.48rem;box-sizing: border-box;z-index:99;}
+.success{width:100%;background-image: url(images/teacherface.png);background-repeat: no-repeat;background-size: 100% 100%;padding-bottom:1rem;}
+.successimg{width:100%;display:flex;justify-content: center;align-items: center;padding-top:1.5rem;}
+.successimg img{max-width: 1rem;max-height: 1rem;}
+.successinfo{margin-top:0.4rem;}
+.successinfo div{display:flex;flex-direction: row;justify-content: center;align-items: center;font-size:0.15rem;padding:0 0.4rem;margin-top:0.1rem;}
+.successinfo div .sml{width:0.4rem;text-align: right;padding-right:0.1rem;}
+.successinfo div .sm2{flex:1;text-align: center;border:0.01rem solid #999;border-radius:0.05rem;}
+</style>
+</head>
+<body >
+<div class="resulttop">
+  <div class="success">
+  	  <div class="successimg">
+  	  	<img src="images/pp2.png" alt="">
+  	  </div>
+  	  <div class="successinfo">
+  	    <div><span class="sml">姓名:</span><span class="sm2">张三</span></div>
+  	    <div><span class="sml">职位:</span><span class="sm2">督导</span></div>
+  	    <div><span class="sml">工号:</span><span class="sm2">F00001</span></div>
+  	  </div>
+  </div>
+</div>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        名师验证
+    </div>
+    <div class="right">
+       <a href=""><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="content">
+ <div class="checkform">
+ 	<h4>防伪查询系统</h4>
+ 	<input type="text" class="wx" name="wx" placeholder="请输入老师微信号">
+ 	<div class="checksubmit">提交</div>
+ </div>
+ <div class="bottext">
+ <p>激发孩子潜能</p>
+ <p>成就3亿幸福家庭</p>
+</div>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/newBase.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.back').on('click',function(){
+	    window.history.go(-1);
+	});
+})
+// 表单验证
+$('.guidancessub').on('click',function(){
+	var user = $('.user').val();
+	var tel = $('.tel').val();
+	if(!trim(user)){
+		mui.alert('姓名不能为空','温馨提示！')
+		return false;
+	}
+	if(!(/^1[34578]\d{9}$/.test(tel))){
+		mui.alert('手机号码有误，请重填', '友情提示', function() {
+            });
+        return false;
+	}
+	console.log(user);
+	console.log(tel);
+	mui.alert('助教老师将在一个工作日与您电话联系','提交成功')
+});
+function trim(str){
+	return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

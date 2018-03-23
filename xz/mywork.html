@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>我的作业</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        我的作业
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<!-- mywork-->
+<div class="mywork">
+<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <!--数据列表-->
+        <ul class="mui-table-view mui-table-view-chevron">
+            
+        </ul>
+    </div>
+</div>
+</div>
+
+
+<!-- footer -->
+<div class="footer">
+	<div class="left">
+		<p><a href="tel:123456789"/><i class="iconfont icon-bohao"></i></a></p>
+		<p>一键拨号</p>
+	</div>
+	<div class="center">
+		<p><a href="index.html"><i class="iconfont icon-cloud-home"></i></a></p>
+		<p>主页</p>
+	</div>
+	<div class="right">
+		<p><i class="iconfont icon-duanxin"></i></p>
+		<p>售后服务</p>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script type="text/javascript">
+
+	var json=[{'title':'第三期：如何应对孩子做作业拖拉问题','img':'images/mywork1.jpg',"name":"xxx",'time':'2017.66.00',"statusA":[{'status':0,"url":"12343"},{"status":1,"url":"12343"},{"status":2,"url":"12343"},{"status":3,"url":"12343"}]},{'title':'第三期：如何应对孩子做作业拖拉问题','img':'images/mywork2.jpg',"name":"xxx",'time':'2017.66.00',"statusA":[{'status':0,"url":"12343"},{"status":1,"url":"12343"},{"status":2,"url":"12343"},{"status":3,"url":"12343"}]},{'title':'第三期：如何应对孩子做作业拖拉问题','img':'images/mywork3.jpg',"name":"xxx",'time':'2017.66.00',"statusA":[{'status':0,"url":"12343"},{"status":1,"url":"12343"},{"status":2,"url":"12343"},{"status":3,"url":"12343"}]}];
+	var sta=['0','1','2','3'];/*["work_going","work_doing","work_checking","work_done"]*/
+	var sta1=["work_going","work_doing","work_checking","work_done"];
+	function status(key){
+		switch(key){
+			case 0 :{return "待完成";break;}
+			case 1 :{return "做作业";break;}
+			case 2:{return "待批改";break;}
+			case 3:{return "已完成";break;}
+		}
+	}
+	console.log(status(2));
+  go(json);
+	function go(new_order){
+	$('.mui-table-view').html("");
+	 var max = new_order.length;	
+	 mui.init({
+      pullRefresh: {
+         container: '#pullrefresh',
+         down: {
+            callback: pulldownRefresh
+         },
+         up: {
+            contentrefresh: '正在加载...',
+            callback: pullupRefresh
+         }
+      }
+   });console.log(new_order);
+   function pulldownRefresh() {
+      setTimeout(function() { 
+         mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+      }, 1000);
+   }
+   var count = 0;
+   function pullupRefresh() {	
+      setTimeout(function() {      
+         mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+         var table = document.body.querySelector('.mui-table-view');
+         var cells = document.body.querySelectorAll('.mui-table-view-cell');
+         for(var i = cells.length, len =Math.min((i + 2),max); i < len; i++){
+         	var str="";
+         	var li = document.createElement('li');
+            li.className = 'mui-table-view-cell';
+            console.log(new_order[i].statusA.length);
+            var leng=new_order[i].statusA.length;
+            for(var j=0;j<leng;j++){
+            	str+='<span class="'+sta1[new_order[i].statusA[j].status]+'">'+status(new_order[i].statusA[j].status)+'</span>';
+			}
+		    li.innerHTML='<div class="work_box"><a href="working.html">\
+							<p>'+new_order[i].title+'<span class="mui-icon mui-icon-arrowright"></span></p>\
+							<p class="publish">\
+								发布人：'+new_order[i].name+'\
+								<span>'+new_order[i].time+'</span>\
+							</p>\
+							<p class="work_tips">\
+								'+str +'\
+							</p>\
+						</a></div>';
+            table.appendChild(li);
+			}
+      }, 1000);
+   }
+   if (mui.os.plus) {
+      mui.plusReady(function() {
+         setTimeout(function() {
+            mui('#pullrefresh').pullRefresh().pullupLoading();
+         }, 1000);
+
+      });
+   } else {
+      mui.ready(function() {
+         mui('#pullrefresh').pullRefresh().pullupLoading();
+      });
+   }
+   mui(".mui-table-view").on('tap','.mui-table-view-cell a',function(){
+   	var u=this.getAttribute("href");
+	   mui.openWindow({
+	    url: u, 
+	    id:'info'
+	  });	
+
+   });
+   mui(".mui-table-view").on('tap','.mui-table-view-cell .collect_buttom',function(){
+   	var keywords=this.getAttribute("class");var key=keywords.split(" ");
+   	var _this=this;
+   	if(key[1]=='ac'){
+   		var btnArray = ['否', '是'];
+   		mui.confirm('确定取消收藏？', '友情提示', btnArray, function(e) {
+                    if (e.index == 1) {
+                        _this.classList.remove("ac");
+                    } else {
+                        
+                    }
+                });
+   	}else{
+   		this.classList.add("ac");
+   	}
+})
+   	
+}
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>订单详情</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/mui.min.css">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        订单详情
+    </div>
+    <div class="right">
+    </div>
+</div>
+<div class="go_orders go_orders1">
+    <div class="go_orders_contents">
+        <div class="go_orders_contents_left"><img src="images/order.png"></div>
+        <div class="go_orders_contents_center">
+            <p class="go_orders_contents_title">惹我气愤地说受打击了卡很费劲的撒鸿福路口家啊富士达的撒范德萨发第三方</p>
+            <p class="go_orders_contents_time">学习周期：两个月</p>
+        </div>
+        <div class="go_orders_contents_right"><span>¥1998</span></div>
+    </div>
+</div>
+
+    <div class="go_orders_bottom order_info">
+        <p>实付款:<span>¥1998</span></p> 
+    </div>
+    <div class="order_info_time">
+    <p>订单编号:<span>123124</span></p>
+    <p>订单时间:<span>2017.10.23 11:30</span></p>
+    <div class="paying">请选择支付方式</div>
+    <div class="mui-input-row mui-radio">
+        <label class="paying1">微信支付</label>
+        <input name="pay" type="radio" value="0">
+    </div>
+    <div class="mui-input-row mui-radio">
+        <label class="paying2">支付宝支付</label>
+        <input name="pay" type="radio" checked value="1">
+    </div>
+    </div>
+    
+
+<div class="order_info_bottom">
+<div class="order_info_bottom_left">取消订单</div>
+<div class="order_info_bottom_right">确认</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script>
+$('.order_info_bottom_left').on('click',function(){
+     var btnArray = ['否', '是'];
+          mui.confirm('确定取消订单？', '温馨提示', btnArray, function(e) {
+          if (e.index == 1) {
+                console.log('取消订单');
+          } 
+        })
+});
+$('.order_info_bottom_right').on('click',function(){
+     mui.alert('支付成功！');
+});
+</script>
+</html>

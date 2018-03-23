@@ -1,0 +1,54 @@
+﻿@charset "utf-8";
+body{margin:0px; padding:0px;font-family:"华文细黑","微软雅黑",Arial, Helvetica, sans-serif,"宋体";background: #EDEDED;position: relative;/* min-height: 700px; */}
+div,from,li,ul,dl,dd,dt,img,p,span,h3{ margin:0;padding:0;border:0;font-weight:400;font-size:0.16rem;font-family:"华文细黑","微软雅黑",Arial, Helvetica, sans-serif,"宋体";box-sizing: border-box;text-align: center;}
+.header{
+	height:0.44rem;
+	text-align: center;
+	position: fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:9;
+	line-height: 0.44rem;
+	background: #fff;
+	box-shadow: 0 0.01rem 0.01rem #ededed;
+}
+.header .left{width:0.88rem;height:100%;position:absolute;top:0;left:0;}
+.header .center{height:100%;margin:0 0.88rem;}
+.header .center p{width:100%;height:0.44rem;line-height: 0.44rem;display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;color:#333;font-size:0.15rem;}
+.header .right{width:0.88rem;height:100%;position:absolute;top:0;right:0;}
+.left  .iconfont{font-size:0.25rem;color:#14a4ed;position: absolute;top:0;left:0.2rem;}
+.header .header_left{width:0.5rem;}
+.header .header_right{width:0.5rem;}
+.header .header_center{margin: 0 0.55rem;line-height: 0.4rem;}
+.header .header_center input{margin-bottom:0;border-radius:0.3rem;height:0.3rem;font-size:0.14rem;}
+.teacher{background: #fff;margin-top:0.54rem;padding:0 0.15rem;display: flex;align-items: center;flex-direction: column;}
+.teacher .teacher_img{display: flex;align-items: center;justify-content: center;height:1rem;}
+.teacher_img img{width:0.8rem;height:0.8rem;border-radius:50%;}
+.teacher_name{color:#000;font-size:0.15rem;}
+.teacher_infos{width:100%;display: flex;flex-direction: row;margin-top:0.15rem;}
+.teacher_infos div{flex:1;border-right:0.02rem solid #ededed;box-sizing: border-box;}
+.teacher_infos div:nth-of-type(3){border:none;}
+.teacher_infos div p{font-size:0.15rem;color:#333;}
+.teacher_infos div span{font-size:0.15rem;color:#999;}
+.go_comment_star{margin-top:0.25rem;}
+.go_comment_star .icon-xing{font-size:0.25rem;color:#999;margin-right:0.1rem;}
+.go_comment_star .ac .icon-xing{color:#ee3815;}
+.help{color:#999;width:100%;margin:0.15rem auto;}
+.tips{margin-top:0.1rem;background: #fff;padding:0.2rem 0.15rem;display: none;}
+.tips h3{color:#ee3815;font-size:0.18rem;}
+.tips p{font-size:.14rem;color:#666;margin-top:0.1rem;}
+.tip{width:100%;margin-top:0.1rem;}
+.tip span{border:0.01rem solid #999999;display: inline-block;width:30%;box-sizing: border-box;margin:0.05rem;height:0.35rem;line-height: 0.35rem;border-radius: 0.35rem;font-size:0.1rem;color:#999999;}
+.tip .ac{color:#ee3815;border-color: #ee3815;}
+.is_anonymity{background: #fff;border-top:0.01rem solid #ededed;height:0.4rem;display: flex;align-items: center;padding:0 0.15rem;flex-direction: row;}
+.comment img{width:0.25rem;height:0.25rem;}
+.is_anonymity span{font-size:0.15rem;color:#000;margin-left:0.1rem;}
+.comment_input{padding:0.15rem;}
+.input{width:100%;display: inline-block;border:none;height:1rem;border-radius:0.1rem;padding:0.1rem;outline: none;box-sizing: border-box;font-size:0.14rem;}
+.sum{margin-top:0.25rem;padding:0 0.44rem;}
+.sum div{height:0.4rem;background: #ee3815;color:#fff;line-height: 0.4rem;border-radius: 0.05rem;}
+.teacher_infos select{margin:0;padding:0;border:0.02rem solid #ededed;width:70%;}

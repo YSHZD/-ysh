@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" href="./css/mui.min.css">
+
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		html,body{height:100%;background-color: #FF8C3C;}
+		#form{width:100%;height:100%;display:block;}	
+		.swiper-container{width:100%;height:100%;background:#fff;}
+		.swiper-slide{
+			width:100%;
+			height:100%;
+		}
+		img{
+			display:block;
+		}
+		.swiper-pagination-bullet{
+			width:6px;
+			height:6px;
+			background:#fff;
+			opacity:.4;
+		}
+		.swiper-pagination-bullet-active{
+			opacity:1;
+		}
+		@-webkit-keyframes tipmove{
+			0%{bottom:10px;opacity:0;}
+			50%{bottom:15px;opacity:1;} 
+			100%{bottom:20px;opacity:0;}
+		}
+		.ani{position:absolute;}
+		.txt{position:absolute;}
+		#array{
+			position:absolute;z-index:999;
+			-webkit-animation:tipmove 1.5s infinite ease-in-out;
+		}
+		.first{background:url(image/year1.png) no-repeat left top;
+			background-size:100% 100%;position: relative;}
+		.two{background-image:url(image/0.gif);background-repeat: no-repeat;background-position:left top;
+			background-size:100% 100%;position: relative;}
+		.thr{background:url(image/bk.png) no-repeat left top;
+		background-size:100% 100%;position: relative;}
+.swiper-container-list .swiper-slide {
+      text-align: center;
+      font-size: 16px;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+.go{position: absolute;bottom: 20px;left:0;right:0;height:60px;text-align: center;display: flex;justify-content: center;}
+.on{animation-iteration-count:infinite;animation-duration:4s;}
+.go img{width:60%;margin:0 auto;}
+.two_right{position: absolute;right:20px;top:15%;display: flex;flex-direction:column;justify-content: center;}
+.two_right div{margin-top:20px;}
+.two_right div img{width:50px;}
+.two_bottoms{position: absolute;left:20px;bottom:40px;display: flex;flex-direction:column;justify-content: center;height:40px;width: 100px;z-index:9;}
+.two_bottoms img{width:60px;}
+.two_bottom{position: absolute;right:20px;bottom:40px;display: flex;flex-direction:column;justify-content: center;height:40px;width: 100px;z-index:9;}
+.two_bottom img{width:80px;}
+.pogress{position: absolute;left:30px;top:20%;background:url(image/year9.png) no-repeat left top;
+			background-size:100% 100%;width:22px;height:200px;text-align: center;padding:2px;}
+.pogress .progress_tips{display: inline-block;width:20px;height:100px;background: #fe4a48;border-radius: 28px;position: absolute;bottom:0px;left:1px;margin-left:0;}
+.charm{position: absolute;top:15%;left:17px;color:#fff;width:50px;text-align: center;}
+.charm_down{position: absolute;top:57%;left:14px;color:#000;font-size: 16px;}
+.charm .count{color:#fd4744;font-size:18px;text-align: center;}
+.help_info{position: absolute;top:20px;width:100%;height:50px;padding:0 60px;box-sizing: border-box;overflow: hidden;}
+.swiper-container-list{
+	width:100%;height:100%;
+}
+.swiper-container-list .swiper-slide {
+      text-align: center;
+      font-size: 16px;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      position: relative;
+    }
+.swiper-slide .avatar{width:40px;height:40px;border-radius: 50%;margin-top:5px;margin-left:5px;position: absolute;left:5px;top:0;}
+.swiper-wrapper span{margin-left:60px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:14px;color:#333;text-align: left;}
+.rule_top{position: absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.8);padding:20px;box-sizing: border-box;z-index:99;display: none;}
+.rule_top img{width:100%;}
+.rule_close{width:100%;position: absolute;bottom: 8%;left:0;padding:0 100px;box-sizing: border-box;}
+.rule_close img{width:100%;}
+.help_info{position: absolute;top:20px;width:100%;height:50px;padding:0 60px;box-sizing: border-box;overflow: hidden;}
+.rule{position: absolute;top:20px;right:20px;width:40px;z-index:60;}
+.rule img{width:100%;}
+.rule_bg{position: relative;}
+.wx{position: absolute;
+    bottom: 10%;
+    height: 100px;
+    width: 100px!important;
+    left: 50%;
+    margin-left: -50px;}
+.dog{width:35px;position: absolute;top:28%;}
+.dog_here{position: absolute;top:62%;left:0;right:0;height:150px;}
+.dog_here img{width:200px;position: absolute;left:50%;margin-left: -100px}
+.love{position: absolute;top:-38%;right:45%;z-index: 8;}
+.love img{width:50px;}
+.goover{position: absolute;top:0;bottom: 0;left:0;right:0;background-color: rgba(0,0,0,0.6);padding:0 25px;display: none;}
+.good{margin-top:10%;width:100%;height:500px;background:url(image/res.png);background-repeat: no-repeat;background-size: 100% auto;position: relative;padding:0 10%;box-sizing: border-box;}
+.come{margin-top:20%;padding:0 25px;box-sizing: border-box;}
+.come img{width: 100%;}
+.good_txt{width: 200px;height:100px;position: absolute;top:47%;margin-left:-100px;left:50%;}
+.good_txt p{font-size: 16px;text-align: center;color:red;}
+.good_txt strong{font-size: 18px;}
+.button{height:40px;width:100%;margin-top:15px;}
+.button span{display: inline-block;padding:4px 8px;border-radius: 3px;background-color:red;margin:0;color:#fff;}
+.button .copy{float: left;margin-left:5px;}
+.button .goback{float: right;margin-right:5px;}
+.one5{z-index:8;}
+.wxs{display: flex;justify-content: center;align-items: center;}
+.wxs img{width:120px;}
+</style>
+</head>
+<body>
+<div class="swiper-container swiper-no-swiping">
+	<div class="swiper-wrapper">
+		<!-- slide0 -->
+		<section class="swiper-slide first"  class="ani resize" swiper-animate-effect="flipInY" swiper-animate-duration="0.5s">
+			<div class="go">
+				<img src="image/year2.png" alt="" class="animated tada on" >
+			</div>
+		
+		</section>
+
+		<!-- slide1 -->
+		<section class="swiper-slide two" >
+			<!-- s规则 -->
+			<div class="rule"><img src="image/rul.png" alt="" class="animated flash on"></div>
+				<div class="rule_top">
+					<div class="rule_bg"><img src="image/rus.png" alt=""><img src="image/wx.jpg" alt="" class="wx"></div>
+					<!-- <div class="rule_close"><img src="image/rule_done.png" alt="" ></div> -->
+				</div>
+			<!-- e规则 -->	
+			<div class="charm"><h3 class="count">0</h3></div>
+			<div class="pogress">
+				<span class="progress_tips"></span>
+			</div>
+			<div class="charm_down">体力值</div>
+			<div class="two_right">
+				<div class="one1"><img src="image/year4.png" alt=""></div>
+				<div class="one2"><img src="image/year5.png" alt=""></div>
+				<div class="one3"><img src="image/year6.png" alt=""></div>
+				<div class="one4"><img src="image/year7.png" alt=""></div>
+				<div class="one5"><img src="image/yr3.png"   class="animated zoomIn on" alt=""></div>
+			</div>
+			<div class="two_bottoms">
+				<a href="new3.html"><img src="image/yr2.png" alt="" class="animated tada on"></a>
+			</div>
+			<div class="two_bottom">
+				<img src="image/year8.png" alt="">
+			</div>
+			<!-- <div class="dog_here">
+				<div class="love"><img src="image/xin.png" alt="" class="animated zoomIn on"></div>
+				<img src="image/dogs.png" class="grow" alt="">
+			</div> -->
+			<!-- 全部中奖 -->
+			<div class="help_info">
+		        <div class="swiper-container-list">
+		            <div class="swiper-wrapper">
+		                <div class="swiper-slide">
+		                    <img src="image/1.jpg" alt="" class="avatar">
+		                    <span>xxx刚获取红包</span>
+		                </div>
+		                <div class="swiper-slide">
+		                     <img src="image/1.jpg" alt="" class="avatar">
+		                    <span>xxx刚获取红包</span>
+		                </div>
+		            </div>
+		        </div>
+			</div>
+		</section>
+		<section class="swiper-slide thr" >
+			<img src="image/dog.gif" class="dog">
+			<div class="goover">
+			</div>
+		</section>		
+	</div>
+</div>
+</body>
+<script src="js/swiper.animate1.0.2.min.js"></script>
+<script src="js/swiper-3.4.0.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/clipboard.min.js"></script>
+<script type="text/javascript">
+/*第一次进入页面 体力值*/
+mui.post('',{	
+	},function (data) {
+    if (data.sts==1){
+    	counts(parseInt(num));
+    } else {
+        mui.alert(data.msg,'温馨提示');
+    }
+},'json');
+/*红包雨入口*/
+$('.one5').on('click',function(){
+		window.location.href="new2.html";
+        mui.post('',{	
+		},function (data) {
+        if (data.sts==1){
+        	window.location.href="new2.html";
+        } else {
+            mui.alert(data.msg,'温馨提示');
+        }
+    },'json');
+    $('.two').css({'background-image':'url(image/5.gif)'});
+});
+/*红包码*/
+var goodCode = 'ysh';
+
+var clipboard = new Clipboard('.copy');
+    clipboard.on('success', function(e) {
+        mui.alert('复制成功，请到兴智教育服务号对话框即可兑奖','温馨提示');
+    });
+    clipboard.on('error', function(e) {
+        mui.alert(e);
+    });
+
+/*点击右边四个按钮*/
+$('.one1').on('click',function(){counts(parseInt($('.count').html())+10);
+	$('.two').css({'background-image':'url(image/1.gif)'});
+	 mui.post('',{	
+		},function (data) {
+        if (data.sts==1){
+        	counts(parseInt($('.count').html())+10);
+        } else {
+            mui.alert(data.msg,'温馨提示');
+        }
+    },'json');
+	
+});
+$('.one2').on('click',function(){counts(parseInt($('.count').html())+10);
+	$('.two').css({'background-image':'url(image/2.gif)'});
+	mui.post('',{	
+		},function (data) {
+        if (data.sts==1){
+        	counts(parseInt($('.count').html())+10);
+        } else {
+            mui.alert(data.msg,'温馨提示');
+        }
+    },'json');
+});
+$('.one3').on('click',function(){counts(parseInt($('.count').html())+10);
+	$('.two').css({'background-image':'url(image/3.gif)'});
+	mui.post('',{	
+		},function (data) {
+        if (data.sts==1){
+        	counts(parseInt($('.count').html())+10);
+        } else {
+            mui.alert(data.msg,'温馨提示');
+        }
+    },'json');
+});
+$('.one4').on('click',function(){counts(parseInt($('.count').html())+10);
+	$('.two').css({'background-image':'url(image/4.gif)'});
+	mui.post('',{	
+		},function (data) {
+        if (data.sts==1){
+        	counts(parseInt($('.count').html())+10);
+        } else {
+            mui.alert(data.msg,'温馨提示');
+        }
+    },'json');
+});
+	scaleW=window.innerWidth/320;
+	scaleH=window.innerHeight/480;
+	var resizes=document.querySelectorAll('.resize');
+	for (var i=0; i<resizes.length; i++){
+		resizes[i].style.width=parseInt(resizes[i].style.width)*scaleW+'px';
+		resizes[i].style.height=parseInt(resizes[i].style.height)*scaleH+'px';
+		resizes[i].style.top=parseInt(resizes[i].style.top)*scaleH+'px';
+		resizes[i].style.left=parseInt(resizes[i].style.left)*scaleW+'px';
+	}
+	var scales = document.querySelectorAll('.txt');
+	for(var i=0;i<scales.length;i++){
+		ss=scales[i].style;
+		ss.webkitTransform = ss.msTransform = ss.MsTransform = ss.MozTransform = ss.OTransform = ss.transform = 'translateX('+scales[i].offsetWidth*(scaleW-1)/2+'px)  translateY('+scales[i].offsetHeight*(scaleH-1)/2+'px) scaleX('+scaleW+') scaleY('+scaleH+')';
+	}
+	var myswiper = new Swiper ('.swiper-container',{
+		direction:'vertical',
+		pagination:'.swiper-pagination',
+		mousewheelControl:true,
+		onInit: function(swiper){
+			swiperAnimateCache(swiper);
+			swiperAnimate(swiper);
+		},
+		onSlideChangeEnd: function(swiper){
+			swiperAnimate(swiper);
+			//myswiper.slideTo((key+1), 1000, false);
+		},
+	});
+	var myswiper2 = new Swiper ('.swiper-container-list',{
+		direction:'vertical',
+		loop: true,
+		autoplay:1000
+	});
+	$('.go').on('click',function(){
+		myswiper.unlockSwipes()
+		myswiper.slideTo(1, 1000, false);
+		myswiper.lockSwipes();
+	});
+	myswiper.lockSwipes();
+/*	myswiper.unlockSwipes()
+	myswiper.slideTo(1, 1000, false);
+	myswiper.lockSwipes();*/
+	function counts(num){
+		if(num>=100){num=100;mui.alert('体力值已满！','温馨提示');}
+		$('.count').html(num);
+		$('.pogress span').css('height',200*num/100);
+	}
+	counts(parseInt($('.count').html()));
+
+	$('.rule').on('click',function(){
+		$('.rule_top').slideDown(300);
+	});
+	$('.rule_top').on('click',function(){
+		$('.rule_top').fadeOut(200);
+	});
+	/*遛狗开始 事件触发*/
+	
+	$('.two_bottom').on('click',function(){
+		if(parseInt($('.count').html())>=10){$('.two').css({'background-image':'url(image/5.gif)'});
+			var key = Math.floor(Math.random()*2);
+			console.log(key);
+			myswiper.unlockSwipes();
+			myswiper.slideTo(2, 1000, false);
+			myswiper.lockSwipes();
+			/*key 1 为红包*/
+			setTimeout(function(){going(key);},600);
+			counts(parseInt($('.count').html())-10);
+
+
+				mui.post('',{	
+					},function (data) {
+			        if (data.sts==1){
+			        	var key = Math.floor(Math.random()*6);
+						console.log(key);
+						myswiper.unlockSwipes();
+						myswiper.slideTo(2, 1000, false);
+						myswiper.lockSwipes();
+						/*key 0 1 2 为红包*/
+						setTimeout(function(){going(key);},600);
+						counts(parseInt($('.count').html())-10);
+			        } else {
+			            mui.alert(data.msg,'温馨提示');
+			        }
+			    },'json');
+		}else{
+			mui.alert('体力值不足了...','温馨提示')
+		}
+		
+	});
+	
+	
+	
+	function num(){
+		return Math.floor(Math.random()*12)+1;
+	}
+	// $('body').on('click',function(){
+	// 	$('.dog').css({'top':'28%','left':0});
+	// 	var key = Math.floor(Math.random()*6);
+	// 	console.log(key);
+	// 	going(3);
+	// })
+	// 遛狗方法 1 红包  0字体
+	function going(index){
+		var key=3;
+		if(index==1){
+			key=Math.floor(Math.random()*3);
+		}else if(index==0){
+			key=Math.floor(Math.random()*3)+3;
+		}
+		// key=0 红包
+		if(key==0){
+			$('.dog').animate({left: '15%'}, 400,"linear",function(){
+				$('.dog').animate({top: '48%'}, 900,"linear",function(){
+					$('.dog').animate({left: '72%'}, 1100,"linear",function(){
+						$('.dog').animate({top: '66%'}, 800,"linear",function(){
+							$('.dog').animate({left: '87%'}, 400,"linear",function(){
+								$('.goover').show();
+								$('.goover').html('<div class="good"><div class="good_txt"><p>红包码：<strong>'+goodCode+'</strong></p><p>复制到兴智教育服务号对话框即可兑奖</p><div class="button"><span class="copy" data-clipboard-text="'+goodCode+'">复制</span><span class="goback">返回</span></div><div class="wxs"><img src="image/wx.jpg" alt="" ></div></div></div>');
+								$('.goback').on('click',function(){
+									myswiper.unlockSwipes();
+									myswiper.slideTo(1, 1000, false);
+									myswiper.lockSwipes();
+									setTimeout(function(){
+										$('.dog').css({'top':'28%','left':0});
+									},400);
+									$('.goover').empty();
+									$('.goover').hide();
+								});
+							})
+						})
+					})
+				})
+			});
+		}
+		// key=1 红包
+		if(key==1){
+			$('.dog').animate({left: '15%'}, 400,"linear",function(){
+				$('.dog').animate({top: '10px'}, 1400,"linear",function(){
+					$('.goover').show();
+					$('.goover').html('<div class="good"><div class="good_txt"><p>红包码：<strong>'+goodCode+'</strong></p><p>复制到兴智教育服务号对话框即可兑奖</p><div class="button"><span class="copy" data-clipboard-text="'+goodCode+'">复制</span><span class="goback">返回</span></div><div class="wxs"><img src="image/wx.jpg" alt="" ></div></div></div>');
+					$('.goback').on('click',function(){
+						myswiper.unlockSwipes();
+						myswiper.slideTo(1, 1000, false);
+						myswiper.lockSwipes();
+						setTimeout(function(){
+							$('.dog').css({'top':'28%','left':0});
+						},400);
+						$('.goover').empty();
+						$('.goover').hide();
+					});
+				})
+			});
+		}
+		// key=2 红包
+		if(key==2){
+			$('.dog').animate({left: '15%'}, 400,"linear",function(){
+				$('.dog').animate({top: '48%'}, 900,"linear",function(){
+					$('.dog').animate({left: '36%'}, 600,"linear",function(){
+						$('.dog').animate({top: '65%'}, 800,"linear",function(){
+							$('.dog').animate({left: '15%'}, 700,"linear",function(){
+								$('.dog').animate({top: '95%'}, 1300,"linear",function(){
+									$('.goover').show();
+									$('.goover').html('<div class="good"><div class="good_txt"><p>红包码：<strong>'+goodCode+'</strong></p><p>复制到兴智教育服务号对话框即可兑奖</p><div class="button"><span class="copy" data-clipboard-text="'+goodCode+'">复制</span><span class="goback">返回</span></div><div class="wxs"><img src="image/wx.jpg" alt="" ></div></div></div>');
+									$('.goback').on('click',function(){
+										myswiper.unlockSwipes();
+										myswiper.slideTo(1, 1000, false);
+										myswiper.lockSwipes();
+										setTimeout(function(){
+											$('.dog').css({'top':'28%','left':0});
+										},400);
+										$('.goover').empty();
+										$('.goover').hide();
+									});
+								})
+							})
+						})
+					})
+				})
+			});
+		}
+		// key=3 字
+		if(key==3){
+			$('.dog').animate({left: '15%'}, 400,"linear",function(){
+				$('.dog').animate({top: '48%'}, 900,"linear",function(){
+					$('.dog').animate({left: '70%'}, 1000,"linear",function(){
+						$('.goover').show();
+						$('.goover').html('<div class="come"><img src="image/m'+num()+'.png" alt=""></div>');
+						$('.come').on('click',function(){
+							$('.goover').empty();
+							$('.goover').hide();
+							setTimeout(function(){
+								myswiper.unlockSwipes();
+								myswiper.slideTo(1, 1000, false);
+								myswiper.lockSwipes();
+								setTimeout(function(){
+									$('.dog').css({'top':'28%','left':0});
+								},400);
+							},400)
+						})
+						
+					})
+				})
+			});
+		}
+		// key=4 字
+		if(key==4){
+			$('.dog').animate({left: '15%'}, 400,"linear",function(){
+				$('.dog').animate({top: '48%'}, 900,"linear",function(){
+					$('.dog').animate({left: '72%'}, 1000,"linear",function(){
+						$('.dog').animate({top: '90%'}, 1600,"linear",function(){
+							$('.goover').show();
+							$('.goover').html('<div class="come"><img src="image/m'+num()+'.png" alt=""></div>');
+							$('.come').on('click',function(){
+								$('.goover').empty();
+								$('.goover').hide();
+								setTimeout(function(){
+									myswiper.unlockSwipes();
+									myswiper.slideTo(1, 1000, false);
+									myswiper.lockSwipes();
+									setTimeout(function(){
+										$('.dog').css({'top':'28%','left':0});
+									},400);
+								},400)
+							})
+						})
+					})
+				})
+			});
+		}
+		// key=5 字
+		if(key==5){
+			$('.dog').animate({left: '15%'}, 400,"linear",function(){
+				$('.dog').animate({top: '48%'}, 900,"linear",function(){
+					$('.dog').animate({left: '72%'}, 1200,"linear",function(){
+						$('.dog').animate({top: '55%'}, 600,"linear",function(){
+							$('.goover').show();
+							$('.goover').html('<div class="come"><img src="image/m'+num()+'.png" alt=""></div>');
+							$('.come').on('click',function(){
+								$('.goover').empty();
+								$('.goover').hide();
+								setTimeout(function(){
+									myswiper.unlockSwipes();
+									myswiper.slideTo(1, 1000, false);
+									myswiper.lockSwipes();
+									setTimeout(function(){
+										$('.dog').css({'top':'28%','left':0});
+									},400);
+								},400)
+							})
+						})
+					})
+				})
+			});
+		}	
+	}
+	
+	
+</script>
+
+</html>

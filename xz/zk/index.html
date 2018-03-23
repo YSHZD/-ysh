@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>评论</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./css/mui.picker.min.css" />
+ <link rel="stylesheet" href="css/tinyImgUpload.css">
+<style >
+html,body{padding:0;margin:0;margin:900px;margin:0 auto;background: #fff;}
+.content{width:100%;height:700px;background-image: url(./images/bg1.jpg);
+  background-size:100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;}
+  .content form{padding:35% 15px;}
+  p{color:#68aa8b;font-size:16px;height:40px;line-height: 40px;font-size:18px;margin-bottom:0;}
+  .answer_pt {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    text-align: left;
+}
+.answer_pt{width: 100%;height:auto;margin-top:20px;text-align: left;}
+.work_answer input[type="submit"]{width:100%;height:44px;color:#fff;background:#1eac5e;line-height: 44px;font-size:14px;margin-top:16px;border:none;outline: none;border-radius:5px; }
+.a-upload {
+    height: 80px;
+    width:80px;
+    line-height: 80px;
+    background-image: url(./images/add.png);
+  background-size:100% 100%;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    border: 1px solid #999;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    height: 80px;
+    width:80px;
+    line-height: 80px;
+    background-image: url(./images/add.png);
+    text-decoration: none
+}
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+    line-height: 21px;font-size:14px;
+    width: 200px;
+    padding: 0;
+    -webkit-user-select: text;
+    /*border: 1px solid rgba(0,0,0,.2);*/
+    border-radius: 3px;
+    outline: 0;
+    background-color: #fff;
+    -webkit-appearance: none;
+    margin-left:5px;
+}
+textarea{width:100%;height:150px;margin:0;}
+.right{float:right;}
+ .kb{display: inline-block;width:36px;}
+ #showUserPicker{margin-left:10px;}
+ .pt_box{width:80px;height:80px;position: relative;float:left;margin-right: 5px;}
+  .pt_box .mui-icon{position: absolute;top:0;right: 0;font-size:20px;}
+  .pt_box img{width:100%;height:100%;}
+  #upload{margin:10px auto;}
+  .content input,.content select{border:none;background: none;font-size:16px;text-indent:5px;}
+  .content textarea{border:none;background:#ededed;font-size:16px;color:#68aa8b;text-align:center;margin-top:20px;margin-bottom: 20px;}
+  .weui_cell_hd{color:#68aa8b;;}
+ .weui_select_after {
+    padding-left: 15px;
+}
+.weui_cell_select {
+    padding: 0;
+}
+.weui_cell {
+    padding: 10px 15px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.weui_cell {
+    position: relative;
+}
+.weui_select_after {
+    padding-left: 15px;
+}
+.weui_cell_select {
+    padding: 0;
+}
+.weui_cell {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.weui_cell {
+    position: relative;
+}
+.weui_select_after .weui_select {
+    padding-left: 0;
+}
+.weui_cell_select .weui_select {
+    padding-right: 30px;
+}
+.weui_cell_select .weui_select {
+    padding-right: 30px;
+}
+.weui_select {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    font-size: inherit;
+    height: 44px;
+    line-height: 44px;
+    position: relative;
+    z-index: 1;
+    padding-left: 15px;
+    color:#808080;
+}
+.weui_select {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    font-size: inherit;
+    height: 44px;
+    position: relative;
+    z-index: 1;
+    padding-left: 15px;
+}
+.weui_cell_select .weui_cell_bd:after {
+    content: " ";
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #c8c8cd;
+    border-style: solid;
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
+}
+.weui_cell_select .weui_cell_bd:after {
+    content: " ";
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 6px;
+    width: 6px;
+    border-width: 2px 2px 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    position: relative;
+    top: -2px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -3px;
+}
+.content select{margin-bottom: 0}
+.pc_num{float: right;color:#808080;}
+.content #submit {
+    color: #fff;
+    border: 1px solid #68aa8b;
+    background-color: #68aa8b;width:280px;top:20px;left:50%;margin-left:-140px;}
+</style>
+</head>
+<body >
+<div class="content">
+    <form method="" action="" onsubmit="return check();">
+        <div class="weui_cell weui_cell_select weui_select_after">
+                <div class="weui_cell_hd">
+                    请选择美肤中心：
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="select2" id="zx">
+
+            <option value="" selected="true" disabled="true">请点击选择</option> 
+                        <option value="1">1.创美健康美肤中心</option>
+                        <option value="2">2.许欣健康美肤中心</option>
+                        <option value="3">3.夏冰健康美肤中心</option>
+            <option value="4">4.双双健康美肤中心</option>
+            <option value="5">5.曹敏健康美肤中心</option>
+            <option value="6">6.唐棠健康美肤中心</option>
+            <option value="7">7.林雪健康美肤中心</option>
+            <option value="8">8.佳丽健康美肤中心</option>
+            <option value="9">9.金牌美肤指导中心</option>
+            <option value="10">10.女人花健康美肤中心</option>
+            
+                    </select>
+                </div>
+            </div>
+        <input type="hidden" value="" name="teacher" id="result">
+        <p>联系电话:<input type="number" name="tel"  placeholder="请输入联系电话" class="tel" maxlength="11" /></p>
+        <p>姓名:<input type="text" name="user"  placeholder="请输入姓名" class="user"/></p>
+        <textarea name="content" class="txt" placeholder="请输入反馈的情况" cols="20" rows="5"></textarea>
+        <p>图片上传<span class="pc_num">0/0</span></p>
+        <div id="upload">
+        </div>
+        <input type="submit" value="确定" class="submit" id="submit">
+    </form>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/mui.picker.min.js"></script>
+<script src="js/tinyImgUpload.js"></script>
+<script type="text/javascript">
+ document.documentElement.style.fontSize = document.documentElement.clientWidth*0.1+'px';
+var options = {
+    path: '/',
+    onSuccess: function (res) {
+        console.log(res);
+    },
+    onFailure: function (res) {
+        console.log(res);
+    }
+}
+
+var upload = tinyImgUpload('#upload', options);
+document.getElementsByClassName('submit')[0].onclick = function (e) {
+    upload();
+}
+function check(){
+  var teacher=$('#result').val();
+  var tel=$('.tel').val();
+  var user=$('.user').val();
+  var txt=$('.txt').val();
+  if(trim(teacher)==''){
+      mui.alert('美护中心不能为空', '友情提示', function() {    
+          });
+      return false;
+  }
+  if(!(/^1[34578]\d{9}$/.test(tel))){ 
+        mui.alert('手机号码有误，请重填', '友情提示', function() {    
+                });  
+        return false; 
+    }
+  if(trim(user)==''){
+        mui.alert('用户名不能为空', '友情提示', function() {    
+            });
+        return false;
+    }
+  if(trim(txt)==''){
+        mui.alert('反馈不能为空', '友情提示', function() {    
+            });
+        return false;
+    }
+console.log('teacher'+teacher);
+console.log('tel'+tel);
+console.log('user'+user)
+console.log('txt'+txt);
+}
+function trim(str){
+   return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+  
+
+</script>
+</html>

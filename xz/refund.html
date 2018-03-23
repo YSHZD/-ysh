@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>退款</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link href="./css/mui.min.css" type="text/css" rel="stylesheet">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        退款
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<div style="height:44px"></div>
+<div class="refund_content"> 
+        <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <!--数据列表-->
+                <ul class="mui-table-view mui-table-view-chevron">
+                    
+                </ul>
+            </div>
+        </div>
+</div>  
+</div>
+ 
+<div class="kong"></div>
+<!-- footer -->
+<div class="footer">
+	<div class="left">
+		<p><a href="tel:12345"/><i class="iconfont icon-bohao"></i></a></p>
+		<p>一键拨号</p>
+	</div>
+	<div class="center">
+		<p><a href="index.html"><i class="iconfont icon-cloud-home"></i></a></p>
+		<p>主页</p>
+	</div>
+	<div class="right">
+		<p><i class="iconfont icon-duanxin"></i></p>
+		<p>售后服务</p>
+	</div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script type="text/javascript">
+    var json=[{"order_id":12321,"img":"images/g2.jpg",'title':'xxxxxxxxxx','price':2000,'num':2,'url':'www.baidu.com','status':0},{"order_id":12321,"img":"images/g2.jpg",'title':'xxxxxxxxxx','price':2000,'num':2,'url':'www.baidu.com','status':1},{"order_id":12321,"img":"images/g2.jpg",'title':'xxxxxxxxxx','price':2000,'num':2,'url':'www.baidu.com','status':2}];
+    var sta=['待退款','退款中','退款完成'];/*[0,1,2]*/
+
+  go(json);
+    function go(new_order){
+    $('.mui-table-view').html("");
+     var max = new_order.length;    
+     mui.init({
+      pullRefresh: {
+         container: '#pullrefresh',
+         down: {
+            callback: pulldownRefresh
+         },
+         up: {
+            contentrefresh: '正在加载...',
+            callback: pullupRefresh
+         }
+      }
+   });console.log(new_order);
+   function pulldownRefresh() {
+      setTimeout(function() { 
+         mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+      }, 1000);
+   }
+   var count = 0;
+   function pullupRefresh() {   
+      setTimeout(function() {      
+         mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+         var table = document.body.querySelector('.mui-table-view');
+         var cells = document.body.querySelectorAll('.mui-table-view-cell');
+         for(var i = cells.length, len =Math.min((i + 2),max); i < len; i++){
+            var li = document.createElement('li');
+            li.className = 'mui-table-view-cell';
+              li.innerHTML ='<div class="order-box">\
+                                <div class="order-id">\
+                                    <div class="id_left">订单编号：'+new_order[i].order_id+'</div>\
+                                    <div class="id_right"></div>\
+                                </div>\
+                                <div class="order-content">\
+                                    <a href="'+new_order[i].url+'"><div class="order-content-left">\
+                                        <img src="'+new_order[i].img+'"/>\
+                                    </div></a>\
+                                    <div class="order-content-center">\
+                                        <div>\
+                                            <h3>'+new_order[i].title+'</h3>\
+                                            <span>￥'+new_order[i].price+'x'+new_order[i].num+'</span>\
+                                            <span class="refund_result'+(sta[new_order[i].status]=='退款完成'?' refund_done':'')+'"><i class="iconfont icon-daifukuan"></i>'+sta[new_order[i].status]+'</span>\
+                                        </div>\
+                                    </div>\
+                                    <div class="order-content-right refund">\
+                                        退款金额：￥'+(new_order[i].price*new_order[i].num).toFixed(2)+'\
+                                    </div>\
+                                </div>\
+                            </div>';
+            table.appendChild(li)
+            }
+      }, 1000);
+   }
+   mui(".mui-table-view").on('tap','.mui-table-view-cell a',function(){console.log(this);
+    var u=this.getAttribute("href");console.log(u);
+     mui.openWindow({
+      url: u
+    });
+   });
+   if (mui.os.plus) {
+      mui.plusReady(function() {
+         setTimeout(function() {
+            mui('#pullrefresh').pullRefresh().pullupLoading();
+         }, 1000);
+
+      });
+   } else {
+      mui.ready(function() {
+         mui('#pullrefresh').pullRefresh().pullupLoading();
+      });
+   }
+    
+}
+</script>
+</html>

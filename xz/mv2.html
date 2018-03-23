@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ceshi2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+    html,body{overflow: inherit!important;}
+    #h5-player{height:300px;width:100%;position: relative;}
+    #setting{width:100%;height:60px;position: relative;margin-top:20px;}
+    #barrage {
+    background-color: #eee;
+    height: 200px;
+    position: relative;
+    }
+    .form-inline {
+        padding: 10px;
+    }
+    .form-inline > label,
+    .form-inline > button {
+        margin-left: 5px;
+    }
+    .bjy-barrage {
+        background-color: #FFF;
+        color: blue;
+        padding: 2px 4px;
+    }
+    .hidden{display: block;}
+    .right{width:100%;height:300px;}
+    .left{width:100%;height:300px;}
+    .footer{width:100%;height:300px;}
+    #user-list{height:300px;}
+    #h5-player{height:260px;width:100%;}
+    .list-section{width:100%;height:340px;}
+    .tab{height:40px;width:100%;border:1px solid #ededed;}
+    .tab span{display: inline-block;width:50%;height:40px;text-align: center;float:left;line-height: 40px;}
+    .tab .ac{color:#14a4ed;}
+    .tab-item{width:100%;height:400px;}
+    #list-box{width:100%;height:340px!important;margin-left:0!important;}
+    #user-list,.message-box,#message-list{width:100%;height:200px!important;position: relative;}
+     #user-list{display: none;}
+     #message-sender .bjy-message-sender .bjy-emoji-layer {
+        position: absolute;
+        right: 21%;
+        bottom: 89px;
+        margin-bottom: 8px;
+        padding: 3px;
+        z-index:99;
+    }
+    .bjy-emoji-layer{display: none;}
+    .footer{width:100%;height:60px;background: yellow;position: relative;}
+    .add_love{position: absolute;bottom:0;right:15px;padding:2px 5px;border-radius: 3px;background:#ededed;font-size:12px;}
+    #whiteboard{width:100%;height:200px;position: relative;margin-top:40px;}
+    #barrage{height:200px;position:absolute;top:30px;left:0;width:100%;background:transparent;}
+    #btn-play{position: absolute;bottom:0;right:0;display: none;}
+    .hidden{display: block;}
+    .icon-chevron-left,.icon-chevron-right{display: inline-block;padding:4px 6px;background: #14a4ed;color:#fff;border-radius: 2px;}
+    .whiteboard-tool{text-align: center}
+    #input-page{width:100px;display: inline-block;height:30px;margin:5px auto;margin-left:20px;}
+    #go{width:40px;display: inline-block;height:30px;margin:5px auto;}
+    </style>
+</head>
+        <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/classroom/classroom.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/classroom/classroom.js"></script>
+
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/loading/live/Loading.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/loading/live/Loading.js"></script>
+
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/user/userList/UserList.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/user/userList/UserList.js"></script>
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/message/messageList/MessageList.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/message/messageList/MessageList.js"></script>
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/message/messageSender/MessageSender.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/message/messageSender/MessageSender.js"></script>
+      <!--   <script src="//www.baijiacloud.com/js-sdk/latest/player/player.js"></script>
+        <script src="//www.baijiacloud.com/js-sdk/latest/player/core/Player.js"></script> -->
+        <!-- <script src="//www.baijiacloud.com/js-sdk/latest/player/extension/html.js"></script> -->
+        <script src="http://live-cdn.baijiacloud.com/js-sdk/0.0.488/player/player.js"></script>
+        <script src="http://live-cdn.baijiacloud.com/js-sdk/0.0.488/player/core/Player.js"></script>
+        <script src="http://live-cdn.baijiacloud.com/js-sdk/0.0.488/player/extension/html.js"></script>
+<!-- 
+        <script src="//www.baijiacloud.com/js-sdk/latest/player/extension/flash.js"></script> -->
+        <script src="//www.baijiacloud.com/js-sdk/latest/barrage/Barrage.js"></script>
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/setting/menu/menu.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/setting/menu/menu.js"></script>
+        <script src="//www.baijiacloud.com/js-sdk/latest/user/userSpeak.js"></script>
+        <link rel="stylesheet" href="//www.baijiacloud.com/js-sdk/latest/whiteboard/whiteboard.css">
+        <script src="//www.baijiacloud.com/js-sdk/latest/whiteboard/whiteboard.js"></script>
+        <script src="//www.baijiacloud.com/js-sdk/latest/user/userPublish.js"></script>
+        <script src="//www.baijiacloud.com/js-sdk/latest/user/userStatus.js"></script>
+        <link rel="stylesheet" href="css/classroom_01429412a5.css">
+        <link rel="stylesheet" href="https://live-cdn.baijiayun.com/js-sdk/0.0.482/emotion/EmotionList.css">
+        
+<body>
+    <div id="loading">
+            <div class="placeholder"></div>
+        </div>
+
+
+                
+                <div id="h5-player">
+                    
+                    <!-- <button id="btn-play" class="btn btn-secondary hidden">
+                        播放
+                    </button>   -->              
+                </div>
+                <!-- <div id="barrage"></div> -->
+            <div class="list-section">
+                <div class="list">
+                    <div class="tab">
+                        <span id="btn-user-list" class="tab-list ac">消息</span>
+                        <span id="btn-message-list" class="tab-list tab-select">文档</span>
+                    </div>
+                    <div class="tab-item">
+                        <div id="list-box" class="tab-content">
+                            <div class="message-box">
+                                <div id="message-list" >
+                                    <div class="placeholder"></div>
+                                </div>
+                                <div id="message-sender">
+                                    <div class="placeholder"></div>
+                                </div>
+                                <div class="barrage-tool">
+                                    <label style="color: white">
+                                        当前状态：<small class="status badge badge-pill badge-default"></small>
+                                    </label>
+
+                                    <button id="btn-open">
+                                        开启弹幕
+                                    </button>
+
+                                    <button id="btn-close">
+                                        关闭弹幕
+                                    </button>
+                                </div>
+                            </div>
+                             <div id="user-list">
+                                <!-- <div class="placeholder"></div> -->
+                                <div id="whiteboard">
+                                    <div class="placeholder"></div>
+                                </div>
+                               
+                                <div class="whiteboard-tool">
+                                    <span class="icon-chevron-left hasPage"><</span>
+                                    <span class="current-page">4</span>
+                                    <span class="split-line">/</span>
+                                    <span class="total-page">10</span>
+                                    <span class="icon-chevron-right">></span>
+                                    <input type="text" name="page" id="input-page" placeholder="回车键搜索"><button id="go">GO</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+
+           <!--  <div class="footer">
+                <div id="setting">
+                    <div id="menu-speaker"></div>
+                    <div id="menu-mic"></div>
+                    <div id="menu-camera"></div>
+                    <div id="menu-speak-apply"></div>
+                </div>
+            </div> -->
+            
+        <script src="js/ceshi2.js"></script>
+        <script>
+        $(function(){
+            $('.add_love').on('click',function(){
+                $('.bjy-emoji-layer').toggle();
+                if($('.add_love').html()=="添加表情"){
+                    $('.add_love').html('关闭表情');
+                }else{
+                     $('.add_love').html('添加表情');
+                }
+            });
+            $('#btn-user-list').on('click',function(){
+                $(this).siblings().removeClass('ac').end().addClass('ac');
+                $('#user-list').hide();
+                $('.message-box').show();
+                
+            });
+            $('#btn-message-list').on('click',function(){
+                $(this).siblings().removeClass('ac').end().addClass('ac');
+                $('.message-box').hide();
+                $('#user-list').show();
+            });
+        })
+        </script>
+</body>
+</html>

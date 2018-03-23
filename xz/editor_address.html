@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>编辑地址</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/LArea.min.css">
+<link href="./css/base.css" type="text/css" rel="stylesheet">
+<style >
+
+</style>
+</head>
+<body class="address_bg">
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        编辑地址
+    </div>
+    <div class="right">
+       
+    </div>
+</div>
+<!-- add address-->
+<div class="new_address">
+<form action="" method="" onsubmit="return Check();">
+	<div class="new_address_box">
+		<div class="new_address_left">
+			收货人姓名
+		</div>
+		<div class="new_address_right">
+			<input type="text" name="username" placeholder="旺盛达多" autofocus="autofocus" />
+		</div>
+	</div>
+	<div class="new_address_box">
+		<div class="new_address_left">
+			手机号码
+		</div>
+		<div class="new_address_right">
+			<input type="number" name="usertel" placeholder="1534564561" />
+		</div>
+	</div>
+	<div class="new_address_box">
+		<div class="new_address_left">
+			省市区
+		</div>
+		<div class="new_address_right">
+			 <input id="demo1" type="text" readonly="" placeholder="城市选择"  />
+            <!--<input id="value1" type="hidden" value="15,161,3543"/>-->
+		</div>
+	</div>
+	<div class="new_address_box">
+		<div class="new_address_left">
+			详细地址
+		</div>
+		<div class="new_address_right">
+			<input type="text" name="usertel" placeholder="请输入详细地址" />
+		</div>
+	</div>
+	<input type="submit" name="保存" class="address_save">
+</form>
+	
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/LAreaData.js"></script>
+<script src="./js/LArea.js"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script type="text/javascript">
+	 var area1 = new LArea();
+    area1.init({
+        'trigger': '#demo1', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+        'valueTo': '#value1', //选择完毕后id属性输出到该位置
+        'keys': {
+            id: 'id',
+            name: 'name'
+        }, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+        'type': 1, //数据源类型
+        'data': LAreaData //数据源
+    });
+    area1.value=[30,0,0];
+
+    function ysh(a,b,c){
+    	var result=LAreaData.filter(function(item){
+   			return item.id==a;
+   		});
+   		var resulta=result[0]["name"];
+   		var result1=result[0]["child"].filter(function(item){
+   			return item.id==b;
+   		});
+   		var resultb=result1[0]["name"];
+   		var result2=result1[0]["child"].filter(function(item){
+   			return item.id==c;
+   		});
+   		var resultc=result2[0]["name"];
+   		var str=[];
+   		str.push(resulta,resultb,resultc);
+   		//console.log(str);
+      return str;
+    }
+    //console.log(ysh(15,171,3637));
+   function Check(){
+    var str=$('#value1').val();
+    console.log(str.split(","));
+    var arr=str.split(",");
+    console.log(ysh(arr[0],arr[1],arr[2]));
+    return false;
+   }
+</script>
+</html>
