@@ -11,3 +11,7 @@ git fetch origin
 git diff master origin/master
 我:
 git fetch：相当于是从远程获取最新版本到本地，不会自动merge
+
+git add 文件名
+git commit -m "注释"
+git push -u origin master
