@@ -16,6 +16,19 @@ git add 文件名
 git commit -m "注释"
 git push -u origin master
 
+$ git push -u origin master
+To https://github.com/YSHZD/javascript.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/YSHZD/javascript.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. Check out this branch and integrate the remote changes
+hint: (e.g. 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details
+
+原因是因为git中的内容与本地中的内容不一致
+
+
+使用  git push -u origin master -f  强制覆盖解决
 语言
 
 在 html 标签中通过 lang 属性进行明确的语言声明，将会有助于翻译，英文、简体中文和繁体中文网页所属性值如下：
