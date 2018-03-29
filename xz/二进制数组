@@ -1,0 +1,34 @@
+ArrayBuffer 对象
+概述
+ArrayBuffer  对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（ TypedArray  视图
+和 DataView  视图 ) 来读写，视图的作用是以指定格式解读二进制数据。
+ArrayBuffer  也是一个构造函数，可以分配一段可以存放数据的连续内存区域。
+var buf = new ArrayBuffer(32);
+上面代码生成了一段 32 字节的内存区域，每个字节的值默认都是 0 。可以看到， ArrayBuffer  构造函数的参
+数是所需要的内存大小（单位字节）。
+为了读写这段内容，需要为它指定视图。 DataView  视图的创建，需要提供 ArrayBuffer  对象实例作为参
+数。
+var buf = new ArrayBuffer(32);
+var dataView = new DataView(buf);
+dataView.getUint8(0) // 0
+上面代码对一段 32 字节的内存，建立 DataView  视图，然后以不带符号的 8 位整数格式，读取第一个元素，
+结果得到 0 ，因为原始内存的 ArrayBuffer 对象，默认所有位都是 0 。
+另一种 TypedArray  视图，与 DataView  视图的一个区别是，它不是一个构造函数，而是一组构造函数，
+代表不同的数据格式。
+var buffer = new ArrayBuffer(12);
+var x1 = new Int32Array(buffer);
+x1[0] = 1;
+var x2 = new Uint8Array(buffer);
+x2[0] = 2;
+x1[0] // 2
+上面代码对同一段内存，分别建立两种视图： 32 位带符号整数（ Int32Array 构造函数）和 8 位不带符号整数
+（ Uint8Array 构造函数）。由于两个视图对应的是同一段内存，一个视图修改底层内存，会影响到另一个视
+图。
+TypedArray 视图的构造函数，除了接受 ArrayBuffer  实例作为参数，还可以接受普通数组作为参数，直接
+分配内存生成底层的 ArrayBuffer 实例，并同时完成对这段内存的赋值。
+var typedArray = new Uint8Array([0,1,2]);
+typedArray.length // 3
+typedArray[0] = 5;
+typedArray // [5, 1, 2]
+上面代码使用 TypedArray  视图的 Uint8Array  构造函数，新建一个不带符号的 8 位整数视图。可以看
+到， Uint8Array  直接使用普通数组作为参数，对底层内存的赋值同时完成。
