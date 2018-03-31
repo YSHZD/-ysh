@@ -675,4 +675,5 @@ Object.defineProperty(obj, name, desc);
 //  失败时返回 false
 Reflect.defineProperty(obj, name, desc);
 上面代码中， Reflect.defineProperty  方法的作用与 Object.defineProperty  是一样的，都是为对象定
-义一个属性。但是， Reflect.defineProperty  方法失败时，不会抛出错误，只会返回 false  。
+义一个属性。但是， Reflect.defineProperty  方法失败时，不会抛出错误，只会返回 false  
+
