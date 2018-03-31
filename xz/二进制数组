@@ -1543,6 +1543,112 @@ console.log(key + ' : ' + value);
 // b : 2
 
 
+计算生成的数据结构
+有些数据结构是在现有数据结构的基础上，计算生成的。比如， ES6 的数组、 Set 、 Map 都部署了以下三个方
+法，调用后都返回遍历器对象。
+entries()  返回一个遍历器对象，用来遍历 [ 键名 ,  键值 ]  组成的数组。对于数组，键名就是索引
+值；对于 Set ，键名与键值相同。 Map 结构的 iterator 接口，默认就是调用 entries 方法。
+keys()  返回一个遍历器对象，用来遍历所有的键名。
+values()  返回一个遍历器对象，用来遍历所有的键值。
+这三个方法调用后生成的遍历器对象，所遍历的都是计算生成的数据结构。
+let arr = ['a', 'b', 'c'];
+for (let pair of arr.entries()) {
+console.log(pair);
+}
+// [0, 'a']
+// [1, 'b']
+// [2, 'c']
+
+类似数组的对象
+类似数组的对象包括好几类。下面是 for...of  循环用于字符串、 DOM NodeList 对象、 arguments 对象的例
+子。
+
+//  字符串
+let str = "hello";
+for (let s of str) {
+console.log(s); // h e l l o
+}
+// DOM NodeList 对象
+let paras = document.querySelectorAll("p");
+for (let p of paras) {
+p.classList.add("test");
+}
+// arguments 对象
+function printArgs() {
+for (let x of arguments) {
+console.log(x);
+}
+}
+printArgs('a', 'b');
+// 'a'
+// 'b'
+
+对于字符串来说， for...of  循环还有一个特点，就是会正确识别 32 位 UTF-16 字符。
+for (let x of 'a\uD83D\uDC0A') {
+console.log(x);
+}
+// 'a'
+// '\uD83D\uDC0A'
+并不是所有类似数组的对象都具有 iterator 接口，一个简便的解决方法，就是使用 Array.from 方法将其转为数
+组。
+
+let arrayLike = { length: 2, 0: 'a', 1: 'b' };
+//  报错
+for (let x of arrayLike) {
+console.log(x);
+}
+//  正确
+for (let x of Array.from(arrayLike)) {
+console.log(x);
+}
+
+对象
+对于普通的对象， for...of  结构不能直接使用，会报错，必须部署了 iterator 接口后才能使用。但是，这样
+情况下， for...in  循环依然可以用来遍历键名。
+var es6 = {
+edition: 6,
+committee: "TC39",
+standard: "ECMA-262"
+};
+for (e in es6) {
+console.log(e);
+}
+// edition
+// committee
+// standard
+for (e of es6) {
+console.log(e);
+}
+// TypeError: es6 is not iterable
+上面代码表示，对于普通的对象， for...in  循环可以遍历键名， for...of  循环会报错。
+一种解决方法是，使用 Object.keys  方法将对象的键名生成一个数组，然后遍历这个数组。
+for (var key of Object.keys(someObject)) {
+console.log(key + ": " + someObject[key]);
+}
+在对象上部署 iterator 接口的代码，参见本章前面部分。一个方便的方法是将数组的 Symbol.iterator  属
+性，直接赋值给其他对象的 Symbol.iterator  属性。比如，想要让 for...of  环遍历 jQuery 对象，只要加
+上下面这一行就可以了。
+jQuery.prototype[Symbol.iterator] =
+Array.prototype[Symbol.iterator];
+另一个方法是使用 Generator 函数将对象重新包装一下。
+function* entries(obj) {
+for (let key of Object.keys(obj)) {
+yield [key, obj[key]];
+}
+}
+for (let [key, value] of entries(obj)) {
+console.log(key, "->", value);
+}
+// a -> 1
+// b -> 2
+// c -> 3
+
+for(var i=0;i<100;i++){if(i<10){console.log(i)else{return}}}
+
+
+
+
+
 
 
 
