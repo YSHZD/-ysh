@@ -8,7 +8,7 @@
 	
 </body>
 <script>
-let f = {};
+/*let f = {};
 f.flip =
 fn =>
 (a, b, ...args) => fn(b, a, ...args.reverse());
@@ -22,7 +22,11 @@ console.log(flip(1, 10)) // 10
 var three = (a, b, c) => [a, b, c];
 var flip = f.flip(three);
 console.log(flip(1, 2, 3)); // => [2, 1, 3]
-
+*/
+let f = {};
+f.concat = (...xs) => xs.reduce((a, b) => a.concat(b));
+f.concatMap = (f, ...xs) => [].concat(xs.map(f));
+console.log(f.concatMap(x => 'hi ' + x, 1, [[2]], 3))
 
 /*let add = x => x + x;
 let pow = x => x * x;
@@ -36,5 +40,20 @@ f.comp = (...fs) =>{
 };
 let comp = f.comp(add, pow, inv);
 console.log(comp(1))*/
+
+f.zip = (...xs) => {
+   let r = [];
+   let nple = [];
+   let length = Math.min.apply(null,xs.map(x => x.length));
+   for(var i = 0; i<length;i++){
+   	xs.forEach(x => nple.push(x[i]));
+   	r.push(nple);
+    nple = []
+   }
+   return r;
+}
+let a = [0, 1, 4,2];
+let b = [3, 4, 5];
+console.log(f.zip(a, b))
 </script>
 </html>
