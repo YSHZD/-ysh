@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+let f = {};
+f.flip =
+fn =>
+(a, b, ...args) => fn(b, a, ...args.reverse());
+
+var divide = (a, b) => a / b;
+var flip = f.flip(divide);
+
+console.log(flip(10, 5)) // 0.5
+console.log(flip(1, 10)) // 10
+
+var three = (a, b, c) => [a, b, c];
+var flip = f.flip(three);
+console.log(flip(1, 2, 3)); // => [2, 1, 3]
+
+
+/*let add = x => x + x;
+let pow = x => x * x;
+let inv = x => 1 / x;
+let f = {};
+f.comp = (...fs) =>{
+	return (...args) => 
+	  fs.map(
+	  	f => args = [f.apply(null,args)]
+	  ).pop()[0];
+};
+let comp = f.comp(add, pow, inv);
+console.log(comp(1))*/
+</script>
+</html>

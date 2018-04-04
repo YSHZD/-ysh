@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="referrer" content="always">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>{$meta_title}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="__STATIC__css/iconfont.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="__STATIC__css/mui.min.css">
+    <link rel="stylesheet" href="__STATIC__css/index.css">
+    <link rel="stylesheet" href="__STATIC__css/bootstrap.css">
+    <link rel="stylesheet" href="__STATIC__css/main.css">
+    <link rel="stylesheet" href="__STATIC__css/highlight.css">
+
+    <link rel="stylesheet" href="__PLUGINS_STATIC__audioplayer/css/audioplayer.css" />
+    <link href="__STATIC__css/base.css" type="text/css" rel="stylesheet">
+    <script src="__STATIC__js/skPlayer/skPlayer.min.js"></script>
+
+    <style >
+    #up_load{
+      display: inline-block;
+    padding: 2px 10px;
+    background: #1eac5e;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 100px;
+    cursor: pointer;
+    float: right;
+    height: 118px;
+    width: 52px;
+    word-wrap: break-word;
+    padding-top: 31px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    }
+     .work_main_info{border:none;}
+    .container{
+        /*margin-top:200px;*/
+    }
+    .doc{
+        text-align:left;
+    }
+    pre{
+        padding-left:2em;
+        font-size:16px;
+        line-height:24px;
+        color:#fff;
+        background-color:#272822;
+        border-radius:3px;
+    }
+    @media screen and (max-width:768px){
+        body{
+            width:100%;
+        }
+        .doc{
+            display:none;
+        }
+    }
+    </style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        做作业啦
+    </div>
+    <div class="right">
+
+    </div>
+</div>
+<div class="work_main">
+    <div class="work_main_from">
+        <div class="work_main_left">{$info.add_time|date="Y-m-d",###}</div>
+        <div class="work_main_right">发布人：{$info.name}</div>
+    </div>
+    <div class="work_main_info">
+        <h3>题目:&nbsp;&nbsp;{$info.title}</h3>
+        <if condition="$info['qiniu_path']">
+            <video width="100%" height="240" src="{:C('qiniu')['domain']}/{$info['qiniu_path']}" controls  style="object-fit:fill"   webkit-playsinline="true"   x-webkit-airplay="true"   playsinline="true"  x5-video-player-type="h5"  x5-video-orientation="h5" x5-playsinline=""  autobuffer class="c-h5" poster="{:C('logo_img')}"></video>
+        </if>
+
+        <div class="do_work">
+            {:code2html($info['task'])}<br>
+
+        </div>
+    </div>
+    <div class="work_main_info" style="padding:0px 0px 10px;">
+        <if condition="$info['audio_path']">
+            <p style="font-size: 16px;color: #FF0000;padding: 5px 10px">请收听音频(耐心等待音频加载完哦)：</p>
+            <div id="skPlayer"></div>
+            <script>
+                var audio_json = {$audio_json};
+
+                var source = {};
+                for (var i=0; i< audio_json.length; i++){
+                    var k = i + parseInt(1);
+                    source[i] = {name:"音频素材"+k,author:"兴智教育",src:audio_json[i],cover:"http://www.xingzhijiaoyu.net/pc/images/logo.png"};
+                }
+                console.log(source);
+                var player = new skPlayer({
+                    autoplay: true,
+//                    listshow: false,
+//            music: {
+//                type: 'cloud',
+//                source: 317921676
+//            }
+                    music: {
+                        //必需项,音乐配置
+                        type: 'file',
+                        //必需项,自配置文件方式指定填'file'
+                        source: source,
+                    }
+                });
+                console.log($('#skPlayer').height())
+            </script>
+        </if>
+    </div>
+
+    <if condition="$info['status'] egt 2">
+        <div class="work_main_info">
+            <h3 class="my_answer">我的回答 <span class="my_over">已回答</span></h3>
+            <if condition="$info['answer_movie']">
+                <volist name="info.answer_movie_arr" id="vo">
+                    <video width="100%" height="240" src="{$vo}" controls  style="object-fit:fill"   webkit-playsinline="true"   x-webkit-airplay="true"   playsinline="true"  x5-video-player-type="h5"  x5-playsinline="" autobuffer class="c-h5" poster="{:C('logo_img')}"></video>
+                </volist>
+            </if>
+                <div class="do_work">
+                    {:urldecode(code2html($info['answer']))}
+                </div>
+            <if condition="$info['answer_img']">
+             <div style="clear:both"></div>
+                <div class="do_work_pt">
+                <volist name="info.answer_img_arr" id="vo">
+                    <div><img src="{$vo}" alt="" data-preview-src="" data-preview-group="1"></div>
+                    <!--<img src="{$vo}" width="400" />-->
+                </volist>
+                </div>
+                <div style="clear:both"></div>
+            </if>
+        </div>
+    </if>
+    <if condition="$info['status'] eq 3">
+        <div class="work_main_info">
+            <h3>老师批改</h3>
+            <div class="do_work">
+                {:code2html($info['comment'])}
+            </div>
+        </div>
+    </if>
+</div>
+<if condition="$info['status'] neq 3">
+<div class="go_exam">&mdash;&nbsp;作答&nbsp;&mdash;</div>
+<div class="work_answer">
+    <form enctype="multipart/form-data"  id="post_form" method="post" action="{:U('Member/do_work_anther')}" onsubmit="return check_up();">
+        <p class="answer_content">回答内容</p>
+        <textarea placeholder="请输入回答文字..." name="answer" id="answer"></textarea>
+        <div class="img-box full">
+            <section class=" img-section">
+                <p class="answer_content">添加图片</p>
+                <div class="z_photo upimg-div clear" >
+                         <section class="z_file fl">
+                            <img src="__STATIC__images/addpt.jpg" class="add-img">
+                            <input type="file" name="xx[]" id="file" class="file"   multiple accept="image/*"/>
+                         </section>
+                 </div>
+                 <p class="up-p">※上传图片：最多可以上传9张图片，支持多张图片上传</p>
+             </section>
+        </div>
+        <aside class="mask works-mask">
+            <div class="mask-content">
+                <p class="del-p ">您确定要删除图片吗？</p>
+                <p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+            </div>
+        </aside>
+        <p class="answer_content">添加视频</p>
+        <div class="container">
+        <div id="container">
+            <span id="pickfiles"><!-- 选择视频 -->&nbsp;</span>
+            <span id="up_load">确认上传</span>  
+        </div>
+         <div class="video_header">   
+            <span>※上传视频：视频支持mp4、mov格式</span> 
+            <!-- '3gp','rmvb','flv','wmv','avi','mkv','mp4','mp3','wav'  -->
+        </div>
+            <input type="hidden" id="move_url" name="answer_movie" value="">
+            <input type="hidden" id="domain" value="{$params['domain']}">
+            <input type="hidden" id="uptoken"  value="{$params['uptoken']}">
+            <!--<input type="hidden" id="key" name="answer_movie" value="{$params['key']}">-->
+        <!-- <div style="display:none" id="success" class="col-md-12">
+            <div class="alert-success">
+                队列全部文件处理完毕
+            </div>
+        </div> -->
+        <table class="table table-striped table-hover"   style="margin-top:20px;display: none;">
+            <thead class="row">
+              <tr>
+                <!-- <th class="col-xs-4 col-sm-4">文件名</th> -->
+                <th class="col-xs-6 col-sm-6">文件大小</th>
+                <th class="col-xs-6 col-sm-6">文件详情</th>
+              </tr>
+            </thead>
+            <tbody id="fsUploadProgress" class="row">
+            </tbody>
+        </table>
+    </div>
+       <!-- <div class="video_add">
+        <input type="file" id="video_up" name="movie" class="upinput"  accept="video/mp4,video/mov" onchange="fileChange(this);"/>
+        <img src="__STATIC__images/add_video.png" alt=""> <span class="video_name"></span>
+        </div>
+        预览框：
+        <div class="preview"></div> -->
+        <input type="hidden" name="id" value="{:I('id','','intval')}"/>
+        
+        <input type="submit" class="submit do_work_submit" value="提交">
+    </form>
+</div>
+    </if>
+    <div class="upstatus"></div>
+</body>
+
+<if condition="$info['status'] elt 2">
+<script type="text/javascript" src="__STATIC__js/qiniujs/jquery.min.js"></script>
+<script src="__STATIC__js/mui.min.js"></script>
+<script src="__STATIC__js/mui.zoom.js"></script>
+<script src="__STATIC__js/imgUp.js"></script>
+<script src="__STATIC__js/mui.previewimage.js"></script>
+<script src="__STATIC__js/base.js" language="javascript"></script>
+
+<script type="text/javascript" src="__STATIC__js/qiniujs/bootstrap.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/moxie.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/plupload.dev.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/zh_CN.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/ui.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/qiniu.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/highlight.js"></script>
+<script type="text/javascript" src="__STATIC__js/qiniujs/main.js"></script>
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+
+</if>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 
+<script type="text/javascript">
+var FileSList=[];
+var doFileList = [];
+$(function(){
+  var delParent;
+  var defaults = {
+    fileType         : ["jpg","png","bmp","jpeg"],   // 上传文件的类型
+    fileSize         : 1024 * 1024 * 10                  // 上传文件的大小 10M
+  };
+    /*点击图片的文本框*/
+  $(".file").change(function(){
+    var idFile = $(this).attr("id");
+    var file = document.getElementById(idFile);
+    // var nameFile = $(this).attr('name');
+    // var filess = document.getElementById('file');
+    var imgContainer = $(this).parents(".z_photo"); //存放图片的父亲元素
+    var fileList = file.files;
+    var input = $(this).parent();//文本框的父亲元素
+    var imgArr = [];
+    //遍历得到的图片文件
+    var numUp = imgContainer.find(".up-section").length;
+    var totalNum = numUp + fileList.length;  //总的数量
+    if(fileList.length > 9 || totalNum > 9 ){
+      mui.alert("上传图片数目不可以超过9个，请重新选择");  //一次选择上传超过5个 或者是已经上传和这次上传的到的总数也不可以超过5个
+    }
+    else if(numUp < 9){     
+      fileList = validateUp(fileList);
+      for (var k=0;k<file.files.length;k++) {
+        FileSList.push(file.files[k]);
+
+        (function(){
+          var temp = k;
+          compress(file.files[temp],function(srcdata){
+              doFileList[temp] = srcdata;
+          }); 
+        })()
+      }
+      for(var i = 0;i<fileList.length;i++){
+       var imgUrl = window.URL.createObjectURL(fileList[i]);
+           imgArr.push(imgUrl);
+       var $section = $("<section class='up-section fl loading'>");
+           imgContainer.prepend($section);
+       var $span = $("<span class='up-span'>");
+           $span.appendTo($section);
+
+         var $img0 = $("<img class='close-upimg'>").on("click",function(event){
+            event.preventDefault();
+          event.stopPropagation();
+          $(".works-mask").show();
+          delParent = $(this).parent();
+        });
+        $img0.attr("src","/theme/mobile/images/a7.png").appendTo($section);
+         var $img = $("<img class='up-img up-opcity'>");
+             $img.attr("src",imgArr[i]);
+             $img.appendTo($section);
+         var $p = $("<p class='img-name-p'>");
+             $p.html(fileList[i].name).appendTo($section);
+
+         var $input = $("<input id='taglocation"+i+"' name='taglocation' value='' type='hidden'>");
+             $input.appendTo($section);
+         var $input2 = $("<input id='tags' name='tags' value='' type='hidden'/>");
+             $input2.appendTo($section);
+       }
+    }
+    setTimeout(function(){
+             $(".up-section").removeClass("loading");
+       $(".up-img").removeClass("up-opcity");
+     },450);
+     numUp = imgContainer.find(".up-section").length;
+    if(numUp >= 9){
+      $(this).parent().hide();
+    }
+  });
+
+
+
+    $(".z_photo").delegate(".close-upimg","click",function(){
+        $(".works-mask").show();
+        delParent = $(this).parent();
+  });
+
+  $(".wsdel-ok").click(function(){
+    $(".works-mask").hide();
+    var del_key = $(delParent).index();
+    console.log(FileSList.length - del_key-1);
+    FileSList.splice((FileSList.length - del_key-1),1);
+    doFileList.splice((FileSList.length - del_key-1),1);
+    // $('#file').val('');
+    // $('.up-section').remove();
+    var numUp = delParent.siblings().length;
+    if(numUp < 10){
+      delParent.parent().find(".z_file").show();
+    }
+     delParent.remove();
+  });
+
+  $(".wsdel-no").click(function(){
+    $(".works-mask").hide();
+  });
+
+    function validateUp(files){
+      var arrFiles = [];//替换的文件数组
+      for(var i = 0, file; file = files[i]; i++){
+        //获取文件上传的后缀名
+        var newStr = file.name.split("").reverse().join("");
+        if(newStr.split(".")[0] != null){
+            var type = newStr.split(".")[0].split("").reverse().join("");
+            type = type.toLowerCase();
+            if(jQuery.inArray(type, defaults.fileType) > -1){
+              // 类型符合，可以上传
+              if (file.size >= defaults.fileSize) {
+                mui.alert(file.size);
+                mui.alert('您这个"'+ file.name +'"文件大小过大');
+              } else {
+                // 在这里需要判断当前所有文件中
+                arrFiles.push(file);
+              }
+            }else{
+              mui.alert('您这个"'+ file.name +'"上传类型不符合');
+            }
+          }else{
+            mui.alert('您这个"'+ file.name +'"没有类型, 无法识别');
+          }
+      }
+      return arrFiles;
+    }
+
+
+})
+
+  mui('body').on('tap','a',function(){
+      window.top.location.href=this.href;
+  });
+  $('#pickfiles').on('click', function(){
+   $(this).siblings().find($('input[type="file"]')).attr('accept','video/*');
+    var obj = $('.progressContainer');
+       for(var i=0;i<obj.length;i++){
+          if($(obj[i]).find($('.status')).html()=='取消上传'){
+           $(obj[i]).hide();
+          }
+       }
+
+  });
+
+$('.do_work_pt').on('click',function(){
+    $('video').css('position','static');
+});
+mui.previewImage();
+function isIE(){
+if (window.navigator.userAgent.indexOf("MSIE")>=1)
+return true;
+else
+return false;
+}
+
+
+//    document.documentElement.style.fontSize = document.documentElement.clientWidth*0.1+'px';
+    // $('.go_exam').on('click',function(){
+    //     $('.work_answer').slideDown();
+    //     $(this).slideUp();
+    // });
+
+    function check_up() {
+        if ($('#answer').val() == ''){
+            mui.alert('请输入回答内容');
+            return false;
+        }
+       
+        var obj = $('.progressContainer');
+        var urls='';
+        var flag=1;
+        for(var i=0;i<obj.length;i++){
+           if($(obj[i]).find($('.progress-bar')).width()){
+            mui.alert('请等视频上传完再提交！');
+            return false;
+           }
+        }
+        for(var i=0;i<obj.length;i++){
+           if($(obj[i]).find($('.status')).html()=='等待...'){
+           flag=2;
+           var btnArray = ['否', '是'];
+            mui.confirm('视频是否上传？', '友情提示', btnArray, function(e) {
+                if (e.index == 1) {
+                     $('#up_load').eq(0).trigger("click");
+                } else {
+                    go();
+                }
+            });
+            }
+        }
+        if(flag==1){
+            go();
+        }
+    return false;
+}
+function compress(file,callback) {
+  var  maxW = 500;
+  var percent = 0.8;
+  var _file = file;
+  var fileType = _file.type;
+  if((/image\/\w+/.test(fileType)) && _file.size<=100*1024){
+    callback(file);
+  } else if (/image\/\w+/.test(fileType)){
+      var fileReader = new FileReader();  
+      fileReader.readAsDataURL(_file);  
+      fileReader.onload = function(event){  
+          var result = event.target.result;   //返回的dataURL  
+          var image = new Image();  
+          image.src = result;  
+          image.onload = function(){  //创建一个image对象，给canvas绘制使用  
+              var cvs = document.createElement('canvas');  
+              var scale = 1;    
+              if(this.width > maxW){  //1000只是示例，可以根据具体的要求去设定    
+                  scale = maxW / this.width;  
+              }  
+              cvs.width = this.width*scale;    
+              cvs.height = this.height*scale;     //计算等比缩小后图片宽高  
+              var ctx = cvs.getContext('2d');    
+              ctx.drawImage(this, 0, 0, cvs.width, cvs.height);     
+              var newImageData = cvs.toDataURL('image/jpeg', percent);
+              callback(newImageData);
+          }      
+      } 
+  }else{
+    console.log('请选择图片格式文件')
+  }
+}
+function dataURItoBlob(base64Data) {
+  if(typeof base64Data == "object"){
+    return base64Data;
+  }else{
+    var byteString;
+    if (base64Data.split(',')[0].indexOf('base64') >= 0)
+    byteString = atob(base64Data.split(',')[1]);
+    else
+    byteString = unescape(base64Data.split(',')[1]);
+    var mimeString = base64Data.split(',')[0].split(':')[1].split(';')[0];
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {type:mimeString});
+  }
+}
+
+  function go(){
+      var ajax_url = '{:U("Member/do_work_anther")}';
+      var formdata = new FormData($('#post_form')[0]);
+      if(doFileList.length!=FileSList.length){
+        mui.alert('请稍后再提交，正在压缩图片。。。','温馨提示');
+        return false;
+      }
+      console.log(doFileList);
+      for(var k=0;k<doFileList.length;k++){   
+        formdata.append("file[]", dataURItoBlob(doFileList[k]));
+      }
+      $(".upstatus").html("<div class='top_loading'><img src='/theme/mobile/images/loading.gif'/><p>正在上传中...</p></div>");
+      mui.ajax(ajax_url, {
+          data: formdata,
+          dataType: 'json',//服务器返回json格式数据
+          type: 'post',//HTTP请求类型
+          timeout: 60000,//超时时间设置为10秒；
+          processData: false,
+          contentType: false,
+          success: function (data) {
+              console.log(data);
+              if (data.sts == '1'){
+                  $('.go_exam').slideDown();
+                  $('.work_answer').slideUp();
+                  mui.alert('太棒了！完成了您的作业');
+                  $('.go_exam').html('已答题').css('background','#1eac5e');
+                  $('.top_loading').hide();
+                  document.location.reload();
+//                        $(".preview").html("<video src=http://www.runoob.com/try/demo_source/movie.mp4  controls  width='100%' height='260'></video>");
+              }
+              else {
+                  $('.top_loading').hide();
+                  mui.alert(data.msg);
+              }
+          },
+          error: function (xhr, type, errorThrown) {
+              //异常处理；
+              console.log(type);
+              $('.top_loading').hide();
+//              mui.alert('提交失败，请稍后再试'+type);
+              mui.alert('网络异常，请刷新后再回答作业！');
+          }
+      });
+      return false;
+  }
+//    var id = {:I('id','','intval')};
+
+
+
+</script>
+
+{$wx_share}
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" id="file" onchange="filechange()">
+</body>
+<script>
+function filechange(){
+	var fileList = document.getElementById('file').files;
+	
+	var imgysh = document.createElement("img");
+			 
+　　　　//设置 img 图片地址
+    compress(fileList[0],500,0.8,function(srcdata){
+      imgysh.src = srcdata;
+    });
+
+    document.body.appendChild(imgysh);
+}
+
+function compress(file,maxW,percent,callback) {
+	var _file = file;
+	var fileType = _file.type;
+	console.log(fileType);
+	if(/image\/\w+/.test(fileType)){
+        var fileReader = new FileReader();  
+        fileReader.readAsDataURL(_file);  
+        fileReader.onload = function(event){  
+            var result = event.target.result;   //返回的dataURL  
+            var image = new Image();  
+            image.src = result;  
+            image.onload = function(){  //创建一个image对象，给canvas绘制使用  
+                var cvs = document.createElement('canvas');  
+                var scale = 1;    
+                if(this.width > maxW){  //1000只是示例，可以根据具体的要求去设定    
+                    scale = maxW / this.width;  
+                }  
+                cvs.width = this.width*scale;    
+                cvs.height = this.height*scale;     //计算等比缩小后图片宽高  
+                var ctx = cvs.getContext('2d');    
+                ctx.drawImage(this, 0, 0, cvs.width, cvs.height);     
+                var newImageData = cvs.toDataURL('image/jpeg', percent);
+                console.log(newImageData);
+                callback(newImageData);
+            }  
+              
+        } 
+	}else{
+		console.log('请选择图片格式文件')
+	}
+}
+
+// function compress(file,maxW,maxH,percent,callback) {
+// 	var _file = file;
+// 	var fileType = _file.type;
+// 	console.log(_file.size);
+// 	if(/image\/\w+/.test(fileType)){
+//         var fileReader = new FileReader();  
+//         fileReader.readAsDataURL(_file);  
+//         fileReader.onload = function(event){  
+//             var result = event.target.result;   //返回的dataURL  
+//             var image = new Image();  
+//             image.src = result;  
+//             image.onload = function(){  //创建一个image对象，给canvas绘制使用  
+//                 var cvs = document.createElement('canvas');  
+//                 var scale = 1;    
+//                 if(this.width > maxW || this.height > maxH){  //1000只是示例，可以根据具体的要求去设定    
+//                     if(this.width > this.height){    
+//                         scale = maxW / this.width;  
+//                     }else{    
+//                         scale = maxH / this.height;    
+//                     }    
+//                 }  
+//                 cvs.width = this.width*scale;    
+//                 cvs.height = this.height*scale;     //计算等比缩小后图片宽高  
+//                 var ctx = cvs.getContext('2d');    
+//                 ctx.drawImage(this, 0, 0, cvs.width, cvs.height);     
+//                 var newImageData = cvs.toDataURL(fileType, percent);
+//                 console.log(newImageData);
+//                 callback(newImageData);
+//                 // var sendData = newImageData.replace("data:"+fileType+";base64,",''); 
+//                 // console.log(sendData);
+//                 // $.post('/user/personalchange',{type:'photo',value:sendData},function(data){  
+//                 //     if(data.code == '200'){  
+//                 //         $('.modify_img').attr('src',newImageData);  
+//                 //         $.notify.close();  
+//                 //     }else{  
+//                 //         $.notify.show(data.message, {placement: 'center'});  
+//                 //     }  
+//                 // });  
+//             }  
+              
+//         } 
+// 	}else{
+// 		console.log('请选择图片格式文件')
+// 	}
+// }
+</script>
+</html>
