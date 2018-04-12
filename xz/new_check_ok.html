@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>教师身份验证</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<script src="./js/newBase.js" language="javascript"></script>
+<link rel="stylesheet" href="./css/newCheckOk.css">
+<style >
+</style>
+</head>
+<script>
+var info = location.search.split('?')[1];
+var arr = info.split('&');
+var obj = {};
+for(var i=0;i<arr.length;i++){
+   toObj(arr[i])
+}
+function toObj(arr){
+    var newarr = arr.split("=");
+    obj[newarr[0]] = newarr[1]
+}
+console.log(obj)
+</script>
+<body >
+<div class="printHeader">
+<img src="images/print2.png" alt="" class="z990">
+<img src="images/print1.png" alt="">
+</div>
+<div class="printContent">
+   <!-- <h3>兴智教育官方教师认证</h3>
+   <h4>Teacher certification</h4> -->
+      <h3><img src="images/c_26.png" alt=""></h3>
+   <div class="printImg" id="img">
+     <script>document.write('<img src="'+decodeURIComponent(obj.img)+ '"/>')</script>
+   </div>
+   <div class="printInfo">
+     <img src="images/icon_05.png" alt="">
+     <span class="printname">姓名：</span>
+     <span class="wlong"><script>document.write(decodeURIComponent(obj.username))</script></span>
+   </div>
+   <div class="printInfo">
+     <img src="images/icon_08.png" alt="">
+     <span class="printname">职位：</span>
+     <span class="wlong"><script>document.write(decodeURIComponent(obj.work_post))</script></span>
+   </div>
+   <div class="printInfo">
+     <img src="images/icon_10.png" alt="">
+     <span class="printname">工号：</span>
+     <span class="wlong"><script>document.write(obj.num)</script></span>
+   </div>
+   <div class="printFrom">
+        签发机构盖章:
+        <img src="images/printlogo.png" alt="">
+   </div>
+  <!--  <div class="printBottom">
+      <img src="images/icon_13.png" alt=""><span>认证教师</span>
+   </div> -->
+</div>
+<div class="back">
+ <span>返回</span>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script type="text/javascript">
+setTimeout(function(){
+   $('.printHeader').animate({top:0},400,function(){
+      $('.printContent').animate({top:'1rem'},800,function(){
+        $('.back').show()
+      })
+   }) 
+},100)
+$('.back span').on('click',function(){
+    window.history.go(-1)
+})
+</script>
+</html>

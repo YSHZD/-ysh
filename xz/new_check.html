@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>教师身份验证</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<script src="./js/newBase.js" language="javascript"></script>
+<link rel="stylesheet" href="./css/newCheck.css">
+<style >
+</style>
+</head>
+<body >
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+    </div>
+    <div class="right">
+    <!--    <i class="iconfont icon-gerenzhongxin"></i> -->
+    </div>
+</div>
+<div class="content">
+   <div class="log"><img src="images/logo2.png" alt=""></div>
+   <div class="subtitle">
+      <img src="images/040201.png" alt="">
+      <span>员工信息验证系统</span>
+   </div>
+   <input type="text" placeholder="长按粘贴或者输入微信号" class="wx">
+   <div class="submit">立即查询</div>
+</div>
+<div class="footers fixed">
+   <img src="images/040202.png" alt="">
+   <span>官方鉴别 真实保障</span>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/base.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script type="text/javascript">
+$('input').on('focus',function(){
+    $('.footers').removeClass('fixed');   
+});
+$('input').on('blur',function(){
+    $('.footers').addClass('fixed');   
+});
+$('.submit').on('click',function(){
+    var val = $('input').val();
+    if(!trim(val)){
+        mui.alert('不能为空！','温馨提示');
+        return false;
+    } else {
+        $('.footers').addClass('fixed');
+            mui.post('http://'+document.domain+'/Mobile/Index/verify',{wechat:val},function (data) {
+                if (data.sts){
+                    var data = data.data;
+                    console.log(data);
+                    window.location.href="new_check_ok.html?img=http://"+document.domain+encodeURIComponent(data.avatar)+"&username="+encodeURIComponent(data.username)+"&work_post="+encodeURIComponent(data.work_post)+"&num="+data.staff_id;
+                }else{
+                    window.location.href="new_check_no.html"
+                }
+
+            },'json')
+        
+    }
+});
+$('.back').on('click',function(){
+  window.history.go(-1);
+});
+function trim(str){
+    return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

@@ -9,3 +9,34 @@ JavaScript 语言的设计是单一继承，即子类只能继承一个父类，
 须自己定义实现，否则就会报错。这样就避免了多重继承的最大问题：多个父类的同名方法的碰撞（ naming
 collision ）。
 JavaScript 语言没有采用 Interface 的方案，而是通过代理（ delegation ）实现了从其他类引入方法。
+
+var Enumerable_first = function () {
+this.first = function () {
+return this[0];
+};
+};
+var list = ["foo", "bar", "baz"];
+Enumerable_first.call(list); // explicit delegation
+list.first() // "foo"
+上面代码中， list  是一个数组，本身并没有 first  方法。通过 call  方法，可以
+把 Enumerable_first  里面的方法，绑定到 list  ，从而 list  就具有 first  方法。这就叫做 “ 代
+理 ” （ delegation ）， list  对象代理了 Enumerable_first  的 first  方法。
+
+含义
+Mixin 这个名字来自于冰淇淋，在基本口味的冰淇淋上面混入其他口味，这就叫做 Mix-in 。
+它允许向一个类里面注入一些代码，使得一个类的功能能够 “ 混入 ” 另一个类。实质上是多重继承的一种解决
+方案，但是避免了多重继承的复杂性，而且有利于代码复用。
+Mixin 就是一个正常的类，不仅定义了接口，还定义了接口的实现。
+子类通过在 this  对象上面绑定方法，达到多重继承的目的。
+很多库提供了 Mixin 功能。下面以 Lodash 为例。
+function vowels(string) {
+return /[aeiou]/i.test(this.value);
+}
+var obj = { value: 'hello' };
+_.mixin(obj, {vowels: vowels})
+obj.vowels() // true
+上面代码通过 Lodash 库的 _.mixin  方法，让 obj  对象继承了 vowels  方法。
+Underscore 的类似方法是 _.extend  。
+
+
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title></title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<script src="./js/newBase.js" language="javascript"></script>
+<link rel="stylesheet" href="./css/new_evaluation.css">
+<style >
+body,html{background: #ededed}
+.header{position: fixed;top:0;left:0;right:0;z-index:999;}
+.wechatbuts{position: fixed;bottom:0;left:0;right:0;height:0.6rem;display: flex;flex-direction: row;justify-content: center;align-items: center;background-color: rgba(255,255,255,0.7);}
+.wechatbuts div{flex:1;padding:0 0.13rem;box-sizing: border-box;display: flex;justify-content: center;align-items: center;}
+.wechatbuts div img{width:100%;}
+.wechatbuts .resulta,.wechatbuts .resultb{padding:0 .3rem;box-sizing: border-box;}
+.wechatbuts .reusltb{padding:0 .5rem;box-sizing: border-box;}
+.stop div span{color:#fff;background: #666}
+.wechat{position: fixed;top:0;bottom:0;left:0;right:0;padding:0.1rem 0.1rem 0.6rem;box-sizing:border-box;overflow-y: auto;background-image:url(images/background2.png);background-size: 100% 100%;background-repeat: no-repeat; }
+.wechatLeft,.wechatRight{width:100%;padding:0.1rem 0;box-sizing: border-box;display: flex;flex-direction: row;}
+.wechatLeft .img{width: 0.55rem;}
+.wechatLeft .img img{width:0.4rem;border-radius: 0.02rem;height:0.4rem;}
+.wechatLeft .txt{max-width: 2.5rem;background: #fff;padding:0.1rem;border-radius: 0.05rem;position: relative;display: flex;flex-direction: column;}
+.wechatLeft .txt .bigfont{font-size: 0.16rem;line-height: 1.5;}
+.wechatLeft .txt p,.wechatLeft .txt strong{flex:1;line-height: 1.5}
+.wechatLeft .txt p{color:#333333;font-size: 0.15rem}
+.wechatLeft .txt strong{font-size: 0.16rem;color:#0092fd;margin-bottom:0.1rem;}
+.wechatLeft .nopadding{padding:0;max-width: 2.5rem;background: #fff;border-radius: 0.05rem;}
+.wechatLeft .nopadding img{width:100%;display: block;border-radius: 0.05rem;}
+.wechatLeft .txt::before{
+  content:'';
+  position: absolute;
+  left:-0.06rem;
+  top:0.1rem;
+  width: 0;
+  height: 0;
+  border-top: 0.06rem solid transparent;
+  border-right: 0.06rem solid #fff;
+  border-bottom: 0.06rem solid transparent;
+}
+.wechatRight{justify-content: flex-end;}
+.wechatRight .img{width: 0.55rem;display: flex;justify-content: flex-end;}
+.wechatRight .img img{width:0.4rem;height:0.4rem;border-radius: 0.02rem;}
+.wechatRight .txt{max-width: 2.5rem;background: #a0e75a;padding:0.05rem;border-radius: 0.05rem;position: relative;display: flex;align-items: center;min-width: 0.3rem;justify-content: center;font-size: 0.18rem;color:#000;}
+.wechatLeft .txt img{width:100%;border-radius:  0.05rem;}
+.wechatLeft .txt .bigfont2{color:#b7b7b7;margin-top:0.15rem;}
+.wechatRight .txt::after{
+  content:'';
+  position: absolute;
+  right:-0.06rem;
+  top:0.1rem;
+  width: 0;
+  height: 0;
+  border-top: 0.06rem solid transparent;
+  border-left: 0.06rem solid #a0e75a;
+  border-bottom: 0.06rem solid transparent;
+}
+::-webkit-scrollbar{
+  width:0;
+  height:0;
+}
+*{ -webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent; /* For some Androids */ }
+.mt15{margin-bottom: 1.5rem}
+</style>
+</head>
+<body >
+<div class="content">
+  <div class="wechat">
+    <div class="wechatLeft">
+       <div class="img"><img src="images/picture.jpg"></div>
+       <div class="nopadding"><img src="images/csbg.jpg" alt=""></div>
+    </div>
+    <div class="wechatLeft">
+       <div class="img"><img src="images/picture.jpg"></div>
+       <div class="txt"><p class="bigfont">中国有90%以上的家庭存在孩子成绩差、夫妻关系不和、亲子矛盾、无法良好沟通等家庭问题，但是仅有不到5%的家庭愿意为此做出改变。他们问题的根源是什么？兴智教育家庭关系指标评估报告，揭开背后的秘密...</p></div>
+    </div>
+  </div>
+   <div class="wechatbuts">
+     <div class="selecta"><img src="images/a.png" alt=""></div>
+     <div class="selectb"><img src="images/b.png" alt=""></div>
+     <div class="selectc"><img src="images/c.png" alt=""></div>
+   </div>
+</div>
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script type="text/javascript">
+var inputstate = true;
+var resultobj = {};
+var current = 0;
+var flag = true;
+var flag2 = true;
+var teacherUrl = 'images/picture.jpg';
+var clientUrl = 'images/picture.jpg';
+var json = [
+{'title':'1.您和爱人会经常当着孩子的面吵架吗？','options':[{'item':'A.经常当着孩子的面吵架'},{'item':'B.有时会当着孩子的面吵架，尤其是情绪不能控制的时候'},{'item':'C.偶尓会吵架，但一般都会避开孩子'}]},
+{'title':'2.您和老人在带孩子意见不一致时是怎么解决的？','options':[{'item':'A.互不退让，各自坚持自己的观点'},{'item':'B.口头上答应，实施起来还是以自己的意见为主'},{'item':'C.各退一步，协商解决'}]},
+{'title':'3.您的家里有设立家庭行为规则吗？（如就餐时让老人先入座、饭后帮忙收拾桌子等）','options':[{'item':'A.从来没有'},{'item':'B.设立过，但有时执行有时不执行'},{'item':'C.设立过，并能够很好的执行'}]},
+{'title':'4.孩子犯错后您会凶TA吗？','options':[{'item':'A.经常凶，总是带有不满情绪，习惯性指责、命令和威胁'},{'item':'B.有时会凶，尤其是自己无法控制的时候'},{'item':'C.几乎不会凶，能够温和地和孩子沟通，帮助孩子解决问题'}]},
+{'title':'5.邻居向你告状说孩子打碎了他们家玻璃，但孩子却说没有，此时你的做法是？','options':[{'item':'A.听信邻居的，打骂孩子并要求孩子道歉'},{'item':'B.听孩子的，并和邻居大吵一架'},{'item':'C.向孩子了解事情原委，再根据自己的判断选择性相信孩子'}]},
+{'title':'6.你会让孩子主动承担自己的事吗？如收拾房间洗衣服等？','options':[{'item':'A.不会，一般都是父母直接包办'},{'item':'B.有时会有时不会'},{'item':'C.孩子能做的事坚决让孩子自己做，其他事情鼓励着做'}]},
+{'title':'7.孩子每天的作业会主动按时完成吗？','options':[{'item':'A.不主动，经常偷懒不做'},{'item':'B.不主动，总是要父母催促且拖到最后一刻才做'},{'item':'C.放学回来主动做作业，自己制定学习计划'}]},
+{'title':'8.孩子被别人批评后是什么反应？','options':[{'item':'A.特别生气，对那个人怀恨在心，再也不愿搭理对方'},{'item':'B.前期会有情绪，自己想通了就好了'},{'item':'C.会主动找对方沟通，表明自己的想法'}]},
+{'title':'9.孩子会主动要求父母购买主科之外的学习书籍吗？（如作文书、自然科学书等）','options':[{'item':'A.几乎不会，除了主科外不愿看任何其他书籍'},{'item':'B.偶尔，看到同伴都有才会要求买'},{'item':'C.会主动，有时还会省下饭钱自己买'}]},
+{'title':'10.孩子身边有几个最好的朋友？','options':[{'item':'A.一个也没有'},{'item':'B.不太确定'},{'item':'C.3个或以上，且经常带好朋友回家玩'}]},
+{'title':'11.孩子会根据同学的家境、成绩、长得是否好看决定交朋友吗？','options':[{'item':'A.会，经常会跟我说**不漂亮/穷，我不喜欢跟TA玩'},{'item':'B.不确定'},{'item':'C.不会，孩子大多是跟自己志趣相投的人交朋友'}]},
+{'title':'12.父母是否会给孩子普及性教育？','options':[{'item':'A.从来没有，觉得很难说出口，没必要，以后长大了就好了'},{'item':'B.偶尓会，只有当孩子主动问起时才会遮遮掩掩地说'},{'item':'C.会在合适的场景跟孩子普及,并给孩子指导意见'}]},
+{'title':'13.当你在外受了气后，会将情绪转移到家人身上吗？','options':[{'item':'A.会，觉得家人应该理解我的情绪'},{'item':'B.有时会有时不会，看是不是撞到枪口上了'},{'item':'C.不会，家不应该成为负面情绪的垃圾桶'}]},
+{'title':'14.孩子会经常发脾气吗？','options':[{'item':'A.经常发脾气，还伴有撒泼打滚耍赖'},{'item':'B.很少发脾气或总是憋在心里不发泄出来'},{'item':'C.几乎不发脾气'}]},
+{'title':'15.当发现自己错怪孩子时，您会主动向孩子认错吗？','options':[{'item':'A.不会，小孩子嘛，哪里需要这些'},{'item':'B.有时会有时不会，看自己心情'},{'item':'C.会主动认错，并请求孩子的原谅'}]}
+];
+
+function textIn(obj){
+  if(flag){
+    $(document).attr("title","对方正在输入中...");
+    var str = '';
+    for(var i = 0;i<obj.options.length;i++){
+       str +='<p>' +obj.options[i].item + '</p>'
+    }
+    inputstate = false;
+    setTimeout(function(){
+      inputstate = true;
+      $('.wechat').append('<div class="wechatLeft"><div class="img"><img src="'+teacherUrl+'"></div><div class="txt"><strong>'+obj.title+'</strong>'+str+'</div></div>');
+      $(document).attr("title","   ");
+      scrollto();
+    },(obj.title.length*25+str.length*25));
+  }
+}
+textIn(json[0],1);
+function over(){
+  if(current >= json.length-1){
+     flag = false
+  }
+  if(current >= json.length){
+    flag2 = false;
+  }
+}
+/*点击按钮*/
+$('.selecta').on('click',function(){
+  if(!inputstate){
+    return;
+  }
+  over();
+  resultobj[current] = 1;
+  current +=1;
+  answer('A');
+  textIn(json[current]);
+  sentData();console.log(resultobj)
+})
+$('.selectb').on('click',function(){
+  if(!inputstate){
+    return;
+  }
+  over();
+  resultobj[current] = 2;
+  current +=1;
+  answer('B');
+  textIn(json[current]);
+  sentData();console.log(resultobj)
+});
+$('.selectc').on('click',function(){
+  if(!inputstate){
+    return;
+  }
+  over();
+  resultobj[current] = 3;
+  current +=1;
+  answer('C');
+  textIn(json[current]);
+  sentData();console.log(resultobj)
+});
+function answer(str){
+  if(flag2){
+    $('.wechat').append('<div class="wechatRight"><div class="txt">'+str+'</div><div class="img"><img src="'+clientUrl+'"></div></div>');
+    scrollto();
+  }
+}
+/*答题结束*/
+function sentData(){
+  if(current == json.length){
+    $('.wechatbuts').html('<div class="resulta"><a href="new_evaluation_result.html"><img src="images/result1.png" alt=""></a></div><div class="resultb"><a href="new_evaluation.html"><img src="images/result2.png" alt=""></a></div>');
+     $('.wechat').append('<div class="wechatLeft"><div class="img"><img src="'+teacherUrl+'"></div><div class="nopadding"><img src="images/resultimg.png" alt=""></div></div><div class="wechatLeft  mt15"><div class="img"><img src="images/picture.jpg"></div><div class="txt"><p class="bigfont">测试完成。</p><p class="bigfont2">请点击下方按钮查看结果或进行重新测试。</p></div></div>');
+    scrollto();
+    console.log(resultobj)
+  }
+}
+function scrollto(){
+  var div = $('.wechat')[0];
+  div.scrollTop = div.scrollHeight;
+}
+scrollto()
+$('.back').on('click',function(){
+  window.history.go(-1);
+});
+function trim(str){
+    return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>

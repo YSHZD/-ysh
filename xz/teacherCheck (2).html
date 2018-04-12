@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="referrer" content="always">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>兴智教育</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="./css/iconfont.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="./css/magic_two.css">
+<style >
+.content{width:100%;background-image:url(images/teacherbg.png);background-size:100% 100%;background-repeat: no-repeat;padding:0 0.2rem;box-sizing: border-box;position: absolute;top:0.4rem;bottom:0;display: flex;justify-content: flex-end;align-items: flex-end;}
+.bottext{
+	width:100%;
+	margin-bottom:0.4rem;
+}
+.header{position: fixed;top:0;left:0;right:0;height:0.4rem;}
+.bottext p{color:#fff;font-size:0.15rem;text-align: center;}
+.checkform{background:#eee;box-sizing: border-box;position: absolute;top:25%;left:0.2rem;right:0.2rem;padding:0.5rem;z-index:66;}
+.checkform h4{
+	font-size:24px;
+	color:#333;
+	text-align: center;
+	font-weight: 400;
+}
+.wx{display:inline-block;width:100%;height:0.4rem;border:none;outline: none;-webkit-appearance:none;border-radius: 0.05rem;padding: 0 0.15rem;font-size:0.16rem;margin:0;margin-top:0.4rem;box-sizing: border-box;}
+.checksubmit{height:0.4rem;margin-top:0.18rem;text-align: center;line-height: 0.4rem;background:#cf292b;color:#fff;border-radius: 0.05rem;font-size:0.16rem;}
+.resulttop{position: fixed;top:0;left:0;bottom:0;right:0;background-color: rgba(0,0,0,.7);padding:0 0.48rem;box-sizing: border-box;z-index:99;display:none;}
+.success{width:100%;background-image: url(images/teacherface.png);background-repeat: no-repeat;background-size: 100% 100%;padding-bottom:1rem;}
+.successimg{width:100%;display:flex;justify-content: center;align-items: center;padding-top:1.5rem;}
+.successimg img{max-width: 1rem;max-height: 1rem;}
+.successinfo{margin-top:0.4rem;}
+.successinfo div{display:flex;flex-direction: row;justify-content: center;align-items: center;font-size:0.15rem;padding:0 0.4rem;margin-top:0.1rem;}
+.successinfo div .sml{width:0.4rem;text-align: right;padding-right:0.1rem;}
+.successinfo div .sm2{flex:1;text-align: center;border:0.01rem solid #999;border-radius:0.05rem;}
+.fail{width:100%;background:#fff;margin-top:1.5rem;padding:0.3rem 0.25rem 0.5rem;box-sizing: border-box;border-radius:0.05rem;}
+.fail div{display:flex;justify-content: center;align-items: center;}
+.fail img{width:1.25rem;}
+.fail p{font-size:0.15rem;margin-top:0.3rem;}
+.closeface{position:absolute;top:0.6rem;right:0.4rem;background:#fff;display:inline-block;width:0.3rem;height:0.3rem;border:0.02rem solid #ededed;border-radius: 50%;line-height: 0.25rem;text-align: center;font-size:0.3rem;color:#808080;}
+.top2{position: fixed;top:0;left:0;bottom: 0;right:0;}
+</style>
+</head>
+<body >
+<div class="resulttop">
+</div>
+<div class="header">
+    <div class="left back">
+        <i class="iconfont icon-fanhui"></i>
+    </div>
+    <div class="center">
+        老师验证
+    </div>
+    <div class="right">
+       <a href=""><i class="iconfont icon-gerenzhongxin"></i></a>
+    </div>
+</div>
+<div class="content">
+	<div class="bottext">
+	<p>激发孩子潜能</p>
+	<p>成就3亿幸福家庭</p>
+	</div>
+	<div class="top2">
+		<div class="checkform">
+			<h4>一键查询老师真伪</h4>
+			<input type="text" class="wx" name="wx" placeholder="请输入老师微信号">
+			<div class="checksubmit">提交</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script src="./js/jquery-1.8.2.js" language="javascript"></script>
+<script src="./js/newBase.js" language="javascript"></script>
+<script src="./js/mui.min.js"></script>
+<script type="text/javascript">
+$('input').focus(function(){
+	$('.bottext').hide()
+})
+$('input').blur(function(){
+	$('.bottext').show()
+})
+$(function(){
+	$('.back').on('click',function(){
+	    window.history.go(-1);
+	});
+});
+
+
+// 表单验证
+$('.checksubmit').on('click',function(){
+	var wx = $('.wx').val();
+	if(!trim(wx)){
+		mui.alert('输入微信号','温馨提示！')
+		return false;
+	}
+	console.log(wx);
+	if(wx==1){
+		success('张三','助教',12434)
+	}
+	if(wx==2){
+		fail()
+	}	
+});
+function fail(){
+	$('.resulttop').html('<div class="fail"><div><img src="images/error.png" alt=""></div><p>注意！您查询的微信号不是兴智教育官方授权老师，谨防上当受骗</p></div>');
+	$('.fail').on('click',function(){
+		$('.resulttop').hide()
+	});
+	$('.resulttop').show();
+}
+function success(use,word,number){
+	$('.resulttop').html('<div class="success" ><span class="closeface">x</span><div class="successimg"><img src="images/pp2.png" alt=""></div><div class="successinfo"><div><span class="sml">姓名:</span><span class="sm2">'+use+'</span></div><div><span class="sml">职位:</span><span class="sm2">'+word+'</span></div><div><span class="sml">工号:</span><span class="sm2">'+number+'</span></div></div></div>');
+	$('.closeface').on('click',function(){
+		$('.resulttop').hide()
+	});
+	$('.resulttop').show();
+}
+function trim(str){
+	return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+</script>
+</html>
